@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// IMPORTANT: cambia esto por tu dominio real cuando lo tengas.
-const SITE = 'https://michaelllorens.com';
+// URL pública del sitio. Ahora apunta al dominio de Vercel.
+// 👉 Cuando tengas tu dominio propio (p. ej. michaelllorens.com), cámbialo aquí.
+const SITE = 'https://michael-llorens-web.vercel.app';
 
 // https://astro.build/config
 export default defineConfig({

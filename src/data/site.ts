@@ -14,8 +14,8 @@ export const site = {
     en: 'Full-stack developer & SEO',
   },
 
-  // ⚠️ PLACEHOLDER — cambia por tu dominio real
-  url: 'https://michaelllorens.com',
+  // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
+  url: 'https://michael-llorens-web.vercel.app',
 
   // ⚠️ PLACEHOLDER — cambia por tu email real
   email: 'hola@michaelllorens.com',
