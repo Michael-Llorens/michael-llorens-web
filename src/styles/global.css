@@ -1,0 +1,477 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SISTEMA DE DISEÑO · Michael Llorens — Dark Premium
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root,
+:root[data-theme='dark'] {
+  /* Fondos */
+  --bg: #0a0a12;
+  --bg-soft: #0f0f1c;
+  --surface: #14141f;
+  --surface-2: #1b1b2b;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  /* Texto */
+  --text: #ecedf5;
+  --text-muted: #a8a8c0;
+  --text-dim: #9090a8;
+
+  /* Acentos */
+  --accent: #7c5cff;
+  --accent-2: #00e5c7;
+  --accent-soft: rgba(124, 92, 255, 0.14);
+  --accent-glow: rgba(124, 92, 255, 0.45);
+  --gradient: linear-gradient(120deg, #7c5cff 0%, #5b8cff 45%, #00e5c7 100%);
+  --gradient-text: linear-gradient(120deg, #a78bff 0%, #7c5cff 40%, #00e5c7 100%);
+
+  /* Helpers de tema (cambian entre claro/oscuro) */
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --header-bg: rgba(10, 10, 18, 0.72);
+  --header-bg-mobile: rgba(10, 10, 18, 0.97);
+  --ring-track: rgba(255, 255, 255, 0.08);
+  --on-accent: #0a0a12;
+  --input-bg: #0c0c16;
+
+  /* Tipografía */
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk Variable', var(--font-sans);
+
+  /* Layout */
+  --maxw: 1200px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 28px;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 60px -10px var(--accent-glow);
+
+  /* Easing */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+/* ───────────────── Tema CLARO ───────────────── */
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --bg-soft: #f3f4f9;
+  --surface: #ffffff;
+  --surface-2: #f1f2f8;
+  --border: rgba(15, 18, 45, 0.10);
+  --border-strong: rgba(15, 18, 45, 0.17);
+
+  --text: #15151f;
+  --text-muted: #51546a;
+  --text-dim: #5c5f73;
+
+  --accent: #6a40f5;
+  --accent-2: #0a9d89;
+  --accent-soft: rgba(106, 64, 245, 0.10);
+  --accent-glow: rgba(106, 64, 245, 0.30);
+  --gradient: linear-gradient(120deg, #6d4bff 0%, #4f6bff 45%, #06b6a4 100%);
+  --gradient-text: linear-gradient(120deg, #6d28d9 0%, #4f46e5 45%, #0e8d7d 100%);
+
+  --surface-hover: rgba(15, 18, 45, 0.04);
+  --grid-line: rgba(15, 18, 45, 0.04);
+  --header-bg: rgba(255, 255, 255, 0.78);
+  --header-bg-mobile: rgba(255, 255, 255, 0.97);
+  --ring-track: rgba(15, 18, 45, 0.10);
+  --on-accent: #ffffff;
+  --input-bg: #eef0f7;
+
+  --shadow-sm: 0 2px 10px rgba(20, 22, 50, 0.08);
+  --shadow: 0 18px 50px -14px rgba(20, 22, 50, 0.22);
+
+  color-scheme: light;
+}
+
+/* Icono del botón de tema: luna en claro, sol en oscuro */
+.theme-toggle__moon {
+  display: none;
+}
+:root[data-theme='light'] .theme-toggle__sun {
+  display: none;
+}
+:root[data-theme='light'] .theme-toggle__moon {
+  display: block;
+}
+
+/* Transición suave al cambiar de tema */
+:root[data-theme] body,
+:root[data-theme] body * {
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+/* ───────────────── Reset ───────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fondo decorativo global */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60rem 60rem at 80% -10%, rgba(124, 92, 255, 0.13), transparent 60%),
+    radial-gradient(50rem 50rem at 0% 30%, rgba(0, 229, 199, 0.08), transparent 55%);
+  pointer-events: none;
+}
+
+img,
+svg,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 10px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a40;
+}
+
+/* ───────────────── Tipografía ───────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  letter-spacing: -0.025em;
+}
+
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ───────────────── Layout helpers ───────────────── */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1.2rem, 4vw, 2rem);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+  position: relative;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-head.center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 1rem;
+}
+
+.kicker::before {
+  content: '';
+  width: 1.6rem;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.center .kicker::before {
+  display: none;
+}
+
+.lead {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  margin-top: 0.9rem;
+}
+
+/* ───────────────── Botones ───────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  transition: transform 0.25s var(--ease), box-shadow 0.3s var(--ease),
+    background 0.3s var(--ease), border-color 0.3s var(--ease);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.btn svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #0a0a12;
+  font-weight: 700;
+  box-shadow: 0 10px 30px -8px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -10px var(--accent-glow);
+}
+
+.btn-ghost {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.btn-lg {
+  padding: 1.1rem 2rem;
+  font-size: 1.05rem;
+}
+
+/* ───────────────── Tarjetas ───────────────── */
+.card {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+/* Spotlight que sigue al cursor (se activa por JS en Layout) */
+.card::before,
+.plan::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--mx, -200%) var(--my, -200%),
+    rgba(124, 92, 255, 0.16),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+  z-index: 0;
+}
+.card:hover::before,
+.plan:hover::before {
+  opacity: 1;
+}
+
+/* Borde con brillo en hover */
+.card-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.card-glow:hover::after {
+  opacity: 1;
+}
+
+/* Badge / chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.tag {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+}
+
+/* ───────────────── Animaciones de scroll ───────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ───────────────── Utilidades ───────────────── */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  border: 0;
+}

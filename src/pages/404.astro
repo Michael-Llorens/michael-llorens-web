@@ -1,0 +1,119 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '../styles/global.css';
+import { site } from '../data/site';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <title>Página no encontrada · {site.name}</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a12" />
+  </head>
+  <body>
+    <main class="nf">
+      <div class="nf__orb" aria-hidden="true"></div>
+      <div class="container nf__inner">
+        <span class="nf__mark" aria-hidden="true">ML</span>
+        <p class="nf__code gradient-text">404</p>
+        <h1 class="nf__title">Esta página se ha perdido</h1>
+        <p class="nf__text">
+          La URL que buscas no existe o se ha movido. Volvamos a un sitio que sí
+          posiciona en Google.
+        </p>
+        <div class="nf__actions">
+          <a href="/" class="btn btn-primary btn-lg">Volver al inicio</a>
+          <a href="/#contact" class="btn btn-ghost btn-lg">Contactar</a>
+        </div>
+        <p class="nf__langs">
+          <a href="/">ES</a> · <a href="/va">VA</a> · <a href="/en">EN</a>
+        </p>
+      </div>
+    </main>
+
+    <style>
+      .nf {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .nf__orb {
+        position: absolute;
+        width: 50rem;
+        height: 50rem;
+        top: -15rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(124, 92, 255, 0.3), transparent 65%);
+        filter: blur(60px);
+        pointer-events: none;
+      }
+      .nf__inner {
+        position: relative;
+        max-width: 560px;
+      }
+      .nf__mark {
+        display: inline-grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(--gradient);
+        color: #0a0a12;
+        font-family: var(--font-display);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      .nf__code {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(5rem, 18vw, 9rem);
+        line-height: 1;
+      }
+      .nf__title {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        margin: 0.5rem 0 1rem;
+      }
+      .nf__text {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+      }
+      .nf__actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .nf__langs {
+        margin-top: 2rem;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+      .nf__langs a:hover {
+        color: var(--accent-2);
+      }
+    </style>
+  </body>
+</html>

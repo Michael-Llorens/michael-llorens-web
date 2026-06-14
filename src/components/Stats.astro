@@ -1,0 +1,121 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const stats = [
+  { value: t('stats.projects.value'), label: t('stats.projects.label') },
+  { value: t('stats.performance.value'), label: t('stats.performance.label') },
+  { value: t('stats.languages.value'), label: t('stats.languages.label') },
+  { value: t('stats.response.value'), label: t('stats.response.label') },
+];
+---
+
+<section class="stats" aria-label="Cifras">
+  <div class="container">
+    <div class="stats__grid card card-glow" data-reveal>
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <span class="stat__value gradient-text" data-stat={s.value}>{s.value}</span>
+            <span class="stat__label">{s.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // Anima los números de las estadísticas al entrar en pantalla.
+  const els = document.querySelectorAll<HTMLElement>('.stat__value');
+  const run = (el: HTMLElement) => {
+    const raw = el.dataset.stat || '';
+    const match = raw.match(/(\d[\d.,]*)/);
+    if (!match) return;
+    const numStr = match[1];
+    const target = parseFloat(numStr.replace(',', '.'));
+    const prefix = raw.slice(0, match.index);
+    const suffix = raw.slice((match.index || 0) + numStr.length);
+    const dur = 1500;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(eased * target);
+      el.textContent = prefix + val + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = raw;
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            run(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    els.forEach((el) => io.observe(el));
+  }
+</script>
+
+<style>
+  .stats {
+    margin-top: -3rem;
+    position: relative;
+    z-index: 2;
+  }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 2.2rem 1.5rem;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.5rem;
+    position: relative;
+  }
+  .stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--border);
+  }
+  .stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat__label {
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 700px) {
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 1rem;
+    }
+    .stat:nth-child(2)::after {
+      display: none;
+    }
+  }
+</style>

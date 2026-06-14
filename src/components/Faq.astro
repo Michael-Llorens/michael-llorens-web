@@ -1,0 +1,119 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getFaqs } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const faqs = getFaqs(lang);
+
+// Rich result FAQPage para Google
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<section class="section" id="faq">
+  <div class="container faq">
+    <div class="section-head" data-reveal>
+      <span class="kicker">{t('faq.kicker')}</span>
+      <h2 class="section-title">{t('faq.title')}</h2>
+      <p class="lead">{t('faq.subtitle')}</p>
+    </div>
+
+    <div class="faq__list" data-reveal>
+      {
+        faqs.map((f) => (
+          <details class="faq__item">
+            <summary class="faq__q">
+              <span>{f.question}</span>
+              <Icon name="plus" class="faq__ic" />
+            </summary>
+            <div class="faq__a">
+              <p>{f.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .faq .section-head {
+    position: sticky;
+    top: 100px;
+    margin-bottom: 0;
+  }
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .faq__item {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+  .faq__item[open] {
+    border-color: var(--border-strong);
+  }
+  .faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    list-style: none;
+  }
+  .faq__q::-webkit-details-marker {
+    display: none;
+  }
+  .faq__q :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
+    flex-shrink: 0;
+    color: var(--accent-2);
+    transition: transform 0.3s var(--ease);
+  }
+  .faq__item[open] .faq__q :global(svg) {
+    transform: rotate(45deg);
+  }
+  .faq__a {
+    padding: 0 1.4rem 1.3rem;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+  @media (max-width: 800px) {
+    .faq {
+      grid-template-columns: 1fr;
+    }
+    .faq .section-head {
+      position: static;
+    }
+  }
+</style>

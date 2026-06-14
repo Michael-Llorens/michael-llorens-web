@@ -1,0 +1,131 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getComparison } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const { cols, rows } = getComparison(lang);
+---
+
+<section class="section compare">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('compare.kicker')}</span>
+      <h2 class="section-title">{t('compare.title')}</h2>
+      <p class="lead">{t('compare.subtitle')}</p>
+    </div>
+
+    <div class="compare__wrap card" data-reveal>
+      <table class="compare__table">
+        <thead>
+          <tr>
+            <th class="compare__feat-head">{t('compare.feature')}</th>
+            <th class="compare__me-head">
+              <span class="compare__me-badge">{cols[0]}</span>
+            </th>
+            <th>{cols[1]}</th>
+            <th>{cols[2]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row) => (
+              <tr>
+                <td class="compare__feat">{row.feature}</td>
+                <td class="compare__me">
+                  <Icon name="check" />
+                  <span>{row.me}</span>
+                </td>
+                <td class="compare__other">{row.template}</td>
+                <td class="compare__other">{row.agency}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .compare__wrap {
+    padding: 0.5rem;
+    overflow-x: auto;
+  }
+  .compare__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 640px;
+  }
+  .compare__table th,
+  .compare__table td {
+    padding: 1.05rem 1.2rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  .compare__table thead th {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare__feat-head {
+    color: var(--text-dim) !important;
+  }
+  .compare__me-head {
+    text-align: center !important;
+  }
+  .compare__me-badge {
+    display: inline-block;
+    background: var(--gradient);
+    color: #0a0a12;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+  }
+  .compare__table tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .compare__table tbody tr:last-child {
+    border-bottom: none;
+  }
+  .compare__feat {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .compare__me {
+    text-align: center;
+    background: var(--accent-soft);
+  }
+  .compare__me span {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: 600;
+  }
+  .compare__me :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--accent-2);
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+  .compare__other {
+    color: var(--text-dim);
+  }
+  /* Esquinas redondeadas de la columna destacada */
+  .compare__table tbody tr:first-child .compare__me {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .compare__table tbody tr:last-child .compare__me {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+</style>

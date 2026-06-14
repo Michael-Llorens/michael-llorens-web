@@ -1,0 +1,20 @@
+CAPTURAS DE PROYECTOS
+=====================
+
+Si quieres mostrar capturas REALES de tus webs (en lugar del mockup de
+navegador que se genera automáticamente), guarda aquí las imágenes y luego
+indica la ruta en src/data/content.ts.
+
+1) Guarda la captura en esta carpeta, por ejemplo:
+   public/projects/taxi.jpg
+   public/projects/laura-serra.jpg
+
+2) Abre src/data/content.ts, busca el proyecto y añade el campo "image":
+   {
+     slug: 'taxi-xativa',
+     ...
+     image: '/projects/taxi.jpg',   // <-- añade esta línea
+   }
+
+Tamaño recomendado: 1280 x 800 px (relación 16:10), formato JPG o WebP.
+Mientras no añadas "image", se mostrará un mockup elegante con el nombre del proyecto.

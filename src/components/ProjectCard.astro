@@ -1,0 +1,301 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import type { Project } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  index?: number;
+}
+const { project: p, lang, index = 0 } = Astro.props;
+const t = useTranslations(lang);
+const hasLink = p.url && p.url !== '#';
+const featured = !!p.featured;
+---
+
+<article
+  class:list={['card', 'project', { 'project--featured': featured }]}
+  data-reveal
+  style={`--reveal-delay:${index * 80}ms`}
+>
+  <div class="project__thumb" style={`--g1:${p.gradient[0]};--g2:${p.gradient[1]}`}>
+    {
+      p.image ? (
+        <img src={p.image} alt={`Captura de la web ${p.name}`} loading="lazy" />
+      ) : (
+        <div class="mock" aria-hidden="true">
+          <div class="mock__bar">
+            <span /><span /><span />
+            <i class="mock__url" />
+          </div>
+          <div class="mock__body">
+            <div class="mock__nav">
+              <span class="mock__logo">{p.name}</span>
+              <div class="mock__menu"><i /><i /><i /></div>
+            </div>
+            <div class="mock__hero">
+              <span class="mock__line" />
+              <span class="mock__line short" />
+              <span class="mock__btn">{t('work.visit')}</span>
+            </div>
+            <div class="mock__cards">
+              <span /><span /><span />
+            </div>
+          </div>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="project__body">
+    <span class="project__cat">{p.category}</span>
+    <h3 class="project__name">{p.name}</h3>
+    <p class="project__desc">{p.description}</p>
+
+    <p class="project__result">
+      <span class="project__result-label">{t('work.result')}</span>
+      {p.result}
+    </p>
+
+    <div class="project__tags">
+      {p.tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+
+    {
+      hasLink && (
+        <a href={p.url} class="project__link" target="_blank" rel="noopener noreferrer">
+          {t('work.visit')}
+          <Icon name="arrowUpRight" />
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .project {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .project__thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, var(--g1), var(--g2));
+    overflow: hidden;
+  }
+  .project__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease);
+  }
+  .project:hover .project__thumb img {
+    transform: scale(1.04);
+  }
+
+  /* Mockup de navegador cuando no hay captura */
+  .mock {
+    position: absolute;
+    inset: 1.4rem 1.4rem -1px 1.4rem;
+    background: #0c0c16;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: none;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.5s var(--ease);
+  }
+  .project:hover .mock {
+    transform: translateY(-6px);
+  }
+  .mock__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.7rem 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mock__bar > span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .mock__url {
+    flex: 1;
+    height: 14px;
+    margin-left: 0.6rem;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .mock__body {
+    padding: 1.1rem 1.3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    height: 100%;
+  }
+  .mock__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mock__menu {
+    display: flex;
+    gap: 7px;
+  }
+  .mock__menu i {
+    width: 22px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .mock__hero {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.6rem 0;
+  }
+  .mock__logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  .mock__line {
+    height: 11px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
+    width: 85%;
+  }
+  .mock__line.short {
+    width: 55%;
+  }
+  .mock__btn {
+    margin-top: 0.3rem;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #0a0a12;
+    background: linear-gradient(120deg, var(--g1), var(--g2));
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+  }
+  .mock__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    margin-top: auto;
+  }
+  .mock__cards span {
+    height: 54px;
+    border-radius: 9px 9px 0 0;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: none;
+  }
+  .mock__cards span:nth-child(2) {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--g1) 35%, transparent), transparent);
+  }
+
+  .project__body {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+  .project__cat {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+  }
+  .project__name {
+    font-size: 1.4rem;
+  }
+  .project__desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  .project__result {
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.9rem;
+    margin-top: 0.3rem;
+  }
+  .project__result-label {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-right: 0.4rem;
+  }
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+  .project__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: gap 0.25s var(--ease), color 0.25s ease;
+  }
+  .project__link :global(svg) {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.25s var(--ease);
+  }
+  .project__link:hover {
+    color: var(--accent-2);
+  }
+  .project__link:hover :global(svg) {
+    transform: translate(3px, -3px);
+  }
+
+  /* ───── Variante destacada (full-width, horizontal) ───── */
+  .project--featured {
+    grid-column: 1 / -1;
+  }
+  @media (min-width: 880px) {
+    .project--featured {
+      flex-direction: row;
+      align-items: stretch;
+    }
+    .project--featured .project__thumb {
+      flex: 1.15;
+      aspect-ratio: auto;
+      min-height: 380px;
+    }
+    .project--featured .project__body {
+      flex: 1;
+      justify-content: center;
+      padding: clamp(1.8rem, 3vw, 2.8rem);
+    }
+    .project--featured .project__name {
+      font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    }
+    .project--featured .project__desc {
+      font-size: 1rem;
+    }
+  }
+</style>

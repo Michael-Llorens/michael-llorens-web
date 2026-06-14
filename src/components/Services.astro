@@ -1,0 +1,67 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getServices } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const services = getServices(lang);
+---
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('services.kicker')}</span>
+      <h2 class="section-title">{t('services.title')}</h2>
+      <p class="lead">{t('services.subtitle')}</p>
+    </div>
+
+    <div class="grid grid-3">
+      {
+        services.map((s, i) => (
+          <article class="card card-glow service" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+            <div class="service__icon">
+              <Icon name={s.icon} />
+            </div>
+            <h3 class="service__title">{s.title}</h3>
+            <p class="service__desc">{s.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .service {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .service__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 15px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-2);
+    margin-bottom: 0.4rem;
+  }
+  .service__icon :global(svg) {
+    width: 26px;
+    height: 26px;
+  }
+  .service__title {
+    font-size: 1.25rem;
+  }
+  .service__desc {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+  }
+</style>

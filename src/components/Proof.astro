@@ -1,0 +1,143 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Puntuaciones reales de esta web en Lighthouse. Actualízalas si cambian.
+const scores = [
+  { value: 100, label: t('proof.perf') },
+  { value: 100, label: t('proof.a11y') },
+  { value: 100, label: t('proof.best') },
+  { value: 100, label: t('proof.seo') },
+];
+---
+
+<section class="section proof">
+  <div class="container">
+    <div class="proof__box card card-glow" data-reveal>
+      <div class="proof__intro">
+        <h2 class="proof__title">{t('proof.title')}</h2>
+        <p class="proof__subtitle">{t('proof.subtitle')}</p>
+      </div>
+      <div class="proof__scores">
+        {
+          scores.map((s, i) => (
+            <div class="gauge" data-value={s.value} style={`--delay:${i * 120}ms`}>
+              <div class="gauge__ring">
+                <span class="gauge__num" data-count={s.value}>0</span>
+              </div>
+              <span class="gauge__label">{s.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const gauges = document.querySelectorAll<HTMLElement>('.gauge');
+  const animate = (g: HTMLElement) => {
+    const target = Number(g.dataset.value || '0');
+    const numEl = g.querySelector<HTMLElement>('.gauge__num');
+    const ring = g.querySelector<HTMLElement>('.gauge__ring');
+    if (!numEl || !ring) return;
+    const dur = 1400;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(eased * target);
+      numEl.textContent = String(val);
+      ring.style.setProperty('--p', String((val / 100) * 360) + 'deg');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setTimeout(() => animate(e.target as HTMLElement), Number((e.target as HTMLElement).style.getPropertyValue('--delay').replace('ms', '')) || 0);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    gauges.forEach((g) => io.observe(g));
+  } else {
+    gauges.forEach(animate);
+  }
+</script>
+
+<style>
+  .proof__box {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding: clamp(2rem, 5vw, 3.5rem);
+  }
+  .proof__title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.8rem;
+  }
+  .proof__subtitle {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+  }
+  .proof__scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .gauge__ring {
+    --p: 0deg;
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(closest-side, var(--surface) 79%, transparent 80% 100%),
+      conic-gradient(var(--accent-2) var(--p), var(--ring-track) 0);
+  }
+  .gauge__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+  .gauge__label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  @media (max-width: 800px) {
+    .proof__box {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+  @media (max-width: 460px) {
+    .proof__scores {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>

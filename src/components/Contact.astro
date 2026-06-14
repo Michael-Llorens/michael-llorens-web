@@ -1,0 +1,251 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { site, whatsappLink } from '../data/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const wa = whatsappLink(lang);
+
+const directs = [
+  { icon: 'mail', label: t('contact.email.label'), value: site.email, href: `mailto:${site.email}` },
+  { icon: 'whatsapp', label: 'WhatsApp', value: site.phoneDisplay, href: wa },
+  { icon: 'phone', label: t('contact.phone.label'), value: site.phoneDisplay, href: `tel:+${site.phoneRaw}` },
+];
+---
+
+<!-- CTA final -->
+<section class="section cta-final">
+  <div class="container">
+    <div class="cta-final__box" data-reveal>
+      <div class="cta-final__glow" aria-hidden="true"></div>
+      <h2 class="cta-final__title">{t('cta.final.title')}</h2>
+      <p class="cta-final__sub">{t('cta.final.subtitle')}</p>
+      <a href="#contact" class="btn btn-primary btn-lg">
+        {t('cta.final.button')}
+        <Icon name="rocket" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="section contact" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__intro">
+      <span class="kicker" data-reveal>{t('contact.kicker')}</span>
+      <h2 class="section-title" data-reveal style="--reveal-delay:60ms">{t('contact.title')}</h2>
+      <p class="lead" data-reveal style="--reveal-delay:120ms">{t('contact.subtitle')}</p>
+
+      <div class="contact__directs" data-reveal style="--reveal-delay:180ms">
+        <span class="contact__directs-title">{t('contact.direct')}</span>
+        {
+          directs.map((d) => (
+            <a
+              class="contact__direct"
+              href={d.href}
+              target={d.icon === 'whatsapp' ? '_blank' : undefined}
+              rel={d.icon === 'whatsapp' ? 'noopener noreferrer' : undefined}
+            >
+              <span class="contact__direct-ic"><Icon name={d.icon} /></span>
+              <span>
+                <span class="contact__direct-label">{d.label}</span>
+                <strong>{d.value}</strong>
+              </span>
+            </a>
+          ))
+        }
+        <div class="contact__location">
+          <span class="contact__direct-ic"><Icon name="pin" /></span>
+          <span>
+            <span class="contact__direct-label">{t('contact.location.label')}</span>
+            <strong>{t('contact.location.value')}</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact__form card" id="contact-form" data-reveal style="--reveal-delay:120ms">
+      <div class="field">
+        <label for="name">{t('contact.form.name')}</label>
+        <input type="text" id="name" name="name" required placeholder={t('contact.form.namePlaceholder')} autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="email">{t('contact.form.email')}</label>
+        <input type="email" id="email" name="email" required placeholder={t('contact.form.emailPlaceholder')} autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="message">{t('contact.form.message')}</label>
+        <textarea id="message" name="message" rows="5" required placeholder={t('contact.form.messagePlaceholder')}></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg form__submit">
+        {t('contact.form.send')}
+        <Icon name="arrow" />
+      </button>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ email: site.email }}>
+  // Sin backend: el formulario abre el cliente de correo con los datos ya rellenados.
+  // 👉 Para recibir los mensajes automáticamente, sustituye este bloque por un
+  //    servicio como Formspree o Web3Forms (action="https://...").
+  const form = document.getElementById('contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get('name') || '');
+    const from = String(data.get('email') || '');
+    const message = String(data.get('message') || '');
+    const subject = encodeURIComponent(`Nuevo proyecto web — ${name}`);
+    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${from}\n\n${message}`);
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  });
+</script>
+
+<style>
+  /* CTA final */
+  .cta-final__box {
+    position: relative;
+    text-align: center;
+    padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, var(--surface-2) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border-strong);
+    overflow: hidden;
+  }
+  .cta-final__glow {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60rem;
+    height: 40rem;
+    background: radial-gradient(circle, rgba(124, 92, 255, 0.22), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-final__title {
+    position: relative;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    max-width: 18ch;
+    margin-inline: auto;
+  }
+  .cta-final__sub {
+    position: relative;
+    color: var(--text-muted);
+    max-width: 50ch;
+    margin: 1rem auto 2rem;
+    font-size: 1.05rem;
+  }
+
+  /* Contacto */
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .contact__directs {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .contact__directs-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .contact__direct,
+  .contact__location {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.25s ease, transform 0.25s var(--ease), background 0.25s;
+  }
+  .contact__direct:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+    background: var(--surface-2);
+  }
+  .contact__direct-ic {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: var(--accent-soft);
+    color: var(--accent-2);
+    flex-shrink: 0;
+  }
+  .contact__direct-ic :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .contact__direct-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .contact__direct strong {
+    font-size: 0.98rem;
+  }
+
+  /* Formulario */
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .field label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .field input,
+  .field textarea {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    resize: vertical;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--text-dim);
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .form__submit {
+    margin-top: 0.4rem;
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

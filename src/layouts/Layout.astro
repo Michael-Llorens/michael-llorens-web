@@ -1,0 +1,232 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '../styles/global.css';
+import { type Lang, LANGUAGES, LANG_HREFLANG, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const title = t('meta.title');
+const description = t('meta.description');
+
+const canonical = new URL(localizedPath(lang), site.url).href;
+// OG/Twitter requieren imagen raster (PNG/JPG); el SVG no lo renderizan las redes.
+const ogImage = new URL('/og-image.png', site.url).href;
+
+// JSON-LD: Persona + Servicio profesional (clave para SEO local y rich results)
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${site.url}/#person`,
+      name: site.name,
+      url: site.url,
+      jobTitle: site.role[lang],
+      email: `mailto:${site.email}`,
+      sameAs: Object.values(site.socials).filter(Boolean),
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Xàtiva',
+        addressRegion: 'Valencia',
+        addressCountry: 'ES',
+      },
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${site.url}/#service`,
+      name: `${site.name} — ${site.role[lang]}`,
+      description,
+      url: site.url,
+      image: ogImage,
+      priceRange: '€€',
+      areaServed: ['Xàtiva', 'Valencia', 'España'],
+      provider: { '@id': `${site.url}/#person` },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Xàtiva',
+        addressRegion: 'Valencia',
+        addressCountry: 'ES',
+      },
+      knowsAbout: [
+        'Desarrollo web',
+        'SEO',
+        'Posicionamiento en buscadores',
+        'Astro',
+        'Diseño web',
+        'Core Web Vitals',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: LANG_HREFLANG[lang],
+      publisher: { '@id': `${site.url}/#person` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={LANG_HREFLANG[lang]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Detecta el tema (sistema o elección guardada) ANTES de pintar — evita parpadeo */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a12" />
+
+    <!-- hreflang para SEO multilingüe -->
+    {
+      LANGUAGES.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={LANG_HREFLANG[l]}
+          href={new URL(localizedPath(l), site.url).href}
+        />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('es'), site.url).href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={LANG_HREFLANG[lang]} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <slot />
+
+    <!-- Animaciones de entrada al hacer scroll -->
+    <script>
+      const reveal = () => {
+        const els = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window)) {
+          els.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        els.forEach((el) => io.observe(el));
+      };
+      reveal();
+
+      // Efectos solo en dispositivos con puntero fino (ratón) y sin reduced-motion
+      const finePointer =
+        window.matchMedia('(pointer: fine)').matches &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (finePointer) {
+        // Spotlight que sigue al cursor sobre las tarjetas
+        let ticking = false;
+        let lastEvt: PointerEvent | null = null;
+        const updateSpotlight = () => {
+          ticking = false;
+          if (!lastEvt) return;
+          const card = (lastEvt.target as HTMLElement)?.closest<HTMLElement>('.card, .plan');
+          if (!card) return;
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${((lastEvt.clientX - r.left) / r.width) * 100}%`);
+          card.style.setProperty('--my', `${((lastEvt.clientY - r.top) / r.height) * 100}%`);
+        };
+        document.addEventListener(
+          'pointermove',
+          (e) => {
+            lastEvt = e;
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(updateSpotlight);
+            }
+          },
+          { passive: true }
+        );
+
+        // Botones magnéticos (solo CTAs grandes)
+        document.querySelectorAll<HTMLElement>('.btn-lg').forEach((btn) => {
+          btn.addEventListener('pointermove', (e) => {
+            const r = btn.getBoundingClientRect();
+            const mx = e.clientX - r.left - r.width / 2;
+            const my = e.clientY - r.top - r.height / 2;
+            btn.style.transform = `translate(${mx * 0.18}px, ${my * 0.28}px)`;
+          });
+          btn.addEventListener('pointerleave', () => {
+            btn.style.transform = '';
+          });
+        });
+      }
+    </script>
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        z-index: 999;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.7rem 1.2rem;
+        border-radius: 0 0 8px 0;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+    </style>
+  </body>
+</html>

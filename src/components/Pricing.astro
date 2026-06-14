@@ -1,0 +1,183 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getPricing } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const plans = getPricing(lang);
+---
+
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('pricing.kicker')}</span>
+      <h2 class="section-title">{t('pricing.title')}</h2>
+      <p class="lead">{t('pricing.subtitle')}</p>
+    </div>
+
+    <div class="plans">
+      {
+        plans.map((plan, i) => (
+          <article
+            class:list={['plan', { 'plan--featured': plan.highlighted }]}
+            data-reveal
+            style={`--reveal-delay:${i * 90}ms`}
+          >
+            {plan.badge && <span class="plan__badge">{plan.badge}</span>}
+            <h3 class="plan__name">{plan.name}</h3>
+            <div class="plan__price">
+              <span class="plan__amount">{plan.price}</span>
+              <span class="plan__note">{plan.priceNote}</span>
+            </div>
+            <p class="plan__desc">{plan.description}</p>
+            <ul class="plan__features">
+              {plan.features.map((f) => (
+                <li>
+                  <Icon name="check" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class:list={['btn', plan.highlighted ? 'btn-primary' : 'btn-ghost', 'plan__cta']}
+            >
+              {plan.cta}
+              <Icon name="arrow" />
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="pricing__note" data-reveal>{t('pricing.note')}</p>
+  </div>
+</section>
+
+<style>
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2.2rem 1.8rem;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border);
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+      box-shadow 0.35s var(--ease);
+  }
+  .plan:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+  }
+  .plan--featured {
+    border-color: transparent;
+    background:
+      linear-gradient(var(--surface), var(--bg-soft)) padding-box,
+      var(--gradient) border-box;
+    border: 1.5px solid transparent;
+    box-shadow: 0 24px 60px -24px var(--accent-glow);
+    transform: scale(1.03);
+  }
+  .plan--featured:hover {
+    transform: scale(1.03) translateY(-6px);
+  }
+  .plan__badge {
+    position: absolute;
+    top: -0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient);
+    color: #0a0a12;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px -8px var(--accent-glow);
+  }
+  .plan__name {
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+  }
+  .plan__price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 1rem;
+  }
+  .plan__amount {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .plan__note {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .plan__desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    min-height: 2.8em;
+  }
+  .plan__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+    flex: 1;
+  }
+  .plan__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.93rem;
+    color: var(--text);
+  }
+  .plan__features :global(svg) {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--accent-2);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .plan__cta {
+    width: 100%;
+    margin-top: auto;
+  }
+  .pricing__note {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    max-width: 60ch;
+    margin: 2.5rem auto 0;
+  }
+  @media (max-width: 900px) {
+    .plans {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+      margin-inline: auto;
+    }
+    .plan--featured,
+    .plan--featured:hover {
+      transform: none;
+    }
+  }
+</style>

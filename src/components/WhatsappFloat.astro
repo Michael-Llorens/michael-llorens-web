@@ -1,0 +1,54 @@
+---
+import type { Lang } from '../i18n/config';
+import { whatsappLink } from '../data/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const wa = whatsappLink(lang);
+---
+
+<a class="wa-float" href={wa} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <Icon name="whatsapp" />
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    bottom: 1.4rem;
+    right: 1.4rem;
+    z-index: 90;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #0a0a12;
+    box-shadow: 0 10px 30px -6px rgba(37, 211, 102, 0.5);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    animation: wa-in 0.5s var(--ease) 0.6s both;
+  }
+  .wa-float :global(svg) {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+    stroke: none;
+  }
+  .wa-float:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 14px 36px -6px rgba(37, 211, 102, 0.65);
+  }
+  @keyframes wa-in {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @media (max-width: 600px) {
+    .wa-float {
+      width: 52px;
+      height: 52px;
+    }
+  }
+</style>

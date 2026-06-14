@@ -1,0 +1,19 @@
+{
+  "name": "michael-llorens-web",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Web profesional de Michael Llorens — Desarrollo web y posicionamiento SEO",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource-variable/space-grotesk": "^5.1.0",
+    "astro": "^5.1.1"
+  }
+}

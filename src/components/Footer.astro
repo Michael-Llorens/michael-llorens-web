@@ -1,0 +1,195 @@
+---
+import { type Lang, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getServices } from '../data/content';
+import { site, whatsappLink } from '../data/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = 2026; // Date.now() no disponible en build; actualiza si lo necesitas.
+
+const navLinks = [
+  { href: '#services', label: t('nav.services') },
+  { href: '#work', label: t('nav.work') },
+  { href: '#pricing', label: t('nav.pricing') },
+  { href: '#process', label: t('nav.process') },
+  { href: '#about', label: t('nav.about') },
+  { href: '#faq', label: t('nav.faq') },
+  { href: '#contact', label: t('nav.contact') },
+];
+
+const services = getServices(lang).slice(0, 5);
+
+const socials = [
+  { name: 'github', href: site.socials.github },
+  { name: 'linkedin', href: site.socials.linkedin },
+  { name: 'whatsapp', href: whatsappLink(lang) },
+].filter((s) => s.href);
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href={localizedPath(lang)} class="footer__logo">
+          <span class="brand__mark" aria-hidden="true">ML</span>
+          Michael Llorens
+        </a>
+        <p class="footer__tagline">{t('footer.tagline')}</p>
+        <div class="footer__socials">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                class="footer__social"
+                aria-label={s.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon name={s.name} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__title">{t('footer.nav')}</h3>
+        <ul>
+          {navLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__title">{t('footer.services')}</h3>
+        <ul>
+          {services.map((s) => <li><a href="#services">{s.title}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__title">{t('footer.contact')}</h3>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={`tel:+${site.phoneRaw}`}>{site.phoneDisplay}</a></li>
+          <li>{site.location}</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="footer__bottom">
+      <p>© {year} {site.name}. {t('footer.rights')}</p>
+      <p class="footer__made">{t('footer.madeWith')}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+    padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .brand__mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #0a0a12;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .footer__tagline {
+    color: var(--text-muted);
+    margin: 1rem 0 1.3rem;
+    font-size: 0.95rem;
+    max-width: 32ch;
+  }
+  .footer__socials {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .footer__social {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: color 0.25s, border-color 0.25s, transform 0.25s var(--ease);
+  }
+  .footer__social :global(svg) {
+    width: 19px;
+    height: 19px;
+  }
+  .footer__social:hover {
+    color: var(--accent-2);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .footer__title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .footer__col a,
+  .footer__col li {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+  }
+  .footer__col a:hover {
+    color: var(--accent-2);
+  }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    padding-top: 1.5rem;
+  }
+  @media (max-width: 800px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

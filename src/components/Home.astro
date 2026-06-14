@@ -1,0 +1,43 @@
+---
+import type { Lang } from '../i18n/config';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Stats from './Stats.astro';
+import Services from './Services.astro';
+import Projects from './Projects.astro';
+import Proof from './Proof.astro';
+import BackendApis from './BackendApis.astro';
+import Process from './Process.astro';
+import About from './About.astro';
+import Pricing from './Pricing.astro';
+import Comparison from './Comparison.astro';
+import Testimonials from './Testimonials.astro';
+import Faq from './Faq.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+import WhatsappFloat from './WhatsappFloat.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<Header lang={lang} />
+<main id="main">
+  <Hero lang={lang} />
+  <Stats lang={lang} />
+  <Services lang={lang} />
+  <Projects lang={lang} />
+  <Proof lang={lang} />
+  <BackendApis lang={lang} />
+  <Process lang={lang} />
+  <About lang={lang} />
+  <Pricing lang={lang} />
+  <Comparison lang={lang} />
+  <Testimonials lang={lang} />
+  <Faq lang={lang} />
+  <Contact lang={lang} />
+</main>
+<Footer lang={lang} />
+<WhatsappFloat lang={lang} />
