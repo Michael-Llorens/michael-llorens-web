@@ -172,8 +172,14 @@ textarea {
   font-size: inherit;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
+}
+
+/* El atributo [hidden] debe ganar a cualquier display de clase */
+[hidden] {
+  display: none !important;
 }
 
 ::selection {

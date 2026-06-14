@@ -127,7 +127,7 @@ export const ui = {
     'contact.form.namePlaceholder': 'Tu nombre',
     'contact.form.emailPlaceholder': 'tu@email.com',
     'contact.form.messagePlaceholder': '¿Qué tipo de web necesitas? ¿Tienes algún plazo o referencia?',
-    'contact.direct': 'O contáctame directamente',
+    'contact.direct': 'También puedes contactarme',
     'contact.email.label': 'Email',
     'contact.phone.label': 'Teléfono / WhatsApp',
     'contact.location.label': 'Ubicación',
@@ -140,6 +140,11 @@ export const ui = {
     'footer.contact': 'Contacto',
     'footer.rights': 'Todos los derechos reservados.',
     'footer.madeWith': 'Hecho con Astro y mucho café.',
+    'legal.notice': 'Aviso legal',
+    'legal.privacy': 'Privacidad',
+    'legal.cookies': 'Cookies',
+    'legal.back': 'Volver al inicio',
+    'legal.updated': 'Última actualización',
 
     // --- Genéricos ---
     'cta.final.title': '¿Listo para tener la web que tu negocio merece?',
@@ -255,7 +260,7 @@ export const ui = {
     'contact.form.namePlaceholder': 'El teu nom',
     'contact.form.emailPlaceholder': 'tu@email.com',
     'contact.form.messagePlaceholder': 'Quin tipus de web necessites? Tens algun termini o referència?',
-    'contact.direct': 'O contacta amb mi directament',
+    'contact.direct': 'També pots contactar amb mi',
     'contact.email.label': 'Email',
     'contact.phone.label': 'Telèfon / WhatsApp',
     'contact.location.label': 'Ubicació',
@@ -267,6 +272,11 @@ export const ui = {
     'footer.contact': 'Contacte',
     'footer.rights': 'Tots els drets reservats.',
     'footer.madeWith': 'Fet amb Astro i molt de café.',
+    'legal.notice': 'Avís legal',
+    'legal.privacy': 'Privacitat',
+    'legal.cookies': 'Cookies',
+    'legal.back': 'Tornar a l’inici',
+    'legal.updated': 'Última actualització',
 
     'cta.final.title': 'Preparat per a tindre la web que el teu negoci mereix?',
     'cta.final.subtitle':
@@ -393,6 +403,11 @@ export const ui = {
     'footer.contact': 'Contact',
     'footer.rights': 'All rights reserved.',
     'footer.madeWith': 'Built with Astro and lots of coffee.',
+    'legal.notice': 'Legal notice',
+    'legal.privacy': 'Privacy',
+    'legal.cookies': 'Cookies',
+    'legal.back': 'Back to home',
+    'legal.updated': 'Last updated',
 
     'cta.final.title': 'Ready for the website your business deserves?',
     'cta.final.subtitle':

@@ -168,7 +168,6 @@ const navLinks = [
   .header__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
     height: 72px;
   }
@@ -179,6 +178,7 @@ const navLinks = [
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.02em;
+    flex-shrink: 0;
   }
   .brand__mark {
     display: grid;
@@ -197,10 +197,9 @@ const navLinks = [
   }
   .nav {
     display: flex;
-    gap: 0.4rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 0.3rem;
+    flex: 1;
+    justify-content: center;
   }
   .nav__link {
     padding: 0.5rem 0.7rem;
@@ -215,7 +214,7 @@ const navLinks = [
     background: var(--surface-hover);
   }
   .nav__link.is-active {
-    color: #fff;
+    color: var(--text);
     background: var(--accent-soft);
   }
 
@@ -234,6 +233,8 @@ const navLinks = [
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    flex-shrink: 0;
+    margin-left: auto;
   }
   .langs {
     display: flex;
@@ -256,7 +257,7 @@ const navLinks = [
   }
   .langs__item.is-active {
     background: var(--accent-soft);
-    color: var(--accent);
+    color: var(--text);
   }
   .nav-cta {
     padding: 0.6rem 1.15rem;

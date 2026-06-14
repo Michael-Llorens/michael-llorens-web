@@ -7,19 +7,27 @@ import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
+  /** Prefijo para los anclas (vacío en la home, '/' en páginas legales). */
+  linkBase?: string;
 }
-const { lang } = Astro.props;
+const { lang, linkBase = '' } = Astro.props;
 const t = useTranslations(lang);
 const year = 2026; // Date.now() no disponible en build; actualiza si lo necesitas.
 
 const navLinks = [
-  { href: '#services', label: t('nav.services') },
-  { href: '#work', label: t('nav.work') },
-  { href: '#pricing', label: t('nav.pricing') },
-  { href: '#process', label: t('nav.process') },
-  { href: '#about', label: t('nav.about') },
-  { href: '#faq', label: t('nav.faq') },
-  { href: '#contact', label: t('nav.contact') },
+  { href: `${linkBase}#services`, label: t('nav.services') },
+  { href: `${linkBase}#work`, label: t('nav.work') },
+  { href: `${linkBase}#pricing`, label: t('nav.pricing') },
+  { href: `${linkBase}#process`, label: t('nav.process') },
+  { href: `${linkBase}#about`, label: t('nav.about') },
+  { href: `${linkBase}#faq`, label: t('nav.faq') },
+  { href: `${linkBase}#contact`, label: t('nav.contact') },
+];
+
+const legalLinks = [
+  { href: '/aviso-legal', label: t('legal.notice') },
+  { href: '/politica-de-privacidad', label: t('legal.privacy') },
+  { href: '/politica-de-cookies', label: t('legal.cookies') },
 ];
 
 const services = getServices(lang).slice(0, 5);
@@ -85,6 +93,9 @@ const socials = [
 
     <div class="footer__bottom">
       <p>© {year} {site.name}. {t('footer.rights')}</p>
+      <nav class="footer__legal" aria-label="Legal">
+        {legalLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
       <p class="footer__made">{t('footer.madeWith')}</p>
     </div>
   </div>
@@ -180,6 +191,18 @@ const socials = [
     color: var(--text-dim);
     font-size: 0.85rem;
     padding-top: 1.5rem;
+  }
+  .footer__legal {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .footer__legal a {
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+  }
+  .footer__legal a:hover {
+    color: var(--accent-2);
   }
   @media (max-width: 800px) {
     .footer__top {

@@ -1,0 +1,329 @@
+---
+import type { Lang } from '../i18n/config';
+import { getDiagnostic } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const d = getDiagnostic(lang);
+---
+
+<section class="section diag" id="diagnostico">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{d.kicker}</span>
+      <h2 class="section-title">{d.title}</h2>
+      <p class="lead">{d.subtitle}</p>
+    </div>
+
+    <div class="diag__card card card-glow" data-reveal>
+      <form class="diag__form" id="diag-form">
+        <div class="diag__grid">
+          {
+            d.questions.map((q, i) => (
+              <fieldset class="diag__q">
+                <legend>
+                  <span class="diag__num">{i + 1}</span>
+                  {q}
+                </legend>
+                <div class="diag__opts">
+                  <label class="diag__opt"><input type="radio" name={`q${i}`} value="1" /><span>{d.opts.yes}</span></label>
+                  <label class="diag__opt"><input type="radio" name={`q${i}`} value="0.4" /><span>{d.opts.unsure}</span></label>
+                  <label class="diag__opt"><input type="radio" name={`q${i}`} value="0" /><span>{d.opts.no}</span></label>
+                </div>
+              </fieldset>
+            ))
+          }
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg diag__submit">
+          {d.submit}
+          <Icon name="arrow" />
+        </button>
+      </form>
+
+      <div class="diag__result" id="diag-result" hidden aria-live="polite">
+        <div class="diag__gauge">
+          <div class="diag__ring" id="diag-ring">
+            <span class="diag__score" id="diag-score">0</span>
+          </div>
+        </div>
+        <div class="diag__verdict">
+          <span class="diag__score-label">{d.scoreLabel}</span>
+          <h3 class="diag__vtitle" id="diag-vtitle"></h3>
+          <p class="diag__vtext" id="diag-vtext"></p>
+          <div class="diag__improve" id="diag-improve"></div>
+          <div class="diag__actions">
+            <a href="#contact" class="btn btn-primary">{d.cta}<Icon name="arrow" /></a>
+            <button type="button" class="btn btn-ghost" id="diag-retry">{d.retry}</button>
+          </div>
+          <p class="diag__note">{d.note}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ questions: d.questions, verdicts: d.verdicts, improveLabel: d.improveLabel, allGood: d.allGood }}>
+  const form = document.getElementById('diag-form');
+  const result = document.getElementById('diag-result');
+  const ring = document.getElementById('diag-ring');
+  const scoreEl = document.getElementById('diag-score');
+  const vTitle = document.getElementById('diag-vtitle');
+  const vText = document.getElementById('diag-vtext');
+  const improve = document.getElementById('diag-improve');
+  const retry = document.getElementById('diag-retry');
+
+  const colorFor = (s) => (s >= 80 ? '#28c840' : s >= 50 ? '#febc2e' : '#ff5f57');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    let sum = 0;
+    const weak = [];
+    let answered = 0;
+    for (let i = 0; i < questions.length; i++) {
+      const v = data.get('q' + i);
+      if (v === null) continue;
+      answered++;
+      const val = parseFloat(v);
+      sum += val;
+      if (val < 1) weak.push(questions[i]);
+    }
+    if (answered < questions.length) {
+      form.classList.add('diag__form--err');
+      return;
+    }
+    const score = Math.round((sum / questions.length) * 100);
+    const verdict = verdicts.find((v) => score >= v.min) || verdicts[verdicts.length - 1];
+    const color = colorFor(score);
+
+    form.hidden = true;
+    result.hidden = false;
+    vTitle.textContent = verdict.title;
+    vText.textContent = verdict.text;
+
+    if (weak.length) {
+      improve.innerHTML =
+        '<span class="diag__improve-label">' + improveLabel + '</span><ul>' +
+        weak.map((w) => '<li>' + w + '</li>').join('') + '</ul>';
+    } else {
+      improve.innerHTML = '<p class="diag__allgood">' + allGood + '</p>';
+    }
+
+    // Anima el número y el anillo
+    const dur = 1200;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(eased * score);
+      scoreEl.textContent = val;
+      scoreEl.style.color = color;
+      ring.style.background =
+        'radial-gradient(closest-side, var(--surface) 78%, transparent 80% 100%), conic-gradient(' +
+        color + ' ' + (val / 100) * 360 + 'deg, var(--ring-track) 0)';
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  retry?.addEventListener('click', () => {
+    form.reset();
+    form.hidden = false;
+    form.classList.remove('diag__form--err');
+    result.hidden = true;
+  });
+</script>
+
+<style>
+  .diag__card {
+    padding: clamp(1.6rem, 4vw, 2.8rem);
+  }
+  .diag__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .diag__q {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  .diag__q legend {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .diag__num {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-2);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .diag__opts {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: calc(26px + 0.6rem);
+  }
+  .diag__opt {
+    flex: 1;
+    cursor: pointer;
+  }
+  .diag__opt input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .diag__opt span {
+    display: block;
+    text-align: center;
+    padding: 0.5rem 0.4rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-hover);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: all 0.2s var(--ease);
+  }
+  .diag__opt:hover span {
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+  .diag__opt input:checked + span {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--text);
+    font-weight: 600;
+  }
+  .diag__opt input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .diag__submit {
+    width: 100%;
+  }
+  .diag__form--err .diag__submit {
+    animation: shake 0.4s;
+  }
+  .diag__form--err::after {
+    content: attr(data-err);
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  /* Resultado */
+  .diag__result {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+  }
+  .diag__ring {
+    --s: 150px;
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(closest-side, var(--surface) 78%, transparent 80% 100%),
+      conic-gradient(var(--ring-track) 0, var(--ring-track) 0);
+  }
+  .diag__score {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.6rem;
+  }
+  .diag__score-label {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-2);
+    font-weight: 600;
+  }
+  .diag__vtitle {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin: 0.4rem 0 0.6rem;
+  }
+  .diag__vtext {
+    color: var(--text-muted);
+  }
+  .diag__improve {
+    margin: 1.2rem 0;
+  }
+  .diag__improve-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .diag__improve ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .diag__improve li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.93rem;
+  }
+  .diag__improve li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #febc2e;
+    font-weight: 700;
+  }
+  .diag__allgood {
+    color: #28c840;
+    font-weight: 600;
+  }
+  .diag__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .diag__note {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 720px) {
+    .diag__grid {
+      grid-template-columns: 1fr;
+    }
+    .diag__result {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    .diag__actions {
+      justify-content: center;
+    }
+    .diag__improve {
+      text-align: left;
+    }
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title="Política de cookies"
+  description="Información sobre el uso de cookies y almacenamiento local en el sitio web de Michael Llorens."
+  slug="politica-de-cookies"
+>
+  <p class="legal-updated">Última actualización: junio de 2026</p>
+
+  <h2>1. ¿Qué son las cookies?</h2>
+  <p>
+    Las cookies son pequeños archivos que un sitio web almacena en el navegador del usuario para
+    recordar información sobre su visita. Junto a ellas existen otras tecnologías de almacenamiento
+    local (como <em>localStorage</em>) con finalidades similares.
+  </p>
+
+  <h2>2. Cookies utilizadas en este sitio</h2>
+  <p>
+    Este sitio web <strong>no utiliza cookies de análisis, publicidad ni seguimiento</strong> de
+    terceros. Únicamente emplea almacenamiento técnico, estrictamente necesario para el
+    funcionamiento de la página:
+  </p>
+  <ul>
+    <li>
+      <strong>Preferencia de tema (claro/oscuro):</strong> se guarda en el almacenamiento local del
+      navegador (<em>localStorage</em>, clave «theme») para recordar tu elección visual entre
+      visitas. No identifica al usuario ni se comparte con terceros.
+    </li>
+  </ul>
+  <p>
+    Al tratarse de almacenamiento técnico necesario, conforme a la normativa vigente está exento de
+    consentimiento previo.
+  </p>
+
+  <h2>3. Servicios de terceros</h2>
+  <p>
+    El sitio está alojado en Vercel, que puede registrar datos técnicos de la conexión (como la
+    dirección IP) con fines de seguridad y funcionamiento del servicio, conforme a su propia
+    política de privacidad.
+  </p>
+
+  <h2>4. Cambios futuros</h2>
+  <p>
+    Si en el futuro se incorporan herramientas de analítica o medición que utilicen cookies (por
+    ejemplo, Google Analytics), se actualizará esta política y se solicitará el consentimiento
+    previo del usuario mediante un sistema de gestión de cookies.
+  </p>
+
+  <h2>5. Cómo gestionar el almacenamiento</h2>
+  <p>
+    Puedes borrar o bloquear el almacenamiento local y las cookies desde la configuración de tu
+    navegador en cualquier momento. Para cualquier duda, escribe a
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</LegalLayout>

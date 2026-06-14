@@ -241,6 +241,7 @@ const projectsBase = [
     url: 'https://beply.es',
     tags: ['Astro', 'Vue', 'Tailwind', 'SEO'],
     gradient: ['#6366F1', '#22D3EE'] as [string, string],
+    image: '/projects/beply.webp',
     featured: true,
   },
   {
@@ -249,6 +250,7 @@ const projectsBase = [
     url: 'https://taxixativa.es',
     tags: ['Astro', 'SEO local', 'Calculadora', 'JS'],
     gradient: ['#FACC15', '#F97316'] as [string, string],
+    image: '/projects/taxi-xativa.webp',
   },
   {
     slug: 'clinica-laura-serra',
@@ -256,6 +258,7 @@ const projectsBase = [
     url: 'https://clinicalauraserra.com',
     tags: ['Web local', 'SEO', 'WhatsApp', 'Responsive'],
     gradient: ['#22D3EE', '#3B82F6'] as [string, string],
+    image: '/projects/clinica-laura-serra.webp',
   },
   {
     slug: 'onllum',
@@ -263,6 +266,7 @@ const projectsBase = [
     url: 'https://onllum.es',
     tags: ['Astro', 'Vue', 'Calculadora', 'Energía'],
     gradient: ['#34D399', '#10B981'] as [string, string],
+    image: '/projects/onllum.webp',
   },
   {
     slug: 'el-buey-madurado',
@@ -270,6 +274,7 @@ const projectsBase = [
     url: 'https://www.restauranteelbueymadurado.com',
     tags: ['Next.js', 'React', 'Node.js', 'MongoDB'],
     gradient: ['#F472B6', '#A855F7'] as [string, string],
+    image: '/projects/el-buey-madurado.webp',
   },
 ] as const;
 
@@ -380,6 +385,7 @@ export const getProjects = (lang: Lang): Project[] =>
     tags: [...p.tags],
     gradient: p.gradient,
     featured: 'featured' in p ? p.featured : false,
+    image: 'image' in p ? p.image : undefined,
     category: projectCopy[lang][p.slug].category,
     description: projectCopy[lang][p.slug].description,
     result: projectCopy[lang][p.slug].result,
@@ -587,6 +593,16 @@ const faqs: Localized<Faq[]> = {
       answer:
         'Estoy en Xàtiva (Valencia), pero trabajo en remoto con clientes de toda España. La distancia no es problema: nos coordinamos por videollamada, email o WhatsApp.',
     },
+    {
+      question: '¿De quién es la web y el dominio?',
+      answer:
+        'Tuyos. Al finalizar el proyecto, la web, el código y el dominio quedan 100% a tu nombre. Sin ataduras ni dependencias: si algún día quieres llevártela, es completamente tuya.',
+    },
+    {
+      question: '¿Cómo funciona el pago?',
+      answer:
+        'Normalmente con un anticipo para reservar el proyecto y el resto a la entrega, según los hitos que acordemos. Todo claro desde el principio, sin sorpresas ni costes ocultos.',
+    },
   ],
   va: [
     {
@@ -619,6 +635,16 @@ const faqs: Localized<Faq[]> = {
       answer:
         'Estic a Xàtiva (València), però treballe en remot amb clients de tota Espanya. La distància no és problema: ens coordinem per videocrida, email o WhatsApp.',
     },
+    {
+      question: 'De qui és la web i el domini?',
+      answer:
+        'Teus. En finalitzar el projecte, la web, el codi i el domini queden 100% al teu nom. Sense lligams ni dependències: si algun dia vols emportar-te-la, és completament teua.',
+    },
+    {
+      question: 'Com funciona el pagament?',
+      answer:
+        'Normalment amb un avançament per a reservar el projecte i la resta a l’entrega, segons les fites que acordem. Tot clar des del principi, sense sorpreses ni costos ocults.',
+    },
   ],
   en: [
     {
@@ -650,6 +676,16 @@ const faqs: Localized<Faq[]> = {
       question: 'Do you only work in Xàtiva or remotely too?',
       answer:
         'I’m based in Xàtiva (Spain), but I work remotely with clients all over the country. Distance is no problem: we coordinate by video call, email or WhatsApp.',
+    },
+    {
+      question: 'Who owns the website and domain?',
+      answer:
+        'You do. When the project is finished, the website, the code and the domain are 100% in your name. No lock-in: if you ever want to move it, it’s entirely yours.',
+    },
+    {
+      question: 'How does payment work?',
+      answer:
+        'Usually a deposit to book the project and the rest on delivery, based on the milestones we agree. Everything clear from the start — no surprises or hidden costs.',
     },
   ],
 };
@@ -864,6 +900,109 @@ const comparison: Localized<{ cols: [string, string, string]; rows: CompareRow[]
 };
 
 export const getComparison = (lang: Lang) => comparison[lang];
+
+/* ───────────────── DIAGNÓSTICO WEB (herramienta interactiva) ───────────────── */
+export interface Diagnostic {
+  kicker: string;
+  title: string;
+  subtitle: string;
+  questions: string[];
+  opts: { yes: string; unsure: string; no: string };
+  submit: string;
+  retry: string;
+  scoreLabel: string;
+  improveLabel: string;
+  allGood: string;
+  verdicts: { min: number; title: string; text: string }[];
+  cta: string;
+  note: string;
+}
+
+const diagnostic: Localized<Diagnostic> = {
+  es: {
+    kicker: 'Diagnóstico exprés',
+    title: '¿Cómo de bien está tu web?',
+    subtitle:
+      'Responde 6 preguntas rápidas y obtén al instante una puntuación con los puntos a mejorar. 60 segundos, sin registro.',
+    questions: [
+      '¿Tu web se ve y funciona bien en el móvil?',
+      '¿Carga en menos de 3 segundos?',
+      '¿Apareces en Google cuando buscan tus servicios?',
+      '¿Tu web es segura (candado HTTPS)?',
+      '¿Tiene llamadas a la acción claras (contacto, WhatsApp, comprar)?',
+      '¿Actualizas el contenido con cierta frecuencia?',
+    ],
+    opts: { yes: 'Sí', unsure: 'No lo sé', no: 'No' },
+    submit: 'Ver mi resultado',
+    retry: 'Repetir test',
+    scoreLabel: 'Tu puntuación',
+    improveLabel: 'Puntos a mejorar',
+    allGood: '¡Enhorabuena! No se ha detectado ningún punto débil claro.',
+    verdicts: [
+      { min: 80, title: '¡Tu web va muy bien!', text: 'Tienes una base sólida. Aun así, siempre hay margen para posicionar mejor y convertir más visitas en clientes.' },
+      { min: 50, title: 'Vas por buen camino', text: 'Tu web cumple lo básico, pero está dejando escapar clientes. Con unos ajustes puede rendir mucho más.' },
+      { min: 0, title: 'Tu web está perdiendo clientes', text: 'Hay varios puntos importantes que mejorar. La buena noticia: son justo las cosas en las que te puedo ayudar.' },
+    ],
+    cta: 'Pide tu diagnóstico completo gratis',
+    note: 'Es una estimación orientativa. Te hago un análisis real y detallado sin compromiso.',
+  },
+  va: {
+    kicker: 'Diagnòstic exprés',
+    title: 'Com de bé està la teua web?',
+    subtitle:
+      'Respon 6 preguntes ràpides i obtín a l’instant una puntuació amb els punts a millorar. 60 segons, sense registre.',
+    questions: [
+      'La teua web es veu i funciona bé en el mòbil?',
+      'Carrega en menys de 3 segons?',
+      'Apareixes en Google quan busquen els teus serveis?',
+      'La teua web és segura (cadenat HTTPS)?',
+      'Té crides a l’acció clares (contacte, WhatsApp, comprar)?',
+      'Actualitzes el contingut amb certa freqüència?',
+    ],
+    opts: { yes: 'Sí', unsure: 'No ho sé', no: 'No' },
+    submit: 'Veure el meu resultat',
+    retry: 'Repetir test',
+    scoreLabel: 'La teua puntuació',
+    improveLabel: 'Punts a millorar',
+    allGood: 'Enhorabona! No s’ha detectat cap punt feble clar.',
+    verdicts: [
+      { min: 80, title: 'La teua web va molt bé!', text: 'Tens una base sòlida. Tot i així, sempre hi ha marge per a posicionar millor i convertir més visites en clients.' },
+      { min: 50, title: 'Vas per bon camí', text: 'La teua web compleix el bàsic, però està deixant escapar clients. Amb uns ajustos pot rendir molt més.' },
+      { min: 0, title: 'La teua web està perdent clients', text: 'Hi ha diversos punts importants a millorar. La bona notícia: són justament les coses en què et puc ajudar.' },
+    ],
+    cta: 'Demana el teu diagnòstic complet gratis',
+    note: 'És una estimació orientativa. Et faig una anàlisi real i detallada sense compromís.',
+  },
+  en: {
+    kicker: 'Express check',
+    title: 'How healthy is your website?',
+    subtitle:
+      'Answer 6 quick questions and instantly get a score with what to improve. 60 seconds, no sign-up.',
+    questions: [
+      'Does your website look and work well on mobile?',
+      'Does it load in under 3 seconds?',
+      'Do you show up on Google when people search your services?',
+      'Is your website secure (HTTPS padlock)?',
+      'Does it have clear calls to action (contact, WhatsApp, buy)?',
+      'Do you update the content fairly regularly?',
+    ],
+    opts: { yes: 'Yes', unsure: 'Not sure', no: 'No' },
+    submit: 'See my result',
+    retry: 'Retake test',
+    scoreLabel: 'Your score',
+    improveLabel: 'Areas to improve',
+    allGood: 'Great! No clear weak points detected.',
+    verdicts: [
+      { min: 80, title: 'Your website is doing great!', text: 'You have a solid base. Still, there’s always room to rank better and turn more visits into clients.' },
+      { min: 50, title: 'You’re on the right track', text: 'Your website covers the basics, but it’s letting clients slip away. A few tweaks could make it perform much better.' },
+      { min: 0, title: 'Your website is losing clients', text: 'There are several important things to improve. The good news: they’re exactly what I can help you with.' },
+    ],
+    cta: 'Get your full free diagnosis',
+    note: 'This is a rough estimate. I’ll run a real, detailed analysis with no commitment.',
+  },
+};
+
+export const getDiagnostic = (lang: Lang) => diagnostic[lang];
 
 /* ───────────────── SKILLS / TECNOLOGÍAS ───────────────── */
 export const skills: string[] = [
