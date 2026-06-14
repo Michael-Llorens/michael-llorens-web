@@ -67,6 +67,8 @@ export const ui = {
     'pricing.popular': 'Más popular',
 
     // --- Comparativa ---
+    'guarantees.kicker': 'Garantías',
+    'guarantees.title': 'Mis compromisos contigo',
     'compare.kicker': 'Por qué yo',
     'compare.title': 'Freelance, plantilla o agencia',
     'compare.subtitle': 'Lo que ganas trabajando directamente conmigo frente a las alternativas.',
@@ -127,6 +129,8 @@ export const ui = {
     'contact.form.namePlaceholder': 'Tu nombre',
     'contact.form.emailPlaceholder': 'tu@email.com',
     'contact.form.messagePlaceholder': '¿Qué tipo de web necesitas? ¿Tienes algún plazo o referencia?',
+    'contact.book': 'Reserva una llamada gratis',
+    'contact.book.sub': '15 minutos por videollamada, sin compromiso',
     'contact.direct': 'También puedes contactarme',
     'contact.email.label': 'Email',
     'contact.phone.label': 'Teléfono / WhatsApp',
@@ -207,6 +211,8 @@ export const ui = {
     'pricing.note': 'Tots els plans inclouen disseny a mida, web responsive i codi optimitzat. Necessites una altra cosa? Ho parlem.',
     'pricing.popular': 'Més popular',
 
+    'guarantees.kicker': 'Garanties',
+    'guarantees.title': 'Els meus compromisos amb tu',
     'compare.kicker': 'Per què jo',
     'compare.title': 'Freelance, plantilla o agència',
     'compare.subtitle': 'El que guanyes treballant directament amb mi enfront de les alternatives.',
@@ -260,6 +266,8 @@ export const ui = {
     'contact.form.namePlaceholder': 'El teu nom',
     'contact.form.emailPlaceholder': 'tu@email.com',
     'contact.form.messagePlaceholder': 'Quin tipus de web necessites? Tens algun termini o referència?',
+    'contact.book': 'Reserva una trucada gratis',
+    'contact.book.sub': '15 minuts per videotrucada, sense compromís',
     'contact.direct': 'També pots contactar amb mi',
     'contact.email.label': 'Email',
     'contact.phone.label': 'Telèfon / WhatsApp',
@@ -338,6 +346,8 @@ export const ui = {
     'pricing.note': 'All plans include custom design, a responsive website and optimized code. Need something different? Let’s talk.',
     'pricing.popular': 'Most popular',
 
+    'guarantees.kicker': 'Guarantees',
+    'guarantees.title': 'My commitments to you',
     'compare.kicker': 'Why me',
     'compare.title': 'Freelancer, template or agency',
     'compare.subtitle': 'What you gain working directly with me versus the alternatives.',
@@ -391,6 +401,8 @@ export const ui = {
     'contact.form.namePlaceholder': 'Your name',
     'contact.form.emailPlaceholder': 'you@email.com',
     'contact.form.messagePlaceholder': 'What kind of website do you need? Any deadline or reference?',
+    'contact.book': 'Book a free call',
+    'contact.book.sub': '15 minutes by video call, no commitment',
     'contact.direct': 'Or contact me directly',
     'contact.email.label': 'Email',
     'contact.phone.label': 'Phone / WhatsApp',

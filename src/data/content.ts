@@ -1004,6 +1004,30 @@ const diagnostic: Localized<Diagnostic> = {
 
 export const getDiagnostic = (lang: Lang) => diagnostic[lang];
 
+/* ───────────────── GARANTÍAS / COMPROMISOS ───────────────── */
+const guarantees: Localized<Service[]> = {
+  es: [
+    { icon: 'shield', title: 'Sin permanencias', description: 'Ni ataduras ni letra pequeña. Trabajamos con total libertad.' },
+    { icon: 'code', title: 'El código es tuyo', description: 'La web, el código y el dominio quedan 100% a tu nombre.' },
+    { icon: 'bolt', title: 'Rendimiento 100/100', description: 'Webs ultrarrápidas y optimizadas, o seguimos trabajando.' },
+    { icon: 'spark', title: 'Respuesta en 24 h', description: 'Trato directo conmigo y respuesta rápida, sin intermediarios.' },
+  ],
+  va: [
+    { icon: 'shield', title: 'Sense permanències', description: 'Ni lligams ni lletra menuda. Treballem amb total llibertat.' },
+    { icon: 'code', title: 'El codi és teu', description: 'La web, el codi i el domini queden 100% al teu nom.' },
+    { icon: 'bolt', title: 'Rendiment 100/100', description: 'Webs ultraràpides i optimitzades, o seguim treballant.' },
+    { icon: 'spark', title: 'Resposta en 24 h', description: 'Tracte directe amb mi i resposta ràpida, sense intermediaris.' },
+  ],
+  en: [
+    { icon: 'shield', title: 'No lock-in', description: 'No ties, no fine print. We work with total freedom.' },
+    { icon: 'code', title: 'You own the code', description: 'The website, the code and the domain are 100% yours.' },
+    { icon: 'bolt', title: '100/100 performance', description: 'Ultra-fast, optimized websites — or we keep working.' },
+    { icon: 'spark', title: 'Reply within 24h', description: 'Work directly with me and get a fast reply, no middlemen.' },
+  ],
+};
+
+export const getGuarantees = (lang: Lang) => guarantees[lang];
+
 /* ───────────────── SKILLS / TECNOLOGÍAS ───────────────── */
 export const skills: string[] = [
   'Astro',

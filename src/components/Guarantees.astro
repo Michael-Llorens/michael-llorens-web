@@ -1,0 +1,82 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getGuarantees } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items = getGuarantees(lang);
+---
+
+<section class="section guarantees">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('guarantees.kicker')}</span>
+      <h2 class="section-title">{t('guarantees.title')}</h2>
+    </div>
+
+    <div class="guarantees__grid">
+      {
+        items.map((g, i) => (
+          <div class="guarantee card card-glow" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+            <span class="guarantee__ic"><Icon name={g.icon} /></span>
+            <h3 class="guarantee__title">{g.title}</h3>
+            <p class="guarantee__desc">{g.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .guarantees__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+  .guarantee {
+    text-align: center;
+    padding: 1.8rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .guarantee__ic {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-2);
+    margin-bottom: 0.3rem;
+  }
+  .guarantee__ic :global(svg) {
+    width: 25px;
+    height: 25px;
+  }
+  .guarantee__title {
+    font-size: 1.08rem;
+  }
+  .guarantee__desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  @media (max-width: 860px) {
+    .guarantees__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 460px) {
+    .guarantees__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

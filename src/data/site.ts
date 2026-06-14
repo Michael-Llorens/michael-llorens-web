@@ -27,6 +27,12 @@ export const site = {
 
   location: 'Xàtiva, Valencia (España)',
 
+  // 🗓️ OPCIONAL pero MUY recomendado: pega aquí tu enlace de Cal.com o Calendly
+  // (ej. 'https://cal.com/michael-llorens/15min'). En cuanto lo rellenes, aparecerá
+  // el botón "Reserva una llamada gratis" en la sección de contacto. Si lo dejas
+  // vacío, no se muestra nada.
+  bookingUrl: '',
+
   // ⚠️ PLACEHOLDER — cambia o elimina los que no uses
   socials: {
     github: 'https://github.com/Michael-Llorens',
