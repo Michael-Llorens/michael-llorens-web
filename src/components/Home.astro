@@ -2,10 +2,8 @@
 import type { Lang } from '../i18n/config';
 import Header from './Header.astro';
 import Hero from './Hero.astro';
-import Stats from './Stats.astro';
 import Services from './Services.astro';
 import Projects from './Projects.astro';
-import Proof from './Proof.astro';
 import BackendApis from './BackendApis.astro';
 import Process from './Process.astro';
 import About from './About.astro';
@@ -28,10 +26,8 @@ const { lang } = Astro.props;
 <Header lang={lang} />
 <main id="main">
   <Hero lang={lang} />
-  <Stats lang={lang} />
   <Services lang={lang} />
   <Projects lang={lang} />
-  <Proof lang={lang} />
   <BackendApis lang={lang} />
   <Process lang={lang} />
   <About lang={lang} />
