@@ -1,7 +1,7 @@
 ---
 import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
-import { skills } from '../data/content';
+import { getSkills } from '../data/content';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -9,6 +9,8 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const skills = getSkills(lang);
+const seoLabel = lang === 'en' ? 'Technical SEO' : lang === 'va' ? 'SEO tècnic' : 'SEO técnico';
 ---
 
 <section class="section" id="about">
@@ -22,7 +24,7 @@ const t = useTranslations(lang);
         <Icon name="spark" class="about__badge-ic" />
         <div>
           <strong>Astro</strong>
-          <span>+ SEO técnico</span>
+          <span>+ {seoLabel}</span>
         </div>
       </div>
     </div>

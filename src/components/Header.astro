@@ -262,7 +262,10 @@ const ctaHref = localizedPath(lang, 'contacto');
   .theme-toggle:hover {
     color: var(--accent-2);
     border-color: var(--accent);
-    transform: rotate(15deg);
+    background: var(--accent-soft);
+  }
+  .theme-toggle:active {
+    transform: scale(0.92);
   }
   .theme-toggle :global(svg) {
     width: 18px;

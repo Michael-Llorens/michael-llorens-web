@@ -377,12 +377,23 @@ const projectCopy: Localized<Record<string, { category: string; description: str
   },
 };
 
+/* Traducción de las etiquetas no universales (las técnicas como Astro, Vue,
+   React… se quedan igual). Evita que aparezcan en español en /va y /en. */
+const tagI18n: Record<string, Partial<Record<Lang, string>>> = {
+  'SEO local': { en: 'Local SEO' },
+  Calculadora: { en: 'Calculator' },
+  'Web local': { en: 'Local site' },
+  Energía: { va: 'Energia', en: 'Energy' },
+  Responsive: {},
+};
+const translateTag = (tag: string, lang: Lang): string => tagI18n[tag]?.[lang] ?? tag;
+
 export const getProjects = (lang: Lang): Project[] =>
   projectsBase.map((p) => ({
     slug: p.slug,
     name: p.name,
     url: p.url,
-    tags: [...p.tags],
+    tags: p.tags.map((tg) => translateTag(tg, lang)),
     gradient: p.gradient,
     featured: 'featured' in p ? p.featured : false,
     image: 'image' in p ? p.image : undefined,
@@ -1100,3 +1111,9 @@ export const skills: string[] = [
   'Core Web Vitals',
   'Vercel',
 ];
+
+/** Skills traducidas: solo cambia la única no universal ("SEO técnico"). */
+export const getSkills = (lang: Lang): string[] => {
+  const seo = lang === 'en' ? 'Technical SEO' : lang === 'va' ? 'SEO tècnic' : 'SEO técnico';
+  return skills.map((s) => (s === 'SEO técnico' ? seo : s));
+};
