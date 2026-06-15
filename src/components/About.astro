@@ -1,5 +1,5 @@
 ---
-import type { Lang } from '../i18n/config';
+import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { skills } from '../data/content';
 import Icon from './Icon.astro';
@@ -15,7 +15,7 @@ const t = useTranslations(lang);
   <div class="container about">
     <div class="about__visual" data-reveal>
       <div class="about__portrait">
-        <img class="about__logo" src="/logo-mark.png" alt="Logo de MetaLogic" width="534" height="378" loading="lazy" />
+        <img class="about__logo" src="/logo-full.png" alt="Logo de MetaLogic" width="623" height="645" loading="lazy" />
         <div class="about__ring"></div>
       </div>
       <div class="about__badge card">
@@ -40,7 +40,7 @@ const t = useTranslations(lang);
         </div>
       </div>
 
-      <a href="#contact" class="btn btn-primary about__cta" data-reveal style="--reveal-delay:300ms">
+      <a href={localizedPath(lang, 'contacto')} class="btn btn-primary about__cta" data-reveal style="--reveal-delay:300ms">
         {t('about.cta')}
         <Icon name="arrow" />
       </a>
@@ -94,7 +94,7 @@ const t = useTranslations(lang);
   }
   .about__badge {
     position: absolute;
-    bottom: 1rem;
+    top: 1rem;
     right: 0;
     display: flex;
     align-items: center;

@@ -121,7 +121,7 @@ const services: Localized<Service[]> = {
       icon: 'pin',
       title: 'Local SEO & Google Business',
       description:
-        'Perfect for local businesses: I optimize your Google profile and website so you stand out in your city and attract nearby clients.',
+        'Perfect for local businesses: we optimize your Google profile and website so you stand out in your city and attract nearby clients.',
     },
     {
       icon: 'spark',
@@ -206,7 +206,7 @@ const backend: Localized<Service[]> = {
       icon: 'plug',
       title: 'APIs & integrations',
       description:
-        'I connect your site with payments, ERPs and the tools you already use so everything runs itself.',
+        'We connect your site with payments, ERPs and the tools you already use so everything runs itself.',
     },
     {
       icon: 'lock',
@@ -404,7 +404,7 @@ const process: Localized<Step[]> = {
       number: '01',
       title: 'Descubrimiento',
       description:
-        'Hablamos de tu negocio, tus objetivos y tu competencia. Entiendo qué necesitas para definir la estrategia adecuada.',
+        'Hablamos de tu negocio, tus objetivos y tu competencia. Entendemos qué necesitas para definir la estrategia adecuada.',
     },
     {
       number: '02',
@@ -430,7 +430,7 @@ const process: Localized<Step[]> = {
       number: '01',
       title: 'Descobriment',
       description:
-        'Parlem del teu negoci, els teus objectius i la teua competència. Entenc què necessites per a definir l’estratègia adequada.',
+        'Parlem del teu negoci, els teus objectius i la teua competència. Entenem què necessites per a definir l’estratègia adequada.',
     },
     {
       number: '02',
@@ -456,7 +456,7 @@ const process: Localized<Step[]> = {
       number: '01',
       title: 'Discovery',
       description:
-        'We talk about your business, your goals and your competition. I understand what you need to define the right strategy.',
+        'We talk about your business, your goals and your competition. We understand what you need to define the right strategy.',
     },
     {
       number: '02',
@@ -710,12 +710,11 @@ const pricing: Localized<Plan[]> = {
   es: [
     {
       name: 'Web Esencial',
-      price: 'desde 390€',
+      price: 'A medida',
       priceNote: 'pago único',
       description: 'Perfecta para empezar con una presencia profesional.',
       features: [
         'Landing page a medida (1 página)',
-        'Diseño 100% responsive',
         'SEO básico + Google Business',
         'Formulario de contacto y WhatsApp',
         'Entrega en 1–2 semanas',
@@ -724,7 +723,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Web Profesional',
-      price: 'desde 790€',
+      price: 'A medida',
       priceNote: 'pago único',
       description: 'La opción más elegida por negocios que quieren crecer.',
       features: [
@@ -741,7 +740,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Web + SEO Pro',
-      price: 'desde 1.490€',
+      price: 'A medida',
       priceNote: 'web + plan SEO',
       description: 'Para quien quiere dominar Google (y la IA) en su sector.',
       features: [
@@ -758,12 +757,11 @@ const pricing: Localized<Plan[]> = {
   va: [
     {
       name: 'Web Essencial',
-      price: 'des de 390€',
+      price: 'A mida',
       priceNote: 'pagament únic',
       description: 'Perfecta per a començar amb una presència professional.',
       features: [
         'Landing page a mida (1 pàgina)',
-        'Disseny 100% responsive',
         'SEO bàsic + Google Business',
         'Formulari de contacte i WhatsApp',
         'Entrega en 1–2 setmanes',
@@ -772,7 +770,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Web Professional',
-      price: 'des de 790€',
+      price: 'A mida',
       priceNote: 'pagament únic',
       description: 'L’opció més triada per negocis que volen créixer.',
       features: [
@@ -789,7 +787,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Web + SEO Pro',
-      price: 'des de 1.490€',
+      price: 'A mida',
       priceNote: 'web + pla SEO',
       description: 'Per a qui vol dominar Google (i la IA) al seu sector.',
       features: [
@@ -806,12 +804,11 @@ const pricing: Localized<Plan[]> = {
   en: [
     {
       name: 'Essential',
-      price: 'from €390',
+      price: 'Custom',
       priceNote: 'one-time',
       description: 'Perfect to start with a professional presence.',
       features: [
         'Custom landing page (1 page)',
-        '100% responsive design',
         'Basic SEO + Google Business',
         'Contact form and WhatsApp',
         'Delivery in 1–2 weeks',
@@ -820,7 +817,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Professional',
-      price: 'from €790',
+      price: 'Custom',
       priceNote: 'one-time',
       description: 'The favorite choice for businesses that want to grow.',
       features: [
@@ -837,7 +834,7 @@ const pricing: Localized<Plan[]> = {
     },
     {
       name: 'Web + SEO Pro',
-      price: 'from €1,490',
+      price: 'Custom',
       priceNote: 'web + SEO plan',
       description: 'For those who want to dominate Google (and AI) in their niche.',
       features: [
@@ -854,6 +851,60 @@ const pricing: Localized<Plan[]> = {
 };
 
 export const getPricing = (lang: Lang) => pricing[lang];
+
+/* ── Incluido en TODOS los planes (evita repetir lo común en cada tarjeta) ── */
+const pricingIncludes: Localized<string[]> = {
+  es: [
+    'Diseño responsive (perfecto en el móvil)',
+    'Código limpio, rápido y optimizado',
+    'Certificado de seguridad (HTTPS)',
+    'Optimización de velocidad y Core Web Vitals',
+    'Formación para que la gestiones tú',
+    'El código y el dominio son 100% tuyos',
+  ],
+  va: [
+    'Disseny responsive (perfecte al mòbil)',
+    'Codi net, ràpid i optimitzat',
+    'Certificat de seguretat (HTTPS)',
+    'Optimització de velocitat i Core Web Vitals',
+    'Formació perquè la gestiones tu',
+    'El codi i el domini són 100% teus',
+  ],
+  en: [
+    'Responsive design (perfect on mobile)',
+    'Clean, fast, optimized code',
+    'Security certificate (HTTPS)',
+    'Speed & Core Web Vitals optimization',
+    'Training so you can manage it yourself',
+    'The code and domain are 100% yours',
+  ],
+};
+
+export const getPricingIncludes = (lang: Lang) => pricingIncludes[lang];
+
+/* ── Detalle de cómo trabajamos (plazos, pago, revisiones, después) ── */
+const pricingDetails: Localized<Service[]> = {
+  es: [
+    { icon: 'bolt', title: 'Plazos claros', description: 'Entrega típica de 1 a 4 semanas según el alcance. Acordamos una fecha realista antes de empezar.' },
+    { icon: 'shield', title: 'Forma de pago', description: '50% para reservar el proyecto y 50% a la entrega. Sin sorpresas ni costes ocultos.' },
+    { icon: 'check', title: 'Revisiones incluidas', description: 'Validamos cada fase contigo, con rondas de cambios para dejar la web justo como la imaginas.' },
+    { icon: 'spark', title: 'Qué pasa después', description: 'Soporte tras el lanzamiento y planes de mantenimiento opcionales para seguir creciendo.' },
+  ],
+  va: [
+    { icon: 'bolt', title: 'Terminis clars', description: 'Entrega típica d’1 a 4 setmanes segons l’abast. Acordem una data realista abans de començar.' },
+    { icon: 'shield', title: 'Forma de pagament', description: '50% per a reservar el projecte i 50% a l’entrega. Sense sorpreses ni costos ocults.' },
+    { icon: 'check', title: 'Revisions incloses', description: 'Validem cada fase amb tu, amb rondes de canvis per a deixar la web tal com la imagines.' },
+    { icon: 'spark', title: 'Què passa després', description: 'Suport després del llançament i plans de manteniment opcionals per a seguir creixent.' },
+  ],
+  en: [
+    { icon: 'bolt', title: 'Clear timelines', description: 'Typical delivery of 1 to 4 weeks depending on scope. We agree on a realistic date before starting.' },
+    { icon: 'shield', title: 'Payment terms', description: '50% to book the project and 50% on delivery. No surprises, no hidden costs.' },
+    { icon: 'check', title: 'Revisions included', description: 'We validate each phase with you, with rounds of changes to get the site exactly as you imagine it.' },
+    { icon: 'spark', title: 'What happens next', description: 'Post-launch support and optional maintenance plans so you keep growing.' },
+  ],
+};
+
+export const getPricingDetails = (lang: Lang) => pricingDetails[lang];
 
 /* ───────────────── COMPARATIVA ───────────────── */
 export interface CompareRow {

@@ -1,5 +1,5 @@
 ---
-import type { Lang } from '../i18n/config';
+import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
 
@@ -34,11 +34,11 @@ const t = useTranslations(lang);
     </p>
 
     <div class="hero__cta" data-reveal style="--reveal-delay:220ms">
-      <a href="#contact" class="btn btn-primary btn-lg">
+      <a href={localizedPath(lang, 'contacto')} class="btn btn-primary btn-lg">
         {t('hero.cta.primary')}
         <Icon name="arrow" />
       </a>
-      <a href="#work" class="btn btn-ghost btn-lg">{t('hero.cta.secondary')}</a>
+      <a href={localizedPath(lang, 'proyectos')} class="btn btn-ghost btn-lg">{t('hero.cta.secondary')}</a>
     </div>
 
     <p class="hero__trust" data-reveal style="--reveal-delay:300ms">

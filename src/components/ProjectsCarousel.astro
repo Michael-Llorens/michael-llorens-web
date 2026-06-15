@@ -1,0 +1,320 @@
+---
+import { type Lang, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getProjects } from '../data/content';
+import ProjectCard from './ProjectCard.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = getProjects(lang);
+// El destacado primero; el resto en su orden natural.
+const slides = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
+---
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('work.kicker')}</span>
+      <h2 class="section-title">{t('work.title')}</h2>
+      <p class="lead">{t('work.subtitle')}</p>
+    </div>
+
+    <div class="carousel" data-carousel data-interval="5000" data-reveal>
+      <div class="carousel__viewport" data-viewport>
+        <div class="carousel__track" data-track>
+          {
+            slides.map((p, i) => (
+              <div
+                class="carousel__slide"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} / ${slides.length} — ${p.name}`}
+                aria-hidden={i === 0 ? 'false' : 'true'}
+              >
+                <ProjectCard project={{ ...p, featured: true }} lang={lang} index={0} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <button class="carousel__arrow carousel__arrow--prev" data-prev type="button" aria-label={t('work.prev')}>
+        <Icon name="arrow" />
+      </button>
+      <button class="carousel__arrow carousel__arrow--next" data-next type="button" aria-label={t('work.next')}>
+        <Icon name="arrow" />
+      </button>
+
+      <div class="carousel__dots" role="tablist" aria-label={t('work.kicker')}>
+        {
+          slides.map((p, i) => (
+            <button
+              class="carousel__dot"
+              type="button"
+              data-dot={i}
+              role="tab"
+              aria-label={`${t('work.goto')}: ${p.name}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="work-cta" data-reveal>
+      <p>{t('work.cta')}</p>
+      <a href={localizedPath(lang, 'proyectos')} class="btn btn-primary">
+        {t('work.viewAll')}
+        <Icon name="arrow" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initCarousel(root: HTMLElement) {
+    const track = root.querySelector<HTMLElement>('[data-track]');
+    const viewport = root.querySelector<HTMLElement>('[data-viewport]');
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.carousel__slide'));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-next]');
+    if (!track || !viewport || slides.length === 0) return;
+
+    const interval = Number(root.dataset.interval || '5000');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0;
+    let timer: number | undefined;
+
+    // Altura adaptativa: el carrusel se ajusta a la altura de la slide activa
+    const setHeight = () => {
+      const active = slides[index];
+      if (active) viewport.style.height = active.offsetHeight + 'px';
+    };
+
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      slides.forEach((s, i) => s.setAttribute('aria-hidden', i === index ? 'false' : 'true'));
+      dots.forEach((d, i) => d.setAttribute('aria-selected', i === index ? 'true' : 'false'));
+      setHeight();
+    };
+
+    const go = (i: number) => {
+      index = (i + slides.length) % slides.length;
+      render();
+    };
+
+    const stop = () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = undefined;
+      }
+    };
+    const start = () => {
+      if (reduce || slides.length < 2) return;
+      stop();
+      timer = window.setInterval(() => go(index + 1), interval);
+    };
+
+    next?.addEventListener('click', () => {
+      go(index + 1);
+      start();
+    });
+    prev?.addEventListener('click', () => {
+      go(index - 1);
+      start();
+    });
+    dots.forEach((d, i) =>
+      d.addEventListener('click', () => {
+        go(i);
+        start();
+      })
+    );
+
+    // Pausa al pasar el ratón / con foco / pestaña oculta
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    // Swipe táctil
+    let x0: number | null = null;
+    viewport.addEventListener('pointerdown', (e) => {
+      x0 = e.clientX;
+      stop();
+    });
+    viewport.addEventListener('pointerup', (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0;
+      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+      x0 = null;
+      start();
+    });
+
+    // Recalcular altura al redimensionar y cuando carguen las imágenes
+    let resizeT: number | undefined;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeT);
+      resizeT = window.setTimeout(setHeight, 150);
+    });
+    root.querySelectorAll('img').forEach((img) => {
+      if (!(img as HTMLImageElement).complete) img.addEventListener('load', setHeight, { once: true });
+    });
+    window.addEventListener('load', setHeight);
+
+    render();
+    start();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(initCarousel);
+</script>
+
+<style>
+  .carousel {
+    position: relative;
+  }
+  .carousel__viewport {
+    overflow: hidden;
+    touch-action: pan-y;
+    transition: height 0.45s var(--ease);
+  }
+  .carousel__track {
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.55s var(--ease);
+    will-change: transform;
+  }
+  .carousel__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+  /* Las tarjetas dentro del carrusel no usan la animación de aparición
+     (quedarían invisibles fuera de la vista). Siempre opacas. */
+  .carousel__slide :global([data-reveal]) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* La imagen (capturas 16:10) define la altura: misma altura en todas las
+     slides y sin recortes feos. La descripción se acota para que encaje. */
+  .carousel__slide :global(.project__thumb) {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+  .carousel__slide :global(.project__desc) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  @media (min-width: 880px) {
+    .carousel__slide :global(.project--featured) {
+      align-items: stretch;
+    }
+    .carousel__slide :global(.project--featured .project__thumb) {
+      flex: 1.5;
+      aspect-ratio: 16 / 10;
+      min-height: 0;
+    }
+    .carousel__slide :global(.project--featured .project__body) {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  /* Flechas: solo el trazo, naranja y sutil (autoavanza solo) */
+  .carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 56px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    opacity: 0.6;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.45));
+    transition: opacity 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
+  }
+  .carousel__arrow:hover {
+    opacity: 1;
+    color: var(--accent-2);
+  }
+  .carousel__arrow :global(svg) {
+    width: 1.9rem;
+    height: 1.9rem;
+    stroke-width: 2.2;
+  }
+  .carousel__arrow--prev {
+    left: 0.6rem;
+  }
+  .carousel__arrow--prev :global(svg) {
+    transform: rotate(180deg);
+  }
+  .carousel__arrow--prev:hover {
+    transform: translateY(-50%) translateX(-3px);
+  }
+  .carousel__arrow--next {
+    right: 0.6rem;
+  }
+  .carousel__arrow--next:hover {
+    transform: translateY(-50%) translateX(3px);
+  }
+
+  /* Puntos */
+  .carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
+  .carousel__dot {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s var(--ease);
+  }
+  .carousel__dot[aria-selected='true'] {
+    background: var(--gradient);
+    border-color: transparent;
+    width: 30px;
+  }
+
+  /* En vertical (tablet/móvil) las flechas estorban: solo swipe + puntos */
+  @media (max-width: 879px) {
+    .carousel__arrow {
+      display: none;
+    }
+  }
+
+  /* Reutilizamos el .work-cta del listado de proyectos */
+  .work-cta {
+    margin-top: 3.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .work-cta p {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 600;
+    color: var(--text);
+  }
+</style>

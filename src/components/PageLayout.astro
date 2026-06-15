@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import WhatsappFloat from './WhatsappFloat.astro';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+  /** Slug de la página sin prefijo de idioma (vacío = inicio). */
+  path?: string;
+  title?: string;
+  description?: string;
+}
+const { lang, path = '', title, description } = Astro.props;
+---
+
+<Layout lang={lang} path={path} title={title} description={description}>
+  <Header lang={lang} active={path} />
+  <main id="main" class:list={[{ 'main--inner': path !== '' }]}>
+    <slot />
+  </main>
+  <Footer lang={lang} />
+  <WhatsappFloat lang={lang} />
+</Layout>
+
+<style is:global>
+  /* Las páginas internas (sin hero) necesitan separación de la cabecera fija */
+  .main--inner {
+    padding-top: 5.5rem;
+  }
+</style>

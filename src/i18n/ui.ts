@@ -19,6 +19,7 @@ export const ui = {
     'nav.pricing': 'Precios',
     'nav.faq': 'Preguntas',
     'nav.contact': 'Contacto',
+    'nav.home': 'Inicio',
     'nav.cta': 'Pide presupuesto',
 
     // --- Hero ---
@@ -57,13 +58,21 @@ export const ui = {
     'work.visit': 'Visitar web',
     'work.result': 'Resultado',
     'work.cta': '¿Quieres ser el siguiente proyecto?',
+    'work.viewAll': 'Ver todos los proyectos',
+    'work.prev': 'Proyecto anterior',
+    'work.next': 'Proyecto siguiente',
+    'work.goto': 'Ir al proyecto',
 
     // --- Precios ---
     'pricing.kicker': 'Precios',
     'pricing.title': 'Planes claros, sin sorpresas',
     'pricing.subtitle':
-      'Precios orientativos «desde». Cada proyecto es único: te pasamos un presupuesto a medida sin compromiso.',
-    'pricing.note': 'Todos los planes incluyen diseño a medida, web responsive y código optimizado. ¿Necesitas algo distinto? Lo hablamos.',
+      'Elige el alcance que encaja con tu negocio. Cada proyecto es único: te pasamos un presupuesto a medida sin compromiso.',
+    'pricing.note': '¿Tu proyecto no encaja en ningún plan? Cuéntanoslo y te preparamos una propuesta totalmente a medida.',
+    'pricing.includes.title': 'Incluido en todos los planes',
+    'pricing.includes.subtitle': 'La base de calidad que llevan todos nuestros proyectos, sin coste extra.',
+    'pricing.details.title': 'Cómo trabajamos',
+    'pricing.details.subtitle': 'Todo claro desde el principio: plazos, pagos y qué pasa tras el lanzamiento.',
     'pricing.popular': 'Más popular',
 
     // --- Comparativa ---
@@ -133,7 +142,7 @@ export const ui = {
     'contact.book.sub': '15 minutos por videollamada, sin compromiso',
     'contact.direct': 'También puedes contactarnos',
     'contact.email.label': 'Email',
-    'contact.phone.label': 'Teléfono / WhatsApp',
+    'contact.phone.label': 'Teléfono',
     'contact.location.label': 'Ubicación',
     'contact.location.value': 'Xàtiva, Valencia · Trabajo en remoto',
 
@@ -169,6 +178,7 @@ export const ui = {
     'nav.pricing': 'Preus',
     'nav.faq': 'Preguntes',
     'nav.contact': 'Contacte',
+    'nav.home': 'Inici',
     'nav.cta': 'Demana pressupost',
 
     'hero.badge': 'Disponible per a nous projectes',
@@ -203,12 +213,20 @@ export const ui = {
     'work.visit': 'Visitar web',
     'work.result': 'Resultat',
     'work.cta': 'Vols ser el pròxim projecte?',
+    'work.viewAll': 'Veure tots els projectes',
+    'work.prev': 'Projecte anterior',
+    'work.next': 'Projecte següent',
+    'work.goto': 'Anar al projecte',
 
     'pricing.kicker': 'Preus',
     'pricing.title': 'Plans clars, sense sorpreses',
     'pricing.subtitle':
-      'Preus orientatius «des de». Cada projecte és únic: et passem un pressupost a mida sense compromís.',
-    'pricing.note': 'Tots els plans inclouen disseny a mida, web responsive i codi optimitzat. Necessites una altra cosa? Ho parlem.',
+      'Tria l’abast que encaixa amb el teu negoci. Cada projecte és únic: et passem un pressupost a mida sense compromís.',
+    'pricing.note': 'El teu projecte no encaixa en cap pla? Conta-nos-ho i et preparem una proposta totalment a mida.',
+    'pricing.includes.title': 'Inclòs en tots els plans',
+    'pricing.includes.subtitle': 'La base de qualitat que porten tots els nostres projectes, sense cost extra.',
+    'pricing.details.title': 'Com treballem',
+    'pricing.details.subtitle': 'Tot clar des del principi: terminis, pagaments i què passa després del llançament.',
     'pricing.popular': 'Més popular',
 
     'guarantees.kicker': 'Garanties',
@@ -270,7 +288,7 @@ export const ui = {
     'contact.book.sub': '15 minuts per videotrucada, sense compromís',
     'contact.direct': 'També pots contactar amb nosaltres',
     'contact.email.label': 'Email',
-    'contact.phone.label': 'Telèfon / WhatsApp',
+    'contact.phone.label': 'Telèfon',
     'contact.location.label': 'Ubicació',
     'contact.location.value': 'Xàtiva, València · Treballe en remot',
 
@@ -304,6 +322,7 @@ export const ui = {
     'nav.pricing': 'Pricing',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
+    'nav.home': 'Home',
     'nav.cta': 'Get a quote',
 
     'hero.badge': 'Available for new projects',
@@ -338,12 +357,20 @@ export const ui = {
     'work.visit': 'Visit site',
     'work.result': 'Result',
     'work.cta': 'Want to be the next project?',
+    'work.viewAll': 'View all projects',
+    'work.prev': 'Previous project',
+    'work.next': 'Next project',
+    'work.goto': 'Go to project',
 
     'pricing.kicker': 'Pricing',
     'pricing.title': 'Clear plans, no surprises',
     'pricing.subtitle':
-      'Indicative “from” prices. Every project is unique: we’ll send you a tailored quote with no commitment.',
-    'pricing.note': 'All plans include custom design, a responsive website and optimized code. Need something different? Let’s talk.',
+      'Choose the scope that fits your business. Every project is unique: we’ll send you a tailored quote with no commitment.',
+    'pricing.note': 'Your project doesn’t fit any plan? Tell us about it and we’ll prepare a fully tailored proposal.',
+    'pricing.includes.title': 'Included in every plan',
+    'pricing.includes.subtitle': 'The quality baseline every project ships with, at no extra cost.',
+    'pricing.details.title': 'How we work',
+    'pricing.details.subtitle': 'Clear from the start: timelines, payments and what happens after launch.',
     'pricing.popular': 'Most popular',
 
     'guarantees.kicker': 'Guarantees',
@@ -405,7 +432,7 @@ export const ui = {
     'contact.book.sub': '15 minutes by video call, no commitment',
     'contact.direct': 'Or contact us directly',
     'contact.email.label': 'Email',
-    'contact.phone.label': 'Phone / WhatsApp',
+    'contact.phone.label': 'Phone',
     'contact.location.label': 'Location',
     'contact.location.value': 'Xàtiva, Spain · Working remotely',
 

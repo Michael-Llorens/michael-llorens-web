@@ -1,0 +1,21 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import About from '../../components/About.astro';
+import Guarantees from '../../components/Guarantees.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'va';
+const t = useTranslations(lang);
+---
+
+<PageLayout
+  lang={lang}
+  path="nosotros"
+  title={`${t('nav.about')} · MetaLogic`}
+  description={t('about.p1')}
+>
+  <About lang={lang} />
+  <Guarantees lang={lang} />
+  <FinalCta lang={lang} />
+</PageLayout>

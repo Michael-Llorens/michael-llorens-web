@@ -1,0 +1,23 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+import Services from '../components/Services.astro';
+import BackendApis from '../components/BackendApis.astro';
+import Process from '../components/Process.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { useTranslations } from '../i18n/ui';
+
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<PageLayout
+  lang={lang}
+  path="servicios"
+  title={`${t('nav.services')} · MetaLogic`}
+  description={t('services.subtitle')}
+>
+  <Services lang={lang} />
+  <BackendApis lang={lang} />
+  <Process lang={lang} />
+  <FinalCta lang={lang} />
+</PageLayout>

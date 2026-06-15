@@ -1,5 +1,5 @@
 ---
-import type { Lang } from '../i18n/config';
+import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { getBackend } from '../data/content';
 import Icon from './Icon.astro';
@@ -61,7 +61,7 @@ const items = getBackend(lang);
           {t('backend.proof')}
         </p>
 
-        <a href="#contact" class="btn btn-primary backend__cta" data-reveal>
+        <a href={localizedPath(lang, 'contacto')} class="btn btn-primary backend__cta" data-reveal>
           {t('backend.cta')}
           <Icon name="arrow" />
         </a>

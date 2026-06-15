@@ -1,8 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Home from '../components/Home.astro';
+import PageLayout from '../components/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Comparison from '../components/Comparison.astro';
+import ProjectsCarousel from '../components/ProjectsCarousel.astro';
+import Diagnostic from '../components/Diagnostic.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+
+const lang = 'es';
 ---
 
-<Layout lang="es">
-  <Home lang="es" />
-</Layout>
+<PageLayout lang={lang} path="">
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <Comparison lang={lang} />
+  <ProjectsCarousel lang={lang} />
+  <Diagnostic lang={lang} />
+  <Faq lang={lang} />
+  <FinalCta lang={lang} />
+</PageLayout>

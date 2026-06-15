@@ -8,14 +8,18 @@ import { site } from '../data/site';
 
 interface Props {
   lang: Lang;
+  /** Slug de la página sin prefijo de idioma (vacío = inicio). */
+  path?: string;
+  title?: string;
+  description?: string;
 }
-const { lang } = Astro.props;
+const { lang, path = '', title: pageTitle, description: pageDescription } = Astro.props;
 const t = useTranslations(lang);
 
-const title = t('meta.title');
-const description = t('meta.description');
+const title = pageTitle ?? t('meta.title');
+const description = pageDescription ?? t('meta.description');
 
-const canonical = new URL(localizedPath(lang), site.url).href;
+const canonical = new URL(localizedPath(lang, path), site.url).href;
 // OG/Twitter requieren imagen raster (PNG/JPG); el SVG no lo renderizan las redes.
 const ogImage = new URL('/og-image.png', site.url).href;
 
@@ -117,11 +121,11 @@ const jsonLd = {
         <link
           rel="alternate"
           hreflang={LANG_HREFLANG[l]}
-          href={new URL(localizedPath(l), site.url).href}
+          href={new URL(localizedPath(l, path), site.url).href}
         />
       ))
     }
-    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('es'), site.url).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('es', path), site.url).href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

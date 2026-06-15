@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import Pricing from '../../components/Pricing.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<PageLayout
+  lang={lang}
+  path="precios"
+  title={`${t('nav.pricing')} · MetaLogic`}
+  description={t('pricing.subtitle')}
+>
+  <Pricing lang={lang} />
+  <FinalCta lang={lang} />
+</PageLayout>

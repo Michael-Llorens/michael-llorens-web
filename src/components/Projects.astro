@@ -1,5 +1,5 @@
 ---
-import type { Lang } from '../i18n/config';
+import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { getProjects } from '../data/content';
 import ProjectCard from './ProjectCard.astro';
@@ -7,8 +7,10 @@ import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
+  /** false = modo resumen para el inicio (solo destacado + enlace a todos). */
+  full?: boolean;
 }
-const { lang } = Astro.props;
+const { lang, full = true } = Astro.props;
 const t = useTranslations(lang);
 const projects = getProjects(lang);
 
@@ -32,14 +34,18 @@ const rest = projects.filter((p) => !p.featured);
       )
     }
 
-    <div class="grid projects">
-      {rest.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
-    </div>
+    {
+      full && (
+        <div class="grid projects">
+          {rest.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
+        </div>
+      )
+    }
 
     <div class="work-cta" data-reveal>
       <p>{t('work.cta')}</p>
-      <a href="#contact" class="btn btn-primary">
-        {t('nav.cta')}
+      <a href={full ? localizedPath(lang, 'contacto') : localizedPath(lang, 'proyectos')} class="btn btn-primary">
+        {full ? t('nav.cta') : t('work.viewAll')}
         <Icon name="arrow" />
       </a>
     </div>

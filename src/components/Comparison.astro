@@ -37,12 +37,12 @@ const { cols, rows } = getComparison(lang);
             rows.map((row) => (
               <tr>
                 <td class="compare__feat">{row.feature}</td>
-                <td class="compare__me">
+                <td class="compare__me" data-label={cols[0]}>
                   <Icon name="check" />
                   <span>{row.me}</span>
                 </td>
-                <td class="compare__other">{row.template}</td>
-                <td class="compare__other">{row.agency}</td>
+                <td class="compare__other" data-label={cols[1]}>{row.template}</td>
+                <td class="compare__other" data-label={cols[2]}>{row.agency}</td>
               </tr>
             ))
           }
@@ -127,5 +127,84 @@ const { cols, rows } = getComparison(lang);
   .compare__table tbody tr:last-child .compare__me {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+  }
+
+  /* ── Móvil: la tabla se apila en tarjetas (sin scroll horizontal) ── */
+  @media (max-width: 700px) {
+    .compare__wrap {
+      overflow-x: visible;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .compare__table {
+      min-width: 0;
+    }
+    .compare__table thead {
+      display: none;
+    }
+    .compare__table tbody,
+    .compare__table tr,
+    .compare__table td {
+      display: block;
+      width: 100%;
+    }
+    .compare__table tbody tr {
+      border: 1px solid var(--card-border);
+      background: var(--surface);
+      padding: 0.4rem 0.9rem 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .compare__table tbody tr:last-child {
+      border: 1px solid var(--card-border);
+    }
+    .compare__feat {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      padding: 0.9rem 0 0.7rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare__table tbody td {
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+    /* Cada celda muestra su columna como etiqueta */
+    .compare__table td.compare__me,
+    .compare__table td.compare__other {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      text-align: left;
+    }
+    .compare__me::before,
+    .compare__other::before {
+      content: attr(data-label);
+      flex: 0 0 40%;
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .compare__table td.compare__me {
+      background: var(--accent-soft);
+      padding: 0.65rem 0.75rem;
+      margin-top: 0.5rem;
+      align-items: center;
+    }
+    .compare__me::before {
+      color: var(--accent-2);
+    }
+    .compare__me span {
+      display: inline;
+      flex: 1;
+    }
+    .compare__me :global(svg) {
+      margin-right: 0;
+    }
+    /* Reset de radios redondeados heredados del layout de tabla */
+    .compare__table tbody tr:first-child .compare__me,
+    .compare__table tbody tr:last-child .compare__me {
+      border-radius: 0;
+    }
   }
 </style>

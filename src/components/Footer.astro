@@ -7,21 +7,18 @@ import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
-  /** Prefijo para los anclas (vacío en la home, '/' en páginas legales). */
-  linkBase?: string;
 }
-const { lang, linkBase = '' } = Astro.props;
+const { lang } = Astro.props;
 const t = useTranslations(lang);
 const year = 2026; // Date.now() no disponible en build; actualiza si lo necesitas.
 
 const navLinks = [
-  { href: `${linkBase}#services`, label: t('nav.services') },
-  { href: `${linkBase}#work`, label: t('nav.work') },
-  { href: `${linkBase}#pricing`, label: t('nav.pricing') },
-  { href: `${linkBase}#process`, label: t('nav.process') },
-  { href: `${linkBase}#about`, label: t('nav.about') },
-  { href: `${linkBase}#faq`, label: t('nav.faq') },
-  { href: `${linkBase}#contact`, label: t('nav.contact') },
+  { href: localizedPath(lang), label: t('nav.home') },
+  { href: localizedPath(lang, 'servicios'), label: t('nav.services') },
+  { href: localizedPath(lang, 'proyectos'), label: t('nav.work') },
+  { href: localizedPath(lang, 'precios'), label: t('nav.pricing') },
+  { href: localizedPath(lang, 'nosotros'), label: t('nav.about') },
+  { href: localizedPath(lang, 'contacto'), label: t('nav.contact') },
 ];
 
 const legalLinks = [
@@ -43,9 +40,8 @@ const socials = [
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
-        <a href={localizedPath(lang)} class="footer__logo">
-          <span class="brand__logo" aria-hidden="true"></span>
-          MetaLogic
+        <a href={localizedPath(lang)} class="footer__logo" aria-label={site.name}>
+          <img src="/logo-full.png" alt={site.name} width="623" height="645" loading="lazy" />
         </a>
         <p class="footer__tagline">{t('footer.tagline')}</p>
         <div class="footer__socials">
@@ -75,7 +71,7 @@ const socials = [
       <div class="footer__col">
         <h3 class="footer__title">{t('footer.services')}</h3>
         <ul>
-          {services.map((s) => <li><a href="#services">{s.title}</a></li>)}
+          {services.map((s) => <li><a href={localizedPath(lang, 'servicios')}>{s.title}</a></li>)}
         </ul>
       </div>
 
@@ -114,21 +110,12 @@ const socials = [
     margin-bottom: 2.5rem;
   }
   .footer__logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
+    display: inline-block;
   }
-  .brand__logo {
-    width: 51px;
-    height: 36px;
-    flex-shrink: 0;
-    background-image: url('/logo-mark.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  .footer__logo img {
+    width: 150px;
+    height: auto;
+    display: block;
   }
   .footer__tagline {
     color: var(--text-muted);

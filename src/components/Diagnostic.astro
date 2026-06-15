@@ -1,5 +1,5 @@
 ---
-import type { Lang } from '../i18n/config';
+import { type Lang, localizedPath } from '../i18n/config';
 import { getDiagnostic } from '../data/content';
 import Icon from './Icon.astro';
 
@@ -55,7 +55,7 @@ const d = getDiagnostic(lang);
           <p class="diag__vtext" id="diag-vtext"></p>
           <div class="diag__improve" id="diag-improve"></div>
           <div class="diag__actions">
-            <a href="#contact" class="btn btn-primary">{d.cta}<Icon name="arrow" /></a>
+            <a href={localizedPath(lang, 'contacto')} class="btn btn-primary">{d.cta}<Icon name="arrow" /></a>
             <button type="button" class="btn btn-ghost" id="diag-retry">{d.retry}</button>
           </div>
           <p class="diag__note">{d.note}</p>

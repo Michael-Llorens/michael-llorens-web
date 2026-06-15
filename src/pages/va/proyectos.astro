@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import Projects from '../../components/Projects.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'va';
+const t = useTranslations(lang);
+---
+
+<PageLayout
+  lang={lang}
+  path="proyectos"
+  title={`${t('nav.work')} · MetaLogic`}
+  description={t('work.subtitle')}
+>
+  <Projects lang={lang} />
+  <FinalCta lang={lang} />
+</PageLayout>
