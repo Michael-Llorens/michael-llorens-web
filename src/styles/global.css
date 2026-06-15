@@ -35,6 +35,9 @@
   --on-accent: #0a0a12;
   --input-bg: #0c0c16;
 
+  /* Progreso de scroll (0–1), lo actualiza el JS para el fondo "vivo" */
+  --scroll: 0;
+
   /* Tipografía */
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Space Grotesk Variable', var(--font-sans);
@@ -142,10 +145,23 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(60rem 60rem at 80% -10%, rgba(251, 84, 18, 0.13), transparent 60%),
-    radial-gradient(50rem 50rem at 0% 30%, rgba(255, 138, 76, 0.08), transparent 55%);
   pointer-events: none;
+  background:
+    radial-gradient(
+      55rem 55rem at calc(82% - var(--scroll) * 60%) calc(-8% + var(--scroll) * 45%),
+      rgba(251, 84, 18, 0.17),
+      transparent 60%
+    ),
+    radial-gradient(
+      48rem 48rem at calc(6% + var(--scroll) * 65%) calc(32% + var(--scroll) * 34%),
+      rgba(255, 138, 76, 0.12),
+      transparent 58%
+    ),
+    radial-gradient(
+      52rem 52rem at calc(64% - var(--scroll) * 35%) calc(112% - var(--scroll) * 55%),
+      rgba(255, 110, 50, 0.1),
+      transparent 62%
+    );
 }
 
 /* Textura de grano sutil sobre todo el sitio (acabado premium) */
