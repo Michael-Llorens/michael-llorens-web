@@ -5,17 +5,17 @@
       <stop offset="1" stop-color="#14141f"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a78bff"/>
-      <stop offset="0.5" stop-color="#7c5cff"/>
-      <stop offset="1" stop-color="#00e5c7"/>
+      <stop offset="0" stop-color="#ffa766"/>
+      <stop offset="0.5" stop-color="#fb5412"/>
+      <stop offset="1" stop-color="#ff7a3c"/>
     </linearGradient>
     <radialGradient id="glow1" cx="0.85" cy="0.1" r="0.5">
-      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#fb5412" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#fb5412" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="0.05" cy="0.9" r="0.5">
-      <stop offset="0" stop-color="#00e5c7" stop-opacity="0.32"/>
-      <stop offset="1" stop-color="#00e5c7" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ff8a4c" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#ff8a4c" stop-opacity="0"/>
     </radialGradient>
   </defs>
 

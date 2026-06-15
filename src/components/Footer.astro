@@ -44,7 +44,7 @@ const socials = [
     <div class="footer__top">
       <div class="footer__brand">
         <a href={localizedPath(lang)} class="footer__logo">
-          <span class="brand__mark" aria-hidden="true">ML</span>
+          <span class="brand__logo" aria-hidden="true"></span>
           MetaLogic
         </a>
         <p class="footer__tagline">{t('footer.tagline')}</p>
@@ -121,16 +121,14 @@ const socials = [
     font-weight: 700;
     font-size: 1.1rem;
   }
-  .brand__mark {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    background: var(--gradient);
-    color: #0a0a12;
-    font-size: 0.85rem;
-    font-weight: 700;
+  .brand__logo {
+    width: 51px;
+    height: 36px;
+    flex-shrink: 0;
+    background-image: url('/Logo-web-sin-foondo.png');
+    background-repeat: no-repeat;
+    background-size: 183px auto;
+    background-position: -75px -28px;
   }
   .footer__tagline {
     color: var(--text-muted);

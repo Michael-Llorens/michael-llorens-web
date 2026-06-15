@@ -47,7 +47,7 @@ const canonical = new URL(`/${slug}`, site.url).href;
     <header class="legal-bar">
       <div class="container legal-bar__inner">
         <a href={localizedPath('es')} class="brand" aria-label={`${site.name} — inicio`}>
-          <span class="brand__mark" aria-hidden="true">ML</span>
+          <span class="brand__logo" aria-hidden="true"></span>
           <span>MetaLogic</span>
         </a>
         <div class="legal-bar__actions">
@@ -112,16 +112,14 @@ const canonical = new URL(`/${slug}`, site.url).href;
         font-family: var(--font-display);
         font-weight: 700;
       }
-      .brand__mark {
-        display: grid;
-        place-items: center;
-        width: 36px;
+      .brand__logo {
+        width: 51px;
         height: 36px;
-        border-radius: 10px;
-        background: var(--gradient);
-        color: #0a0a12;
-        font-size: 0.9rem;
-        font-weight: 700;
+        flex-shrink: 0;
+        background-image: url('/Logo-web-sin-foondo.png');
+        background-repeat: no-repeat;
+        background-size: 183px auto;
+        background-position: -75px -28px;
       }
       .legal-bar__actions {
         display: flex;

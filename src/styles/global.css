@@ -17,13 +17,13 @@
   --text-muted: #a8a8c0;
   --text-dim: #9090a8;
 
-  /* Acentos */
-  --accent: #7c5cff;
-  --accent-2: #00e5c7;
-  --accent-soft: rgba(124, 92, 255, 0.14);
-  --accent-glow: rgba(124, 92, 255, 0.45);
-  --gradient: linear-gradient(120deg, #7c5cff 0%, #5b8cff 45%, #00e5c7 100%);
-  --gradient-text: linear-gradient(120deg, #a78bff 0%, #7c5cff 40%, #00e5c7 100%);
+  /* Acentos (marca MetaLogic — naranja) */
+  --accent: #fb5412;
+  --accent-2: #ff8a4c;
+  --accent-soft: rgba(251, 84, 18, 0.15);
+  --accent-glow: rgba(251, 84, 18, 0.45);
+  --gradient: linear-gradient(120deg, #fb5412 0%, #ff7438 50%, #ff9a5c 100%);
+  --gradient-text: linear-gradient(120deg, #ffa766 0%, #fb5412 55%, #ff7a3c 100%);
 
   /* Helpers de tema (cambian entre claro/oscuro) */
   --surface-hover: rgba(255, 255, 255, 0.06);
@@ -68,12 +68,12 @@
   --text-muted: #51546a;
   --text-dim: #5c5f73;
 
-  --accent: #6a40f5;
-  --accent-2: #0a9d89;
-  --accent-soft: rgba(106, 64, 245, 0.10);
-  --accent-glow: rgba(106, 64, 245, 0.30);
-  --gradient: linear-gradient(120deg, #6d4bff 0%, #4f6bff 45%, #06b6a4 100%);
-  --gradient-text: linear-gradient(120deg, #6d28d9 0%, #4f46e5 45%, #0e8d7d 100%);
+  --accent: #e8470a;
+  --accent-2: #c2410c;
+  --accent-soft: rgba(232, 71, 10, 0.10);
+  --accent-glow: rgba(232, 71, 10, 0.28);
+  --gradient: linear-gradient(120deg, #fb5412 0%, #ff7438 50%, #ff9a5c 100%);
+  --gradient-text: linear-gradient(120deg, #ea580c 0%, #c2410c 100%);
 
   --surface-hover: rgba(15, 18, 45, 0.04);
   --grid-line: rgba(15, 18, 45, 0.04);
@@ -141,8 +141,8 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(60rem 60rem at 80% -10%, rgba(124, 92, 255, 0.13), transparent 60%),
-    radial-gradient(50rem 50rem at 0% 30%, rgba(0, 229, 199, 0.08), transparent 55%);
+    radial-gradient(60rem 60rem at 80% -10%, rgba(251, 84, 18, 0.13), transparent 60%),
+    radial-gradient(50rem 50rem at 0% 30%, rgba(255, 138, 76, 0.08), transparent 55%);
   pointer-events: none;
 }
 
@@ -369,7 +369,7 @@ h4 {
   border-radius: inherit;
   background: radial-gradient(
     240px circle at var(--mx, -200%) var(--my, -200%),
-    rgba(124, 92, 255, 0.16),
+    rgba(251, 84, 18, 0.16),
     transparent 70%
   );
   opacity: 0;

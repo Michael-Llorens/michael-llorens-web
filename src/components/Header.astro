@@ -24,7 +24,7 @@ const navLinks = [
 <header class="header" id="site-header">
   <div class="container header__inner">
     <a href={home} class="brand" aria-label={`${site.name} — inicio`}>
-      <span class="brand__mark" aria-hidden="true">ML</span>
+      <span class="brand__logo" aria-hidden="true"></span>
       <span class="brand__name">MetaLogic</span>
     </a>
 
@@ -180,17 +180,14 @@ const navLinks = [
     letter-spacing: -0.02em;
     flex-shrink: 0;
   }
-  .brand__mark {
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 11px;
-    background: var(--gradient);
-    color: #0a0a12;
-    font-size: 0.95rem;
-    font-weight: 700;
-    box-shadow: 0 6px 18px -6px var(--accent-glow);
+  .brand__logo {
+    width: 57px;
+    height: 40px;
+    flex-shrink: 0;
+    background-image: url('/Logo-web-sin-foondo.png');
+    background-repeat: no-repeat;
+    background-size: 204px auto;
+    background-position: -84px -31px;
   }
   .brand__name {
     font-size: 1.02rem;
