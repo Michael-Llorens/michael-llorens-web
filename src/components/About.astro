@@ -15,7 +15,7 @@ const t = useTranslations(lang);
   <div class="container about">
     <div class="about__visual" data-reveal>
       <div class="about__portrait">
-        <span class="about__initials">ML</span>
+        <img class="about__logo" src="/logo-mark.png" alt="Logo de MetaLogic" width="534" height="378" loading="lazy" />
         <div class="about__ring"></div>
       </div>
       <div class="about__badge card">
@@ -64,24 +64,22 @@ const t = useTranslations(lang);
     position: relative;
     width: min(320px, 80%);
     aspect-ratio: 1;
-    border-radius: 30px;
+    border-radius: 0;
     background:
       radial-gradient(circle at 30% 25%, rgba(251, 84, 18, 0.55), transparent 60%),
       radial-gradient(circle at 75% 80%, rgba(255, 138, 76, 0.4), transparent 60%),
       #14141f;
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--card-border);
     display: grid;
     place-items: center;
     overflow: hidden;
     box-shadow: var(--shadow);
   }
-  .about__initials {
-    font-family: var(--font-display);
-    font-size: 6rem;
-    font-weight: 700;
-    color: #fff;
-    opacity: 0.92;
-    letter-spacing: -0.04em;
+  .about__logo {
+    position: relative;
+    z-index: 1;
+    width: 76%;
+    height: auto;
   }
   .about__ring {
     position: absolute;

@@ -11,6 +11,7 @@
   --surface-2: #1b1b2b;
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.14);
+  --card-border: rgba(251, 84, 18, 0.4);
 
   /* Texto */
   --text: #ecedf5;
@@ -38,11 +39,11 @@
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Space Grotesk Variable', var(--font-sans);
 
-  /* Layout */
+  /* Layout — estética cuadrada (marca MetaLogic) */
   --maxw: 1200px;
-  --radius: 18px;
-  --radius-sm: 12px;
-  --radius-lg: 28px;
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-lg: 0px;
 
   /* Sombras */
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
@@ -63,6 +64,7 @@
   --surface-2: #f1f2f8;
   --border: rgba(15, 18, 45, 0.10);
   --border-strong: rgba(15, 18, 45, 0.17);
+  --card-border: rgba(232, 71, 10, 0.4);
 
   --text: #15151f;
   --text-muted: #51546a;
@@ -296,7 +298,7 @@ h4 {
   justify-content: center;
   gap: 0.55rem;
   padding: 0.95rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 0;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.98rem;
@@ -345,7 +347,7 @@ h4 {
 /* ───────────────── Tarjetas ───────────────── */
 .card {
   background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
-  border: 1px solid var(--border);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius);
   padding: 1.8rem;
   transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
@@ -408,7 +410,7 @@ h4 {
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.85rem;
-  border-radius: 999px;
+  border-radius: 0;
   background: var(--surface-2);
   border: 1px solid var(--border);
   font-size: 0.78rem;
@@ -421,9 +423,54 @@ h4 {
   font-weight: 500;
   color: var(--text-muted);
   padding: 0.3rem 0.7rem;
-  border-radius: 999px;
+  border-radius: 0;
   background: var(--surface-hover);
   border: 1px solid var(--border);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ESTÉTICA CUADRADA (marca MetaLogic)
+   Fuerza esquinas rectas en pastillas/iconos de los componentes
+   (las clases scoped tienen más especificidad, por eso !important).
+   Se mantienen redondos los círculos reales: anillos de rendimiento,
+   botón flotante de WhatsApp y puntos decorativos.
+   ───────────────────────────────────────────────────────────── */
+.langs,
+.langs__item,
+.nav__link,
+.hero__badge,
+.plan,
+.plan__badge,
+.compare__me-badge,
+.compare__me,
+.service__icon,
+.cap__ic,
+.guarantee__ic,
+.contact__book,
+.contact__book-ic,
+.contact__direct,
+.contact__location,
+.contact__direct-ic,
+.footer__social,
+.theme-toggle,
+.diag__num,
+.diag__opt span,
+.diag__ic,
+.faq__item,
+.terminal,
+.mock,
+.mock__url,
+.mock__btn,
+.mock__cards span,
+.nf__mark,
+.field input,
+.field textarea {
+  border-radius: 0 !important;
+}
+
+/* Borde naranja también en los planes de precios */
+.plan {
+  border-color: var(--card-border) !important;
 }
 
 /* ───────────────── Animaciones de scroll ───────────────── */
