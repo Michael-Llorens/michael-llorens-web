@@ -20,7 +20,7 @@ const { cols, rows } = getComparison(lang);
       <p class="lead">{t('compare.subtitle')}</p>
     </div>
 
-    <div class="compare__wrap card" data-reveal>
+    <div class="compare__wrap card">
       <table class="compare__table">
         <thead>
           <tr>
@@ -34,8 +34,8 @@ const { cols, rows } = getComparison(lang);
         </thead>
         <tbody>
           {
-            rows.map((row) => (
-              <tr>
+            rows.map((row, i) => (
+              <tr data-reveal style={`--reveal-delay:${i * 70}ms`}>
                 <td class="compare__feat">{row.feature}</td>
                 <td class="compare__me" data-label={cols[0]}>
                   <Icon name="check" />

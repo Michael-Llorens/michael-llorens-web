@@ -67,8 +67,8 @@ const details = getPricingDetails(lang);
       </div>
       <ul class="includes__list">
         {
-          includes.map((item) => (
-            <li>
+          includes.map((item, i) => (
+            <li data-reveal style={`--reveal-delay:${i * 60}ms`}>
               <Icon name="check" />
               <span>{item}</span>
             </li>
@@ -85,8 +85,8 @@ const details = getPricingDetails(lang);
       </div>
       <div class="pricing-details__grid">
         {
-          details.map((d) => (
-            <article class="pricing-detail card">
+          details.map((d, i) => (
+            <article class="pricing-detail card" data-reveal style={`--reveal-delay:${i * 80}ms`}>
               <span class="pricing-detail__ic"><Icon name={d.icon} /></span>
               <h4 class="pricing-detail__title">{d.title}</h4>
               <p class="pricing-detail__desc">{d.description}</p>
