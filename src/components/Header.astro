@@ -24,7 +24,7 @@ const ctaHref = localizedPath(lang, 'contacto');
 
 <header class="header" id="site-header">
   <div class="container header__inner">
-    <a href={home} class="brand" aria-label={`${site.name} — inicio`}>
+    <a href={home} class="brand" aria-label={`${site.name} — inicio`} translate="no">
       <span class="brand__logo" aria-hidden="true"></span>
       <span class="brand__name">MetaLogic</span>
     </a>
@@ -44,7 +44,7 @@ const ctaHref = localizedPath(lang, 'contacto');
     </nav>
 
     <div class="header__actions">
-      <div class="langs" role="group" aria-label="Idioma">
+      <div class="langs" role="group" aria-label="Idioma" translate="no">
         {
           LANGUAGES.map((l) => (
             <a
