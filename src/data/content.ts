@@ -45,13 +45,13 @@ const services: Localized<Service[]> = {
       icon: 'pin',
       title: 'SEO local y Google Business',
       description:
-        'Ideal para negocios de zona: optimizo tu ficha de Google y tu web para que destaques en tu ciudad y atraigas clientes cercanos.',
+        'Ideal para negocios de zona: optimizamos tu ficha de Google y tu web para que destaques en tu ciudad y atraigas clientes cercanos.',
     },
     {
       icon: 'spark',
       title: 'Posicionamiento en IA (GEO)',
       description:
-        'El futuro de las búsquedas. Preparo tu web para que ChatGPT, Gemini, Perplexity y las respuestas con IA de Google te recomienden a ti.',
+        'El futuro de las búsquedas. Preparamos tu web para que ChatGPT, Gemini, Perplexity y las respuestas con IA de Google te recomienden a ti.',
     },
   ],
   va: [
@@ -83,13 +83,13 @@ const services: Localized<Service[]> = {
       icon: 'pin',
       title: 'SEO local i Google Business',
       description:
-        'Ideal per a negocis de zona: optimitze la teua fitxa de Google i la teua web perquè destaques en la teua ciutat i atragues clients pròxims.',
+        'Ideal per a negocis de zona: optimitzem la teua fitxa de Google i la teua web perquè destaques en la teua ciutat i atragues clients pròxims.',
     },
     {
       icon: 'spark',
       title: 'Posicionament en IA (GEO)',
       description:
-        'El futur de les cerques. Prepare la teua web perquè ChatGPT, Gemini, Perplexity i les respostes amb IA de Google et recomanen a tu.',
+        'El futur de les cerques. Preparem la teua web perquè ChatGPT, Gemini, Perplexity i les respostes amb IA de Google et recomanen a tu.',
     },
   ],
   en: [
@@ -127,7 +127,7 @@ const services: Localized<Service[]> = {
       icon: 'spark',
       title: 'AI search optimization (GEO)',
       description:
-        'The future of search. I prepare your website so ChatGPT, Gemini, Perplexity and Google’s AI answers recommend you.',
+        'The future of search. We prepare your website so ChatGPT, Gemini, Perplexity and Google’s AI answers recommend you.',
     },
   ],
 };
@@ -410,19 +410,19 @@ const process: Localized<Step[]> = {
       number: '02',
       title: 'Diseño y prototipo',
       description:
-        'Diseño la estructura y el aspecto de tu web. Validamos juntos el resultado antes de escribir una sola línea de código.',
+        'Diseñamos la estructura y el aspecto de tu web. Validamos juntos el resultado antes de escribir una sola línea de código.',
     },
     {
       number: '03',
       title: 'Desarrollo y SEO',
       description:
-        'Programo tu web con código optimizado y la preparo para Google desde el primer momento: velocidad, semántica y contenido.',
+        'Programamos tu web con código optimizado y la preparamos para Google desde el primer momento: velocidad, semántica y contenido.',
     },
     {
       number: '04',
       title: 'Lanzamiento y crecimiento',
       description:
-        'Publicamos tu web y la monitorizo. Te doy soporte y propongo mejoras para que sigas captando más clientes mes a mes.',
+        'Publicamos tu web y la monitorizamos. Te damos soporte y proponemos mejoras para que sigas captando más clientes mes a mes.',
     },
   ],
   va: [
@@ -436,19 +436,19 @@ const process: Localized<Step[]> = {
       number: '02',
       title: 'Disseny i prototip',
       description:
-        'Dissenye l’estructura i l’aspecte de la teua web. Validem junts el resultat abans d’escriure una sola línia de codi.',
+        'Dissenyem l’estructura i l’aspecte de la teua web. Validem junts el resultat abans d’escriure una sola línia de codi.',
     },
     {
       number: '03',
       title: 'Desenvolupament i SEO',
       description:
-        'Programe la teua web amb codi optimitzat i la prepare per a Google des del primer moment: velocitat, semàntica i contingut.',
+        'Programem la teua web amb codi optimitzat i la preparem per a Google des del primer moment: velocitat, semàntica i contingut.',
     },
     {
       number: '04',
       title: 'Llançament i creixement',
       description:
-        'Publiquem la teua web i la monitoritze. Et done suport i propose millores perquè sigues captant més clients mes a mes.',
+        'Publiquem la teua web i la monitoritzem. Et donem suport i proposem millores perquè sigues captant més clients mes a mes.',
     },
   ],
   en: [
@@ -462,19 +462,19 @@ const process: Localized<Step[]> = {
       number: '02',
       title: 'Design & prototype',
       description:
-        'I design the structure and look of your website. We validate the result together before writing a single line of code.',
+        'We design the structure and look of your website. We validate the result together before writing a single line of code.',
     },
     {
       number: '03',
       title: 'Development & SEO',
       description:
-        'I build your website with optimized code and prepare it for Google from the start: speed, semantics and content.',
+        'We build your website with optimized code and prepare it for Google from the start: speed, semantics and content.',
     },
     {
       number: '04',
       title: 'Launch & growth',
       description:
-        'We launch your website and I monitor it. I provide support and propose improvements so you keep capturing more clients month after month.',
+        'We launch your website and monitor it. We provide support and propose improvements so you keep capturing more clients month after month.',
     },
   ],
 };
@@ -566,7 +566,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: '¿Cuánto cuesta una página web?',
       answer:
-        'Depende de lo que necesites. Cada proyecto es único, así que preparo un presupuesto a medida según tus objetivos, el número de páginas y las funcionalidades. Escríbeme y te doy una cifra clara y sin compromiso.',
+        'Depende de lo que necesites. Cada proyecto es único, así que preparamos un presupuesto a medida según tus objetivos, el número de páginas y las funcionalidades. Escríbenos y te damos una cifra clara y sin compromiso.',
     },
     {
       question: '¿Cuánto tarda en estar lista?',
@@ -576,17 +576,17 @@ const faqs: Localized<Faq[]> = {
     {
       question: '¿Qué es el SEO y por qué lo necesito?',
       answer:
-        'El SEO es el conjunto de técnicas para que tu web aparezca en Google cuando alguien busca tus servicios. Sin SEO, tu web es invisible. Yo lo integro desde el principio para que captes clientes de forma orgánica.',
+        'El SEO es el conjunto de técnicas para que tu web aparezca en Google cuando alguien busca tus servicios. Sin SEO, tu web es invisible. Lo integramos desde el principio para que captes clientes de forma orgánica.',
     },
     {
       question: '¿Trabajas con WordPress o haces webs a medida?',
       answer:
-        'Hago webs a medida con tecnología moderna (como Astro), lo que las hace mucho más rápidas, seguras y fáciles de posicionar que una plantilla de WordPress. Si necesitas WordPress, también lo hablamos.',
+        'Hacemos webs a medida con tecnología moderna (como Astro), lo que las hace mucho más rápidas, seguras y fáciles de posicionar que una plantilla de WordPress. Si necesitas WordPress, también lo hablamos.',
     },
     {
       question: '¿Ofreces mantenimiento después?',
       answer:
-        'Sí. Puedo encargarme de mantener tu web actualizada, segura y mejorándola con el tiempo, con planes de mantenimiento adaptados a tus necesidades.',
+        'Sí. Podemos encargarnos de mantener tu web actualizada, segura y mejorándola con el tiempo, con planes de mantenimiento adaptados a tus necesidades.',
     },
     {
       question: '¿Trabajas solo en Xàtiva o también en remoto?',
@@ -608,7 +608,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Quant costa una pàgina web?',
       answer:
-        'Depén del que necessites. Cada projecte és únic, així que prepare un pressupost a mida segons els teus objectius, el nombre de pàgines i les funcionalitats. Escriu-me i et done una xifra clara i sense compromís.',
+        'Depén del que necessites. Cada projecte és únic, així que preparem un pressupost a mida segons els teus objectius, el nombre de pàgines i les funcionalitats. Escriu-nos i et donem una xifra clara i sense compromís.',
     },
     {
       question: 'Quant tarda a estar llesta?',
@@ -618,17 +618,17 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Què és el SEO i per què el necessite?',
       answer:
-        'El SEO és el conjunt de tècniques perquè la teua web aparega en Google quan algú busca els teus serveis. Sense SEO, la teua web és invisible. Jo l’integre des del principi perquè captes clients de forma orgànica.',
+        'El SEO és el conjunt de tècniques perquè la teua web aparega en Google quan algú busca els teus serveis. Sense SEO, la teua web és invisible. L’integrem des del principi perquè captes clients de forma orgànica.',
     },
     {
       question: 'Treballes amb WordPress o fas webs a mida?',
       answer:
-        'Faig webs a mida amb tecnologia moderna (com Astro), cosa que les fa molt més ràpides, segures i fàcils de posicionar que una plantilla de WordPress. Si necessites WordPress, també ho parlem.',
+        'Fem webs a mida amb tecnologia moderna (com Astro), cosa que les fa molt més ràpides, segures i fàcils de posicionar que una plantilla de WordPress. Si necessites WordPress, també ho parlem.',
     },
     {
       question: 'Oferixes manteniment després?',
       answer:
-        'Sí. Puc encarregar-me de mantindre la teua web actualitzada, segura i millorant-la amb el temps, amb plans de manteniment adaptats a les teues necessitats.',
+        'Sí. Podem encarregar-nos de mantindre la teua web actualitzada, segura i millorant-la amb el temps, amb plans de manteniment adaptats a les teues necessitats.',
     },
     {
       question: 'Treballes només a Xàtiva o també en remot?',
@@ -650,7 +650,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'How much does a website cost?',
       answer:
-        'It depends on what you need. Every project is unique, so I prepare a tailored quote based on your goals, the number of pages and the features. Get in touch and I’ll give you a clear figure with no commitment.',
+        'It depends on what you need. Every project is unique, so we prepare a tailored quote based on your goals, the number of pages and the features. Get in touch and we’ll give you a clear figure with no commitment.',
     },
     {
       question: 'How long does it take?',
@@ -665,12 +665,12 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Do you use WordPress or build custom sites?',
       answer:
-        'I build custom websites with modern technology (like Astro), which makes them far faster, more secure and easier to rank than a WordPress template. If you need WordPress, we can talk about that too.',
+        'We build custom websites with modern technology (like Astro), which makes them far faster, more secure and easier to rank than a WordPress template. If you need WordPress, we can talk about that too.',
     },
     {
       question: 'Do you offer maintenance afterwards?',
       answer:
-        'Yes. I can keep your website updated, secure and improving over time, with maintenance plans tailored to your needs.',
+        'Yes. We can keep your website updated, secure and improving over time, with maintenance plans tailored to your needs.',
     },
     {
       question: 'Do you only work in Xàtiva or remotely too?',

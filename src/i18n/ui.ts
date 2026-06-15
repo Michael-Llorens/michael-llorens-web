@@ -44,7 +44,7 @@ export const ui = {
     'stats.response.label': 'Tiempo de respuesta',
 
     // --- Servicios ---
-    'services.kicker': 'Qué hago por ti',
+    'services.kicker': 'Qué hacemos por ti',
     'services.title': 'Servicios de desarrollo y SEO',
     'services.subtitle':
       'Todo lo que tu negocio necesita para tener una presencia online profesional y rentable.',
@@ -53,7 +53,7 @@ export const ui = {
     'work.kicker': 'Portfolio',
     'work.title': 'Proyectos reales, resultados reales',
     'work.subtitle':
-      'Una selección de webs que he diseñado y desarrollado para negocios reales.',
+      'Una selección de webs que hemos diseñado y desarrollado para negocios reales.',
     'work.visit': 'Visitar web',
     'work.result': 'Resultado',
     'work.cta': '¿Quieres ser el siguiente proyecto?',
@@ -62,7 +62,7 @@ export const ui = {
     'pricing.kicker': 'Precios',
     'pricing.title': 'Planes claros, sin sorpresas',
     'pricing.subtitle':
-      'Precios orientativos «desde». Cada proyecto es único: te paso un presupuesto a medida sin compromiso.',
+      'Precios orientativos «desde». Cada proyecto es único: te pasamos un presupuesto a medida sin compromiso.',
     'pricing.note': 'Todos los planes incluyen diseño a medida, web responsive y código optimizado. ¿Necesitas algo distinto? Lo hablamos.',
     'pricing.popular': 'Más popular',
 
@@ -191,7 +191,7 @@ export const ui = {
     'stats.response.value': '24 h',
     'stats.response.label': 'Temps de resposta',
 
-    'services.kicker': 'Què faig per tu',
+    'services.kicker': 'Què fem per tu',
     'services.title': 'Serveis de desenvolupament i SEO',
     'services.subtitle':
       'Tot el que el teu negoci necessita per a tindre una presència online professional i rendible.',
@@ -199,7 +199,7 @@ export const ui = {
     'work.kicker': 'Portfolio',
     'work.title': 'Projectes reals, resultats reals',
     'work.subtitle':
-      'Una selecció de webs que he dissenyat i desenvolupat per a negocis reals.',
+      'Una selecció de webs que hem dissenyat i desenvolupat per a negocis reals.',
     'work.visit': 'Visitar web',
     'work.result': 'Resultat',
     'work.cta': 'Vols ser el pròxim projecte?',
@@ -207,7 +207,7 @@ export const ui = {
     'pricing.kicker': 'Preus',
     'pricing.title': 'Plans clars, sense sorpreses',
     'pricing.subtitle':
-      'Preus orientatius «des de». Cada projecte és únic: et passe un pressupost a mida sense compromís.',
+      'Preus orientatius «des de». Cada projecte és únic: et passem un pressupost a mida sense compromís.',
     'pricing.note': 'Tots els plans inclouen disseny a mida, web responsive i codi optimitzat. Necessites una altra cosa? Ho parlem.',
     'pricing.popular': 'Més popular',
 
