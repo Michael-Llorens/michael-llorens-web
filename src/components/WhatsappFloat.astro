@@ -8,47 +8,160 @@ interface Props {
 }
 const { lang } = Astro.props;
 const wa = whatsappLink(lang);
+
+const copy: Record<Lang, { text: string; close: string }> = {
+  es: { text: '¿Hablamos por WhatsApp?', close: 'Cerrar mensaje' },
+  va: { text: 'Parlem per WhatsApp?', close: 'Tancar missatge' },
+  en: { text: "Let's chat on WhatsApp", close: 'Close message' },
+};
+const t = copy[lang];
 ---
+
+<!-- Popup tipo tooltip que aparece a los 3 s y se auto-oculta -->
+<div class="wa-tooltip" id="wa-tooltip" hidden>
+  <button class="wa-tooltip__close" type="button" aria-label={t.close}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  </button>
+  <a class="wa-tooltip__link" href={wa} target="_blank" rel="noopener noreferrer">
+    <span class="wa-tooltip__emoji" aria-hidden="true">👋</span>
+    <span class="wa-tooltip__text">{t.text}</span>
+  </a>
+</div>
 
 <a class="wa-float" href={wa} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
   <Icon name="whatsapp" />
 </a>
 
+<script>
+  const tip = document.getElementById('wa-tooltip');
+  if (tip) {
+    const closeBtn = tip.querySelector('.wa-tooltip__close');
+    let auto: number | undefined;
+    const hide = () => {
+      window.clearTimeout(auto);
+      tip.classList.remove('is-visible');
+      window.setTimeout(() => tip.setAttribute('hidden', ''), 400);
+    };
+    closeBtn?.addEventListener('click', hide);
+    // Aparece a los 3 s; se auto-oculta a los 7 s
+    window.setTimeout(() => {
+      tip.removeAttribute('hidden');
+      void tip.offsetWidth; // fuerza reflow para que anime
+      tip.classList.add('is-visible');
+      auto = window.setTimeout(hide, 7000);
+    }, 3000);
+  }
+</script>
+
 <style>
+  /* Botón flotante: icono verde de WhatsApp (como la referencia) */
   .wa-float {
     position: fixed;
-    bottom: 1.4rem;
-    right: 1.4rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
     z-index: 90;
     display: grid;
     place-items: center;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: #25d366;
-    color: #0a0a12;
-    box-shadow: 0 10px 30px -6px rgba(37, 211, 102, 0.5);
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    width: 60px;
+    height: 60px;
+    color: #25d366;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
     animation: wa-in 0.5s var(--ease) 0.6s both;
   }
   .wa-float :global(svg) {
-    width: 30px;
-    height: 30px;
+    width: 52px;
+    height: 52px;
     fill: currentColor;
     stroke: none;
   }
   .wa-float:hover {
-    transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 14px 36px -6px rgba(37, 211, 102, 0.65);
+    transform: scale(1.08);
+    filter: drop-shadow(0 10px 22px rgba(37, 211, 102, 0.55));
   }
   @keyframes wa-in {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
+
+  /* Popup */
+  .wa-tooltip {
+    position: fixed;
+    bottom: 5.4rem;
+    right: 1.7rem;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: min(78vw, 280px);
+    padding: 0.55rem 0.75rem;
+    border-radius: 14px;
+    background: #1c2630;
+    box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .wa-tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .wa-tooltip__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.92rem;
+    line-height: 1.2;
+  }
+  .wa-tooltip__emoji {
+    font-size: 1.05rem;
+  }
+  .wa-tooltip__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .wa-tooltip__close:hover {
+    background: rgba(255, 255, 255, 0.24);
+    color: #fff;
+  }
+  .wa-tooltip__close svg {
+    width: 11px;
+    height: 11px;
+  }
+
   @media (max-width: 600px) {
     .wa-float {
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
+    }
+    .wa-float :global(svg) {
+      width: 46px;
+      height: 46px;
+    }
+    .wa-tooltip {
+      bottom: 5rem;
     }
   }
 </style>
