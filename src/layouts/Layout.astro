@@ -26,8 +26,9 @@ const jsonLd = {
     {
       '@type': 'Person',
       '@id': `${site.url}/#person`,
-      name: site.name,
+      name: site.owner,
       url: site.url,
+      worksFor: { '@id': `${site.url}/#service` },
       jobTitle: site.role[lang],
       email: `mailto:${site.email}`,
       sameAs: Object.values(site.socials).filter(Boolean),
@@ -41,7 +42,9 @@ const jsonLd = {
     {
       '@type': 'ProfessionalService',
       '@id': `${site.url}/#service`,
-      name: `${site.name} — ${site.role[lang]}`,
+      name: site.name,
+      slogan: site.role[lang],
+      founder: { '@id': `${site.url}/#person` },
       description,
       url: site.url,
       image: ogImage,

@@ -591,7 +591,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: '¿Trabajas solo en Xàtiva o también en remoto?',
       answer:
-        'Estoy en Xàtiva (Valencia), pero trabajo en remoto con clientes de toda España. La distancia no es problema: nos coordinamos por videollamada, email o WhatsApp.',
+        'Estamos en Xàtiva (Valencia), pero trabajamos en remoto con clientes de toda España. La distancia no es problema: nos coordinamos por videollamada, email o WhatsApp.',
     },
     {
       question: '¿De quién es la web y el dominio?',
@@ -633,7 +633,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Treballes només a Xàtiva o també en remot?',
       answer:
-        'Estic a Xàtiva (València), però treballe en remot amb clients de tota Espanya. La distància no és problema: ens coordinem per videocrida, email o WhatsApp.',
+        'Estem a Xàtiva (València), però treballem en remot amb clients de tota Espanya. La distància no és problema: ens coordinem per videocrida, email o WhatsApp.',
     },
     {
       question: 'De qui és la web i el domini?',
@@ -660,7 +660,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'What is SEO and why do I need it?',
       answer:
-        'SEO is the set of techniques that make your website appear on Google when someone searches for your services. Without SEO, your website is invisible. I build it in from the start so you capture clients organically.',
+        'SEO is the set of techniques that make your website appear on Google when someone searches for your services. Without SEO, your website is invisible. We build it in from the start so you capture clients organically.',
     },
     {
       question: 'Do you use WordPress or build custom sites?',
@@ -675,7 +675,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Do you only work in Xàtiva or remotely too?',
       answer:
-        'I’m based in Xàtiva (Spain), but I work remotely with clients all over the country. Distance is no problem: we coordinate by video call, email or WhatsApp.',
+        'We’re based in Xàtiva (Spain), but we work remotely with clients all over the country. Distance is no problem: we coordinate by video call, email or WhatsApp.',
     },
     {
       question: 'Who owns the website and domain?',
@@ -865,34 +865,34 @@ export interface CompareRow {
 
 const comparison: Localized<{ cols: [string, string, string]; rows: CompareRow[] }> = {
   es: {
-    cols: ['Conmigo', 'Plantilla barata', 'Agencia grande'],
+    cols: ['Con MetaLogic', 'Plantilla barata', 'Agencia grande'],
     rows: [
       { feature: 'Diseño', me: 'A medida y único', template: 'Genérico y repetido', agency: 'A medida (caro)' },
       { feature: 'Rendimiento', me: '100/100, ultrarrápida', template: 'Lenta y pesada', agency: 'Variable' },
       { feature: 'SEO incluido', me: 'Desde el día 1', template: 'Casi nulo', agency: 'Coste aparte' },
-      { feature: 'Trato', me: 'Directo conmigo', template: 'Tú solo', agency: 'Comerciales y becarios' },
+      { feature: 'Trato', me: 'Directo y cercano', template: 'Tú solo', agency: 'Comerciales y becarios' },
       { feature: 'Precio', me: 'Justo y claro', template: 'Barato (sale caro)', agency: 'Elevado' },
       { feature: 'Plazos', me: 'Rápidos y cumplidos', template: 'Tu tiempo', agency: 'Lentos' },
     ],
   },
   va: {
-    cols: ['Amb mi', 'Plantilla barata', 'Agència gran'],
+    cols: ['Amb MetaLogic', 'Plantilla barata', 'Agència gran'],
     rows: [
       { feature: 'Disseny', me: 'A mida i únic', template: 'Genèric i repetit', agency: 'A mida (car)' },
       { feature: 'Rendiment', me: '100/100, ultraràpida', template: 'Lenta i pesada', agency: 'Variable' },
       { feature: 'SEO inclòs', me: 'Des del dia 1', template: 'Quasi nul', agency: 'Cost a banda' },
-      { feature: 'Tracte', me: 'Directe amb mi', template: 'Tu sol', agency: 'Comercials i becaris' },
+      { feature: 'Tracte', me: 'Directe i pròxim', template: 'Tu sol', agency: 'Comercials i becaris' },
       { feature: 'Preu', me: 'Just i clar', template: 'Barat (ix car)', agency: 'Elevat' },
       { feature: 'Terminis', me: 'Ràpids i complits', template: 'El teu temps', agency: 'Lents' },
     ],
   },
   en: {
-    cols: ['With me', 'Cheap template', 'Big agency'],
+    cols: ['With MetaLogic', 'Cheap template', 'Big agency'],
     rows: [
       { feature: 'Design', me: 'Custom and unique', template: 'Generic and reused', agency: 'Custom (expensive)' },
       { feature: 'Performance', me: '100/100, ultra-fast', template: 'Slow and heavy', agency: 'Variable' },
       { feature: 'SEO included', me: 'From day one', template: 'Almost none', agency: 'Extra cost' },
-      { feature: 'Service', me: 'Directly with me', template: 'On your own', agency: 'Sales reps & interns' },
+      { feature: 'Service', me: 'Direct and close', template: 'On your own', agency: 'Sales reps & interns' },
       { feature: 'Price', me: 'Fair and clear', template: 'Cheap (costs more)', agency: 'High' },
       { feature: 'Timeline', me: 'Fast and on time', template: 'Your own time', agency: 'Slow' },
     ],
@@ -941,10 +941,10 @@ const diagnostic: Localized<Diagnostic> = {
     verdicts: [
       { min: 80, title: '¡Tu web va muy bien!', text: 'Tienes una base sólida. Aun así, siempre hay margen para posicionar mejor y convertir más visitas en clientes.' },
       { min: 50, title: 'Vas por buen camino', text: 'Tu web cumple lo básico, pero está dejando escapar clientes. Con unos ajustes puede rendir mucho más.' },
-      { min: 0, title: 'Tu web está perdiendo clientes', text: 'Hay varios puntos importantes que mejorar. La buena noticia: son justo las cosas en las que te puedo ayudar.' },
+      { min: 0, title: 'Tu web está perdiendo clientes', text: 'Hay varios puntos importantes que mejorar. La buena noticia: son justo las cosas en las que te podemos ayudar.' },
     ],
     cta: 'Pide tu diagnóstico completo gratis',
-    note: 'Es una estimación orientativa. Te hago un análisis real y detallado sin compromiso.',
+    note: 'Es una estimación orientativa. Te hacemos un análisis real y detallado sin compromiso.',
   },
   va: {
     kicker: 'Diagnòstic exprés',
@@ -968,10 +968,10 @@ const diagnostic: Localized<Diagnostic> = {
     verdicts: [
       { min: 80, title: 'La teua web va molt bé!', text: 'Tens una base sòlida. Tot i així, sempre hi ha marge per a posicionar millor i convertir més visites en clients.' },
       { min: 50, title: 'Vas per bon camí', text: 'La teua web compleix el bàsic, però està deixant escapar clients. Amb uns ajustos pot rendir molt més.' },
-      { min: 0, title: 'La teua web està perdent clients', text: 'Hi ha diversos punts importants a millorar. La bona notícia: són justament les coses en què et puc ajudar.' },
+      { min: 0, title: 'La teua web està perdent clients', text: 'Hi ha diversos punts importants a millorar. La bona notícia: són justament les coses en què et podem ajudar.' },
     ],
     cta: 'Demana el teu diagnòstic complet gratis',
-    note: 'És una estimació orientativa. Et faig una anàlisi real i detallada sense compromís.',
+    note: 'És una estimació orientativa. Et fem una anàlisi real i detallada sense compromís.',
   },
   en: {
     kicker: 'Express check',
@@ -995,10 +995,10 @@ const diagnostic: Localized<Diagnostic> = {
     verdicts: [
       { min: 80, title: 'Your website is doing great!', text: 'You have a solid base. Still, there’s always room to rank better and turn more visits into clients.' },
       { min: 50, title: 'You’re on the right track', text: 'Your website covers the basics, but it’s letting clients slip away. A few tweaks could make it perform much better.' },
-      { min: 0, title: 'Your website is losing clients', text: 'There are several important things to improve. The good news: they’re exactly what I can help you with.' },
+      { min: 0, title: 'Your website is losing clients', text: 'There are several important things to improve. The good news: they’re exactly what we can help you with.' },
     ],
     cta: 'Get your full free diagnosis',
-    note: 'This is a rough estimate. I’ll run a real, detailed analysis with no commitment.',
+    note: 'This is a rough estimate. We’ll run a real, detailed analysis with no commitment.',
   },
 };
 
@@ -1010,19 +1010,19 @@ const guarantees: Localized<Service[]> = {
     { icon: 'shield', title: 'Sin permanencias', description: 'Ni ataduras ni letra pequeña. Trabajamos con total libertad.' },
     { icon: 'code', title: 'El código es tuyo', description: 'La web, el código y el dominio quedan 100% a tu nombre.' },
     { icon: 'bolt', title: 'Rendimiento 100/100', description: 'Webs ultrarrápidas y optimizadas, o seguimos trabajando.' },
-    { icon: 'spark', title: 'Respuesta en 24 h', description: 'Trato directo conmigo y respuesta rápida, sin intermediarios.' },
+    { icon: 'spark', title: 'Respuesta en 24 h', description: 'Trato directo y cercano, con respuesta rápida y sin intermediarios.' },
   ],
   va: [
     { icon: 'shield', title: 'Sense permanències', description: 'Ni lligams ni lletra menuda. Treballem amb total llibertat.' },
     { icon: 'code', title: 'El codi és teu', description: 'La web, el codi i el domini queden 100% al teu nom.' },
     { icon: 'bolt', title: 'Rendiment 100/100', description: 'Webs ultraràpides i optimitzades, o seguim treballant.' },
-    { icon: 'spark', title: 'Resposta en 24 h', description: 'Tracte directe amb mi i resposta ràpida, sense intermediaris.' },
+    { icon: 'spark', title: 'Resposta en 24 h', description: 'Tracte directe i pròxim, amb resposta ràpida i sense intermediaris.' },
   ],
   en: [
     { icon: 'shield', title: 'No lock-in', description: 'No ties, no fine print. We work with total freedom.' },
     { icon: 'code', title: 'You own the code', description: 'The website, the code and the domain are 100% yours.' },
     { icon: 'bolt', title: '100/100 performance', description: 'Ultra-fast, optimized websites — or we keep working.' },
-    { icon: 'spark', title: 'Reply within 24h', description: 'Work directly with me and get a fast reply, no middlemen.' },
+    { icon: 'spark', title: 'Reply within 24h', description: 'Direct, close communication with a fast reply and no middlemen.' },
   ],
 };
 

@@ -7,11 +7,14 @@
    ────────────────────────────────────────────────────────────────────────── */
 
 export const site = {
-  name: 'Michael Llorens',
+  // Nombre de la marca/empresa
+  name: 'MetaLogic',
+  // Persona física titular (para aviso legal y datos estructurados)
+  owner: 'Michael Llorens',
   role: {
-    es: 'Desarrollador full-stack & SEO',
-    va: 'Desenvolupador full-stack & SEO',
-    en: 'Full-stack developer & SEO',
+    es: 'Desarrollo web & SEO',
+    va: 'Desenvolupament web & SEO',
+    en: 'Web development & SEO',
   },
 
   // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
@@ -43,9 +46,9 @@ export const site = {
 
 /** Mensaje pre-rellenado al abrir WhatsApp. */
 export const whatsappMessage = {
-  es: 'Hola Michael, me gustaría información sobre una web.',
-  va: 'Hola Michael, m’agradaria informació sobre una web.',
-  en: 'Hi Michael, I’d like information about a website.',
+  es: 'Hola MetaLogic, me gustaría información sobre una web.',
+  va: 'Hola MetaLogic, m’agradaria informació sobre una web.',
+  en: 'Hi MetaLogic, I’d like information about a website.',
 };
 
 export function whatsappLink(lang: 'es' | 'va' | 'en'): string {
