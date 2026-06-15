@@ -12,6 +12,7 @@ const t = useTranslations(lang);
 
 <section class="hero">
   <div class="hero__bg" aria-hidden="true">
+    <div class="aurora"></div>
     <div class="orb orb--1"></div>
     <div class="orb orb--2"></div>
     <div class="grid-lines"></div>
@@ -66,7 +67,7 @@ const t = useTranslations(lang);
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.55;
+    opacity: 0.4;
     animation: float 14s ease-in-out infinite;
   }
   .orb--1 {
@@ -87,6 +88,28 @@ const t = useTranslations(lang);
   @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
     50% { transform: translate(-2rem, 2rem) scale(1.08); }
+  }
+
+  /* Aurora: degradado naranja que deriva lentamente */
+  .aurora {
+    position: absolute;
+    inset: -25%;
+    background:
+      radial-gradient(38% 50% at 28% 32%, rgba(251, 84, 18, 0.22), transparent 60%),
+      radial-gradient(34% 46% at 72% 42%, rgba(255, 138, 76, 0.16), transparent 62%),
+      radial-gradient(46% 42% at 52% 78%, rgba(255, 120, 56, 0.12), transparent 65%);
+    filter: blur(48px);
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .aurora {
+      animation: aurora-move 20s ease-in-out infinite alternate;
+    }
+  }
+  @keyframes aurora-move {
+    0% { transform: translate3d(-4%, -2%, 0) scale(1); }
+    50% { transform: translate3d(4%, 3%, 0) scale(1.12); }
+    100% { transform: translate3d(-2%, 5%, 0) scale(1.06); }
   }
   .grid-lines {
     position: absolute;
