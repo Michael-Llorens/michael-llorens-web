@@ -20,8 +20,8 @@ export const site = {
   // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
   url: 'https://michael-llorens-web.vercel.app',
 
-  // ⚠️ PLACEHOLDER — cambia por tu email real
-  email: 'hola@michaelllorens.com',
+  // ⚠️ PLACEHOLDER — cambia por tu email real (cuando tengas el dominio)
+  email: 'hola@metalogicweb.com',
 
   // ⚠️ PLACEHOLDER — cambia por tu teléfono real (formato visible)
   phoneDisplay: '+34 600 000 000',
