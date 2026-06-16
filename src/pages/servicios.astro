@@ -3,6 +3,7 @@ import PageLayout from '../components/PageLayout.astro';
 import Services from '../components/Services.astro';
 import BackendApis from '../components/BackendApis.astro';
 import Process from '../components/Process.astro';
+import SectorsList from '../components/SectorsList.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { useTranslations } from '../i18n/ui';
 
@@ -19,5 +20,6 @@ const t = useTranslations(lang);
   <Services lang={lang} />
   <BackendApis lang={lang} />
   <Process lang={lang} />
+  <SectorsList lang={lang} />
   <FinalCta lang={lang} />
 </PageLayout>

@@ -12,11 +12,11 @@ const t = useTranslations(lang);
 const sectors = getSectors(lang);
 ---
 
-<section class="section sectors" aria-labelledby="sectors-title">
+<section class="section sectors" id="sectores" aria-labelledby="sectors-title">
   <div class="container">
     <div class="section-head center" data-reveal>
       <span class="kicker">{t('sectors.kicker')}</span>
-      <h1 class="section-title" id="sectors-title">{t('sectors.title')}</h1>
+      <h2 class="section-title" id="sectors-title">{t('sectors.title')}</h2>
       <p class="lead">{t('sectors.subtitle')}</p>
     </div>
 
@@ -33,7 +33,7 @@ const sectors = getSectors(lang);
               <Icon name={s.icon} />
             </span>
             <div>
-              <h2 class="sector__name">{s.name}</h2>
+              <h3 class="sector__name">{s.name}</h3>
               <p class="sector__tagline">{s.tagline}</p>
             </div>
             <Icon name="arrowUpRight" class="sector__arrow" />

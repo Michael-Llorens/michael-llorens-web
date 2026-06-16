@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../components/PageLayout.astro';
 import Contact from '../../components/Contact.astro';
+import Guarantees from '../../components/Guarantees.astro';
 import { useTranslations } from '../../i18n/ui';
 
 const lang = 'va';
@@ -14,4 +15,5 @@ const t = useTranslations(lang);
   description={t('contact.subtitle')}
 >
   <Contact lang={lang} />
+  <Guarantees lang={lang} />
 </PageLayout>

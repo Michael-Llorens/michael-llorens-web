@@ -14,7 +14,7 @@ const t = useTranslations(lang);
 
 <section class="section sector-hero">
   <div class="container">
-    <a href={localizedPath(lang, 'sectores')} class="sector-hero__back">← {t('sectors.all')}</a>
+    <a href={`${localizedPath(lang, 'servicios')}#sectores`} class="sector-hero__back">← {t('sectors.all')}</a>
     <div class="sector-hero__head" data-reveal>
       <span class="sector-hero__icon"><Icon name={sector.icon} /></span>
       <span class="kicker">{t('sectors.kicker')}</span>

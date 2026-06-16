@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../components/PageLayout.astro';
 import Pricing from '../components/Pricing.astro';
+import Comparison from '../components/Comparison.astro';
+import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { useTranslations } from '../i18n/ui';
 
@@ -15,5 +17,7 @@ const t = useTranslations(lang);
   description={t('pricing.subtitle')}
 >
   <Pricing lang={lang} />
+  <Comparison lang={lang} />
+  <Faq lang={lang} />
   <FinalCta lang={lang} />
 </PageLayout>

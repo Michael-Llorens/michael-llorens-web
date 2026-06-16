@@ -12,11 +12,11 @@ const t = useTranslations(lang);
 const posts = getBlogPosts(lang);
 ---
 
-<section class="section blog" aria-labelledby="blog-title">
+<section class="section blog" id="recursos" aria-labelledby="blog-title">
   <div class="container">
     <div class="section-head center" data-reveal>
       <span class="kicker">{t('blog.kicker')}</span>
-      <h1 class="section-title" id="blog-title">{t('blog.title')}</h1>
+      <h2 class="section-title" id="blog-title">{t('blog.title')}</h2>
       <p class="lead">{t('blog.subtitle')}</p>
     </div>
 
@@ -33,7 +33,7 @@ const posts = getBlogPosts(lang);
               <span class="post__cat">{post.category}</span>
               <span class="post__time">{post.readingMin} {t('blog.readingMin')}</span>
             </div>
-            <h2 class="post__title">{post.title}</h2>
+            <h3 class="post__title">{post.title}</h3>
             <p class="post__excerpt">{post.excerpt}</p>
             <span class="post__more">
               {t('hero.cta.secondary')}
