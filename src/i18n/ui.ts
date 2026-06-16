@@ -53,7 +53,7 @@ export const ui = {
     'hero.title.2': 'posiciona',
     'hero.title.3': 'y convierte',
     'hero.subtitle':
-      'En MetaLogic diseñamos y desarrollamos webs rápidas, modernas y optimizadas para aparecer en Google y convertir visitas en clientes. Tu socio de confianza en diseño web y SEO en Xàtiva y Valencia.',
+      'En MetaLogic diseñamos y desarrollamos webs rápidas, modernas y optimizadas para aparecer en Google y convertir visitas en clientes.',
     'hero.cta.primary': 'Empezar mi proyecto',
     'hero.cta.secondary': 'Ver proyectos',
     'hero.trust': 'Webs a medida · Rendimiento 100/100 · SEO desde el primer día',
