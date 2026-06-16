@@ -21,7 +21,10 @@ const description = pageDescription ?? t('meta.description');
 
 const canonical = new URL(localizedPath(lang, path), site.url).href;
 // OG/Twitter requieren imagen raster (PNG/JPG); el SVG no lo renderizan las redes.
+// Imagen para Google/redes (banner). WhatsApp usa la de abajo (logo cuadrado).
 const ogImage = new URL('/og-image.png', site.url).href;
+// Logo cuadrado y ligero (58 KB) para que WhatsApp muestre la miniatura del logo.
+const socialImage = new URL('/og-logo.png', site.url).href;
 
 // JSON-LD: marca / servicio profesional (clave para SEO local y rich results).
 // Entidad de marca, sin nombre personal: MetaLogic es el titular de la presencia online.
@@ -126,15 +129,16 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:alt" content={`Logo de ${site.name}`} />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Twitter (summary = miniatura cuadrada con el logo a la izquierda) -->
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={socialImage} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
