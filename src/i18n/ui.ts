@@ -7,9 +7,9 @@ import type { Lang } from './config';
 export const ui = {
   es: {
     // --- Metadatos / SEO ---
-    'meta.title': 'MetaLogic · Diseño web y SEO en Xàtiva',
+    'meta.title': 'Diseño web y SEO en Xàtiva y Valencia | MetaLogic',
     'meta.description':
-      'MetaLogic: agencia de diseño web y posicionamiento SEO. Creamos webs rápidas, modernas y optimizadas para Google que captan clientes y hacen crecer tu negocio. Xàtiva y toda España.',
+      'Diseño web y SEO en Xàtiva y Valencia. Creamos webs rápidas y optimizadas para Google que captan clientes y hacen crecer tu negocio. Presupuesto gratis.',
 
     // --- Navegación ---
     'nav.services': 'Servicios',
@@ -49,11 +49,11 @@ export const ui = {
 
     // --- Hero ---
     'hero.badge': 'Disponible para nuevos proyectos',
-    'hero.title.1': 'Webs que',
-    'hero.title.2': 'posicionan',
-    'hero.title.3': 'y convierten',
+    'hero.title.1': 'Diseño web que',
+    'hero.title.2': 'posiciona',
+    'hero.title.3': 'y convierte',
     'hero.subtitle':
-      'En MetaLogic diseñamos y desarrollamos webs rápidas, modernas y optimizadas para aparecer en Google y convertir visitas en clientes. Tu socio de confianza en desarrollo web y SEO.',
+      'En MetaLogic diseñamos y desarrollamos webs rápidas, modernas y optimizadas para aparecer en Google y convertir visitas en clientes. Tu socio de confianza en diseño web y SEO en Xàtiva y Valencia.',
     'hero.cta.primary': 'Empezar mi proyecto',
     'hero.cta.secondary': 'Ver proyectos',
     'hero.trust': 'Webs a medida · Rendimiento 100/100 · SEO desde el primer día',
@@ -71,7 +71,7 @@ export const ui = {
 
     // --- Servicios ---
     'services.kicker': 'Qué hacemos por ti',
-    'services.title': 'Servicios de desarrollo y SEO',
+    'services.title': 'Servicios de diseño web y SEO',
     'services.subtitle':
       'Todo lo que tu negocio necesita para tener una presencia online profesional y rentable.',
 
@@ -192,9 +192,9 @@ export const ui = {
   },
 
   va: {
-    'meta.title': 'MetaLogic · Disseny web i SEO a Xàtiva',
+    'meta.title': 'Disseny web i SEO a Xàtiva i València | MetaLogic',
     'meta.description':
-      'MetaLogic: agència de disseny web i posicionament SEO. Creem webs ràpides, modernes i optimitzades per a Google que capten clients i fan créixer el teu negoci. Xàtiva i tota Espanya.',
+      'Disseny web i SEO a Xàtiva i València. Creem webs ràpides i optimitzades per a Google que capten clients i fan créixer el teu negoci. Pressupost gratis.',
 
     'nav.services': 'Serveis',
     'nav.work': 'Projectes',
@@ -232,11 +232,11 @@ export const ui = {
     'clients.title': 'Negocis que ja confien en MetaLogic',
 
     'hero.badge': 'Disponible per a nous projectes',
-    'hero.title.1': 'Webs que',
-    'hero.title.2': 'posicionen',
-    'hero.title.3': 'i converteixen',
+    'hero.title.1': 'Disseny web que',
+    'hero.title.2': 'posiciona',
+    'hero.title.3': 'i converteix',
     'hero.subtitle':
-      'En MetaLogic dissenyem i desenvolupem webs ràpides, modernes i optimitzades per a aparéixer en Google i convertir visites en clients. El teu soci de confiança en desenvolupament web i SEO.',
+      'En MetaLogic dissenyem i desenvolupem webs ràpides, modernes i optimitzades per a aparéixer en Google i convertir visites en clients. El teu soci de confiança en disseny web i SEO a Xàtiva i València.',
     'hero.cta.primary': 'Començar el meu projecte',
     'hero.cta.secondary': 'Veure projectes',
     'hero.trust': 'Webs a mida · Rendiment 100/100 · SEO des del primer dia',
@@ -252,7 +252,7 @@ export const ui = {
     'stats.response.label': 'Temps de resposta',
 
     'services.kicker': 'Què fem per tu',
-    'services.title': 'Serveis de desenvolupament i SEO',
+    'services.title': 'Serveis de disseny web i SEO',
     'services.subtitle':
       'Tot el que el teu negoci necessita per a tindre una presència online professional i rendible.',
 
@@ -361,9 +361,9 @@ export const ui = {
   },
 
   en: {
-    'meta.title': 'MetaLogic · Web Design & SEO in Xàtiva',
+    'meta.title': 'Web design & SEO in Xàtiva and Valencia | MetaLogic',
     'meta.description':
-      'MetaLogic: web design and SEO studio. We build fast, modern, search-optimized websites that capture clients and grow your business. Based in Xàtiva, Spain — working worldwide.',
+      'Web design and SEO in Xàtiva and Valencia. We build fast, Google-optimized websites that capture clients and grow your business. Free quote.',
 
     'nav.services': 'Services',
     'nav.work': 'Work',
@@ -401,11 +401,11 @@ export const ui = {
     'clients.title': 'Businesses that already trust MetaLogic',
 
     'hero.badge': 'Available for new projects',
-    'hero.title.1': 'Websites that',
-    'hero.title.2': 'rank',
-    'hero.title.3': 'and convert',
+    'hero.title.1': 'Web design that',
+    'hero.title.2': 'ranks',
+    'hero.title.3': 'and converts',
     'hero.subtitle':
-      'At MetaLogic we design and build fast, modern websites engineered to rank on Google and turn visitors into customers. Your trusted partner in web development and SEO.',
+      'At MetaLogic we design and build fast, modern websites engineered to rank on Google and turn visitors into customers. Your trusted partner in web design and SEO in Xàtiva and Valencia.',
     'hero.cta.primary': 'Start my project',
     'hero.cta.secondary': 'View work',
     'hero.trust': 'Custom-built · 100/100 performance · SEO from day one',
@@ -421,7 +421,7 @@ export const ui = {
     'stats.response.label': 'Response time',
 
     'services.kicker': 'What we do for you',
-    'services.title': 'Web development & SEO services',
+    'services.title': 'Web design & SEO services',
     'services.subtitle':
       'Everything your business needs for a professional, profitable online presence.',
 
