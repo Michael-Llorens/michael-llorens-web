@@ -23,38 +23,24 @@ const canonical = new URL(localizedPath(lang, path), site.url).href;
 // OG/Twitter requieren imagen raster (PNG/JPG); el SVG no lo renderizan las redes.
 const ogImage = new URL('/og-image.png', site.url).href;
 
-// JSON-LD: Persona + Servicio profesional (clave para SEO local y rich results)
+// JSON-LD: marca / servicio profesional (clave para SEO local y rich results).
+// Entidad de marca, sin nombre personal: MetaLogic es el titular de la presencia online.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Person',
-      '@id': `${site.url}/#person`,
-      name: site.owner,
-      url: site.url,
-      worksFor: { '@id': `${site.url}/#service` },
-      jobTitle: site.role[lang],
-      email: `mailto:${site.email}`,
-      sameAs: Object.values(site.socials).filter(Boolean),
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Xàtiva',
-        addressRegion: 'Valencia',
-        addressCountry: 'ES',
-      },
-    },
     {
       '@type': 'ProfessionalService',
       '@id': `${site.url}/#service`,
       name: site.name,
       slogan: site.role[lang],
-      founder: { '@id': `${site.url}/#person` },
       description,
       url: site.url,
       image: ogImage,
+      logo: new URL('/logo-full.png', site.url).href,
+      email: `mailto:${site.email}`,
+      sameAs: Object.values(site.socials).filter(Boolean),
       priceRange: '€€',
       areaServed: ['Xàtiva', 'Valencia', 'España'],
-      provider: { '@id': `${site.url}/#person` },
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Xàtiva',
@@ -76,7 +62,7 @@ const jsonLd = {
       url: site.url,
       name: site.name,
       inLanguage: LANG_HREFLANG[lang],
-      publisher: { '@id': `${site.url}/#person` },
+      publisher: { '@id': `${site.url}/#service` },
     },
   ],
 };
@@ -110,9 +96,10 @@ const jsonLd = {
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href={canonical} />
 
-    <!-- Favicon -->
+    <!-- Favicon: logotipo del monitor MetaLogic -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo-mark.png" />
+    <link rel="apple-touch-icon" href="/logo-mark.png" />
     <meta name="theme-color" content="#0a0a12" />
 
     <!-- hreflang para SEO multilingüe -->

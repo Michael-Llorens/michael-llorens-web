@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import BlogArticle from '../../components/BlogArticle.astro';
+import { getBlogSlugs, getBlogPost } from '../../data/blog';
+
+export function getStaticPaths() {
+  return getBlogSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const lang = 'es';
+const { slug } = Astro.params;
+const post = getBlogPost(lang, slug as string)!;
+---
+
+<PageLayout
+  lang={lang}
+  path={`recursos/${post.slug}`}
+  title={`${post.title} · MetaLogic`}
+  description={post.excerpt}
+>
+  <BlogArticle lang={lang} post={post} />
+</PageLayout>

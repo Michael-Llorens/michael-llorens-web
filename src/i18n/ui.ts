@@ -20,7 +20,32 @@ export const ui = {
     'nav.faq': 'Preguntas',
     'nav.contact': 'Contacto',
     'nav.home': 'Inicio',
+    'nav.resources': 'Recursos',
     'nav.cta': 'Pide presupuesto',
+
+    // --- Blog / Recursos ---
+    'blog.kicker': 'Recursos',
+    'blog.title': 'Aprende a sacarle partido a tu web',
+    'blog.subtitle':
+      'Guías claras sobre webs, SEO y captación de clientes para autónomos y pymes. Sin tecnicismos.',
+    'blog.readingMin': 'min de lectura',
+    'blog.backToList': '← Volver a Recursos',
+    'blog.cta.title': '¿Hablamos de tu proyecto?',
+    'blog.cta.text': 'Te hacemos un diagnóstico y presupuesto gratis, sin compromiso.',
+
+    // --- Sectores ---
+    'sectors.kicker': 'Sectores',
+    'sectors.title': 'Webs pensadas para tu sector',
+    'sectors.subtitle':
+      'Cada sector tiene necesidades distintas. Diseñamos tu web pensando en las del tuyo.',
+    'sectors.painTitle': 'Lo que suele fallar',
+    'sectors.solutionTitle': 'Cómo lo resolvemos',
+    'sectors.includesTitle': 'Qué incluye tu web',
+    'sectors.cta': 'Quiero una web para mi negocio',
+    'sectors.all': 'Ver todos los sectores',
+
+    // --- Clientes ---
+    'clients.title': 'Negocios que ya confían en MetaLogic',
 
     // --- Hero ---
     'hero.badge': 'Disponible para nuevos proyectos',
@@ -179,7 +204,32 @@ export const ui = {
     'nav.faq': 'Preguntes',
     'nav.contact': 'Contacte',
     'nav.home': 'Inici',
+    'nav.resources': 'Recursos',
     'nav.cta': 'Demana pressupost',
+
+    // --- Blog / Recursos ---
+    'blog.kicker': 'Recursos',
+    'blog.title': 'Aprèn a traure-li partit a la teua web',
+    'blog.subtitle':
+      'Guies clares sobre webs, SEO i captació de clients per a autònoms i pimes. Sense tecnicismes.',
+    'blog.readingMin': 'min de lectura',
+    'blog.backToList': '← Tornar a Recursos',
+    'blog.cta.title': 'Parlem del teu projecte?',
+    'blog.cta.text': 'Et fem un diagnòstic i pressupost gratis, sense compromís.',
+
+    // --- Sectors ---
+    'sectors.kicker': 'Sectors',
+    'sectors.title': 'Webs pensades per al teu sector',
+    'sectors.subtitle':
+      'Cada sector té necessitats distintes. Dissenyem la teua web pensant en les del teu.',
+    'sectors.painTitle': 'El que sol fallar',
+    'sectors.solutionTitle': 'Com ho resolem',
+    'sectors.includesTitle': 'Què inclou la teua web',
+    'sectors.cta': 'Vull una web per al meu negoci',
+    'sectors.all': 'Veure tots els sectors',
+
+    // --- Clients ---
+    'clients.title': 'Negocis que ja confien en MetaLogic',
 
     'hero.badge': 'Disponible per a nous projectes',
     'hero.title.1': 'Webs que',
@@ -323,7 +373,32 @@ export const ui = {
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
     'nav.home': 'Home',
+    'nav.resources': 'Resources',
     'nav.cta': 'Get a quote',
+
+    // --- Blog / Resources ---
+    'blog.kicker': 'Resources',
+    'blog.title': 'Learn how to get the most out of your website',
+    'blog.subtitle':
+      'Clear guides on websites, SEO and winning clients for freelancers and small businesses. No jargon.',
+    'blog.readingMin': 'min read',
+    'blog.backToList': '← Back to Resources',
+    'blog.cta.title': 'Shall we talk about your project?',
+    'blog.cta.text': 'We’ll give you a free diagnosis and quote, no strings attached.',
+
+    // --- Sectors ---
+    'sectors.kicker': 'Sectors',
+    'sectors.title': 'Websites built for your sector',
+    'sectors.subtitle':
+      'Every sector has different needs. We design your website around yours.',
+    'sectors.painTitle': 'What usually goes wrong',
+    'sectors.solutionTitle': 'How we solve it',
+    'sectors.includesTitle': 'What your website includes',
+    'sectors.cta': 'I want a website for my business',
+    'sectors.all': 'See all sectors',
+
+    // --- Clients ---
+    'clients.title': 'Businesses that already trust MetaLogic',
 
     'hero.badge': 'Available for new projects',
     'hero.title.1': 'Websites that',

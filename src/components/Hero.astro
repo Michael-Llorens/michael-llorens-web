@@ -19,6 +19,11 @@ const t = useTranslations(lang);
   </div>
 
   <div class="container hero__inner">
+    <span class="hero__badge" data-reveal style="--reveal-delay:20ms">
+      <span class="dot"></span>
+      {t('hero.badge')}
+    </span>
+
     <h1 class="display hero__title" data-reveal style="--reveal-delay:60ms">
       {t('hero.title.1')}{' '}
       <span class="gradient-text">{t('hero.title.2')}</span>{' '}

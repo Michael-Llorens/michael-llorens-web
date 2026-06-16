@@ -18,7 +18,7 @@ export const site = {
   },
 
   // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
-  url: 'https://michael-llorens-web.vercel.app',
+  url: 'https://metalogic.vercel.app',
 
   // ⚠️ PLACEHOLDER — cambia por tu email real (cuando tengas el dominio)
   email: 'hola@metalogicweb.com',
@@ -31,7 +31,7 @@ export const site = {
   location: 'Xàtiva, Valencia (España)',
 
   // 🗓️ OPCIONAL pero MUY recomendado: pega aquí tu enlace de Cal.com o Calendly
-  // (ej. 'https://cal.com/michael-llorens/15min'). En cuanto lo rellenes, aparecerá
+  // (ej. 'https://cal.com/metalogic/15min'). En cuanto lo rellenes, aparecerá
   // el botón "Reserva una llamada gratis" en la sección de contacto. Si lo dejas
   // vacío, no se muestra nada.
   bookingUrl: '',
@@ -40,7 +40,8 @@ export const site = {
   socials: {
     github: 'https://github.com/Michael-Llorens',
     linkedin: 'https://www.linkedin.com/in/michael-llorens',
-    instagram: '',
+    // ⚠️ PLACEHOLDER — pon aquí tu usuario real de Instagram
+    instagram: 'https://www.instagram.com/metalogicweb',
   },
 };
 

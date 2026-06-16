@@ -1,0 +1,158 @@
+---
+import { type Lang, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import type { BlogPost } from '../data/blog';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+  post: BlogPost;
+}
+const { lang, post } = Astro.props;
+const t = useTranslations(lang);
+
+const dateFmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(post.date));
+---
+
+<article class="section article">
+  <div class="container article__wrap">
+    <a href={localizedPath(lang, 'recursos')} class="article__back">{t('blog.backToList')}</a>
+
+    <header class="article__head" data-reveal>
+      <div class="article__meta">
+        <span class="article__cat">{post.category}</span>
+        <span>·</span>
+        <time datetime={post.date}>{dateFmt}</time>
+        <span>·</span>
+        <span>{post.readingMin} {t('blog.readingMin')}</span>
+      </div>
+      <h1 class="article__title">{post.title}</h1>
+      <p class="article__excerpt">{post.excerpt}</p>
+    </header>
+
+    <div class="prose" data-reveal set:html={post.body} />
+
+    <aside class="article__cta card card-glow" data-reveal>
+      <h2>{t('blog.cta.title')}</h2>
+      <p>{t('blog.cta.text')}</p>
+      <a href={localizedPath(lang, 'contacto')} class="btn btn-primary">
+        {t('nav.cta')}
+        <Icon name="arrow" />
+      </a>
+    </aside>
+  </div>
+</article>
+
+<style>
+  .article__wrap {
+    max-width: 760px;
+  }
+  .article__back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  .article__back:hover {
+    color: var(--accent-2);
+  }
+  .article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .article__cat {
+    color: var(--accent-2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .article__excerpt {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin: 2.2rem 0 0.9rem;
+    color: var(--text);
+  }
+  .prose :global(p) {
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+  }
+  .prose :global(ul) {
+    margin: 0 0 1.3rem;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .prose :global(li) {
+    color: var(--text-muted);
+    line-height: 1.65;
+    list-style: none;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  .prose :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .prose :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .prose :global(a) {
+    color: var(--accent-2);
+    text-decoration: underline;
+  }
+
+  .article__cta {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 2.5rem 1.5rem;
+  }
+  .article__cta h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+  }
+  .article__cta p {
+    color: var(--text-muted);
+    max-width: 42ch;
+  }
+  .article__cta .btn {
+    margin-top: 0.6rem;
+  }
+</style>

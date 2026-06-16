@@ -232,6 +232,8 @@ export interface Project {
   // Colores del mockup (degradado). Cámbialos o sustituye por capturas reales en /public/projects.
   gradient: [string, string];
   image?: string; // ruta opcional a una captura real: '/projects/taxi.jpg'
+  // Métricas reales del caso (opcional). Se muestran solo si las rellenas.
+  metrics?: { value: string; label: string }[];
 }
 
 const projectsBase = [
@@ -388,6 +390,43 @@ const tagI18n: Record<string, Partial<Record<Lang, string>>> = {
 };
 const translateTag = (tag: string, lang: Lang): string => tagI18n[tag]?.[lang] ?? tag;
 
+/* ───────────────── MÉTRICAS DE LOS CASOS (RELLENA CON DATOS REALES) ─────────────────
+   👉 Aquí van los resultados MEDIBLES de cada proyecto. Se muestran como cifras
+   destacadas en la tarjeta del proyecto SOLO si las rellenas (si el array está
+   vacío, no se muestra nada — nunca se inventan números).
+
+   Ejemplo de cómo rellenarlo (pon tus datos reales y descomenta):
+     beply: [
+       { value: '+65%', label: 'tráfico orgánico' },
+       { value: '100', label: 'PageSpeed móvil' },
+       { value: '−40%', label: 'tiempo de carga' },
+     ],
+
+   Pon 2-3 métricas por proyecto. Tradúcelas en los 3 idiomas (es/va/en). */
+const projectMetrics: Localized<Record<string, { value: string; label: string }[]>> = {
+  es: {
+    beply: [],
+    'taxi-xativa': [],
+    'clinica-laura-serra': [],
+    onllum: [],
+    'el-buey-madurado': [],
+  },
+  va: {
+    beply: [],
+    'taxi-xativa': [],
+    'clinica-laura-serra': [],
+    onllum: [],
+    'el-buey-madurado': [],
+  },
+  en: {
+    beply: [],
+    'taxi-xativa': [],
+    'clinica-laura-serra': [],
+    onllum: [],
+    'el-buey-madurado': [],
+  },
+};
+
 export const getProjects = (lang: Lang): Project[] =>
   projectsBase.map((p) => ({
     slug: p.slug,
@@ -400,6 +439,7 @@ export const getProjects = (lang: Lang): Project[] =>
     category: projectCopy[lang][p.slug].category,
     description: projectCopy[lang][p.slug].description,
     result: projectCopy[lang][p.slug].result,
+    metrics: projectMetrics[lang][p.slug] ?? [],
   }));
 
 /* ───────────────── PROCESO ───────────────── */
@@ -505,7 +545,7 @@ const testimonials: Localized<Testimonial[]> = {
   es: [
     {
       quote:
-        'Michael entendió perfectamente lo que necesitábamos. La web quedó preciosa, rápida y ya nos llegan clientes nuevos gracias a Google.',
+        'En MetaLogic entendieron perfectamente lo que necesitábamos. La web quedó preciosa, rápida y ya nos llegan clientes nuevos gracias a Google.',
       author: 'Cliente · Ejemplo',
       role: 'Sector servicios (Xàtiva)',
     },
@@ -525,7 +565,7 @@ const testimonials: Localized<Testimonial[]> = {
   va: [
     {
       quote:
-        'Michael va entendre perfectament el que necessitàvem. La web va quedar preciosa, ràpida i ja ens arriben clients nous gràcies a Google.',
+        'A MetaLogic van entendre perfectament el que necessitàvem. La web va quedar preciosa, ràpida i ja ens arriben clients nous gràcies a Google.',
       author: 'Client · Exemple',
       role: 'Sector serveis (Xàtiva)',
     },
@@ -545,7 +585,7 @@ const testimonials: Localized<Testimonial[]> = {
   en: [
     {
       quote:
-        'Michael understood exactly what we needed. The website turned out beautiful, fast, and we’re already getting new clients thanks to Google.',
+        'The MetaLogic team understood exactly what we needed. The website turned out beautiful, fast, and we’re already getting new clients thanks to Google.',
       author: 'Client · Example',
       role: 'Service business (Xàtiva)',
     },

@@ -1,4 +1,4 @@
-# Michael Llorens — Web de desarrollo web y SEO
+# MetaLogic — Web de desarrollo web y SEO
 
 Web profesional (portfolio + captación de clientes) construida con **Astro**.
 Trilingüe (Español / Valencià / English), dark premium, optimizada para SEO y rendimiento.

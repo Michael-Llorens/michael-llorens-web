@@ -17,9 +17,13 @@ const navLinks = [
   { key: 'servicios', href: localizedPath(lang, 'servicios'), label: t('nav.services') },
   { key: 'proyectos', href: localizedPath(lang, 'proyectos'), label: t('nav.work') },
   { key: 'precios', href: localizedPath(lang, 'precios'), label: t('nav.pricing') },
+  { key: 'recursos', href: localizedPath(lang, 'recursos'), label: t('nav.resources') },
   { key: 'nosotros', href: localizedPath(lang, 'nosotros'), label: t('nav.about') },
 ];
 const ctaHref = localizedPath(lang, 'contacto');
+
+// Resalta el enlace activo también en sus subpáginas (p. ej. /recursos/[slug]).
+const isActiveNav = (key: string) => active === key || active.startsWith(`${key}/`);
 ---
 
 <header class="header" id="site-header">
@@ -34,8 +38,8 @@ const ctaHref = localizedPath(lang, 'contacto');
         navLinks.map((l) => (
           <a
             href={l.href}
-            class:list={['nav__link', { 'is-active': l.key === active }]}
-            aria-current={l.key === active ? 'page' : undefined}
+            class:list={['nav__link', { 'is-active': isActiveNav(l.key) }]}
+            aria-current={isActiveNav(l.key) ? 'page' : undefined}
           >
             {l.label}
           </a>

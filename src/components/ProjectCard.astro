@@ -66,6 +66,19 @@ const featured = !!p.featured;
       {p.result}
     </p>
 
+    {
+      p.metrics && p.metrics.length > 0 && (
+        <div class="project__metrics">
+          {p.metrics.map((m) => (
+            <div class="project__metric">
+              <span class="project__metric-value gradient-text">{m.value}</span>
+              <span class="project__metric-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
     <div class="project__tags">
       {p.tags.map((tag) => <span class="tag">{tag}</span>)}
     </div>
@@ -250,6 +263,28 @@ const featured = !!p.featured;
     text-transform: uppercase;
     color: var(--accent-2);
     margin-right: 0.4rem;
+  }
+  .project__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    margin-top: 0.9rem;
+    padding: 0.3rem 0;
+  }
+  .project__metric {
+    display: flex;
+    flex-direction: column;
+  }
+  .project__metric-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .project__metric-label {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
   }
   .project__tags {
     display: flex;

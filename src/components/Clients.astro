@@ -1,0 +1,92 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getProjects } from '../data/content';
+
+/* Tira de "negocios que confían en nosotros".
+   Usa los proyectos REALES ya entregados. Si añades un logo en
+   /public/clients/<slug>.svg (o .png/.webp) y rellenas la ruta en `logo`,
+   se mostrará la imagen; si no, se muestra el nombre con estilo. */
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Logos opcionales por slug. Pon aquí la ruta cuando tengas el logo del cliente.
+const logos: Record<string, string | undefined> = {
+  beply: undefined,
+  'taxi-xativa': undefined,
+  'clinica-laura-serra': undefined,
+  onllum: undefined,
+  'el-buey-madurado': undefined,
+};
+
+const clients = getProjects(lang).map((p) => ({ name: p.name, logo: logos[p.slug] }));
+---
+
+<section class="clients" aria-label={t('clients.title')}>
+  <div class="container">
+    <p class="clients__title" data-reveal>{t('clients.title')}</p>
+    <ul class="clients__row" data-reveal>
+      {
+        clients.map((c) => (
+          <li class="clients__item">
+            {c.logo ? (
+              <img src={c.logo} alt={c.name} height="28" loading="lazy" />
+            ) : (
+              <span class="clients__name">{c.name}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+  .clients__title {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+  .clients__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vw, 3.5rem);
+  }
+  .clients__item {
+    opacity: 0.75;
+    transition: opacity 0.25s ease, color 0.25s ease;
+  }
+  .clients__item:hover {
+    opacity: 1;
+  }
+  .clients__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .clients__item:hover .clients__name {
+    color: var(--text);
+  }
+  .clients__item img {
+    width: auto;
+    height: 28px;
+    filter: grayscale(1);
+    transition: filter 0.25s ease;
+  }
+  .clients__item:hover img {
+    filter: grayscale(0);
+  }
+</style>

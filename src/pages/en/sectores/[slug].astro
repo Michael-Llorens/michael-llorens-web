@@ -1,0 +1,24 @@
+---
+import PageLayout from '../../../components/PageLayout.astro';
+import SectorPage from '../../../components/SectorPage.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getSectorSlugs, getSector } from '../../../data/sectors';
+
+export function getStaticPaths() {
+  return getSectorSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const lang = 'en';
+const { slug } = Astro.params;
+const sector = getSector(lang, slug as string)!;
+---
+
+<PageLayout
+  lang={lang}
+  path={`sectores/${sector.slug}`}
+  title={`${sector.name} · MetaLogic`}
+  description={sector.intro}
+>
+  <SectorPage lang={lang} sector={sector} />
+  <FinalCta lang={lang} />
+</PageLayout>

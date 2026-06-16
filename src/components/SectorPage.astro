@@ -1,0 +1,190 @@
+---
+import { type Lang, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import type { Sector } from '../data/sectors';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+  sector: Sector;
+}
+const { lang, sector } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section sector-hero">
+  <div class="container">
+    <a href={localizedPath(lang, 'sectores')} class="sector-hero__back">← {t('sectors.all')}</a>
+    <div class="sector-hero__head" data-reveal>
+      <span class="sector-hero__icon"><Icon name={sector.icon} /></span>
+      <span class="kicker">{t('sectors.kicker')}</span>
+      <h1 class="sector-hero__title">{sector.name}</h1>
+      <p class="sector-hero__tagline">{sector.tagline}</p>
+      <p class="sector-hero__intro">{sector.intro}</p>
+      <a href={localizedPath(lang, 'contacto')} class="btn btn-primary btn-lg">
+        {t('sectors.cta')}
+        <Icon name="arrow" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section sector-body">
+  <div class="container">
+    <div class="grid grid-2 sector-cols">
+      <div class="card sector-col" data-reveal>
+        <h2 class="sector-col__title sector-col__title--pain">{t('sectors.painTitle')}</h2>
+        <ul class="sector-col__list">
+          {sector.pains.map((p) => (
+            <li><span class="sector-col__x">✕</span><span>{p}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="card card-glow sector-col" data-reveal style="--reveal-delay:90ms">
+        <h2 class="sector-col__title">{t('sectors.solutionTitle')}</h2>
+        <ul class="sector-col__list">
+          {sector.solutions.map((s) => (
+            <li><Icon name="check" /><span>{s}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="sector-includes" data-reveal>
+      <h2 class="sector-includes__title">{t('sectors.includesTitle')}</h2>
+      <ul class="sector-includes__grid">
+        {sector.includes.map((inc) => (
+          <li><Icon name="plus" /><span>{inc}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sector-hero {
+    text-align: center;
+  }
+  .sector-hero__back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  .sector-hero__back:hover {
+    color: var(--accent-2);
+  }
+  .sector-hero__head {
+    max-width: 720px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .sector-hero__icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: var(--accent-soft);
+    color: var(--accent-2);
+    margin-bottom: 0.8rem;
+  }
+  .sector-hero__icon :global(svg) {
+    width: 30px;
+    height: 30px;
+  }
+  .sector-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    margin-top: 0.5rem;
+  }
+  .sector-hero__tagline {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--text);
+    margin-top: 0.3rem;
+  }
+  .sector-hero__intro {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 1rem 0 1.8rem;
+    max-width: 60ch;
+  }
+
+  .sector-cols {
+    align-items: start;
+  }
+  .sector-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sector-col__title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  .sector-col__title--pain {
+    color: var(--text-muted);
+  }
+  .sector-col__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .sector-col__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .sector-col__list :global(svg) {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--accent-2);
+  }
+  .sector-col__x {
+    color: var(--text-dim);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    margin-top: 0.15rem;
+  }
+
+  .sector-includes {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .sector-includes__title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .sector-includes__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin-inline: auto;
+    text-align: left;
+  }
+  .sector-includes__grid li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .sector-includes__grid :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+</style>

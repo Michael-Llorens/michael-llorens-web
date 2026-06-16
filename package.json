@@ -1,8 +1,8 @@
 {
-  "name": "michael-llorens-web",
+  "name": "metalogic",
   "type": "module",
   "version": "1.0.0",
-  "description": "Web profesional de Michael Llorens — Desarrollo web y posicionamiento SEO",
+  "description": "MetaLogic — Desarrollo web y posicionamiento SEO",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
