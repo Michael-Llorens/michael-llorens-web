@@ -57,7 +57,13 @@ const articleSchema = {
 
 <article class="section article">
   <div class="container article__wrap">
-    <a href={`${localizedPath(lang, 'nosotros')}#recursos`} class="article__back">{t('blog.backToList')}</a>
+    <nav class="crumbs" aria-label="Migas de pan">
+      <a href={localizedPath(lang)}>{t('nav.home')}</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <a href={`${localizedPath(lang, 'nosotros')}#recursos`}>{t('blog.kicker')}</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <span aria-current="page">{post.title}</span>
+    </nav>
 
     <header class="article__head" data-reveal>
       <div class="article__meta">

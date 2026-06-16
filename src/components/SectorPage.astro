@@ -43,7 +43,13 @@ const sectorSchema = {
 
 <section class="section sector-hero">
   <div class="container">
-    <a href={`${localizedPath(lang, 'servicios')}#sectores`} class="sector-hero__back">← {t('sectors.all')}</a>
+    <nav class="crumbs" aria-label="Migas de pan">
+      <a href={localizedPath(lang)}>{t('nav.home')}</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <a href={`${localizedPath(lang, 'servicios')}#sectores`}>{t('nav.services')}</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <span aria-current="page">{sector.name}</span>
+    </nav>
     <div class="sector-hero__head" data-reveal>
       <span class="sector-hero__icon"><Icon name={sector.icon} /></span>
       <span class="kicker">{t('sectors.kicker')}</span>
