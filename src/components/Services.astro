@@ -6,17 +6,20 @@ import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
+  /** En la página de Servicios este título es el H1 de la página. */
+  asPageTitle?: boolean;
 }
-const { lang } = Astro.props;
+const { lang, asPageTitle = false } = Astro.props;
 const t = useTranslations(lang);
 const services = getServices(lang);
+const TitleTag = asPageTitle ? 'h1' : 'h2';
 ---
 
 <section class="section" id="services">
   <div class="container">
     <div class="section-head center" data-reveal>
       <span class="kicker">{t('services.kicker')}</span>
-      <h2 class="section-title">{t('services.title')}</h2>
+      <TitleTag class="section-title">{t('services.title')}</TitleTag>
       <p class="lead">{t('services.subtitle')}</p>
     </div>
 
