@@ -16,16 +16,38 @@ const directs = [
   { icon: 'whatsapp', label: 'WhatsApp', value: site.phoneDisplay, href: wa },
   { icon: 'phone', label: t('contact.phone.label'), value: site.phoneDisplay, href: `tel:+${site.phoneRaw}` },
 ];
+
+// Mensajes del formulario (envío AJAX a Web3Forms)
+const formMsg = {
+  es: {
+    sending: 'Enviando…',
+    ok: '¡Mensaje enviado! Te responderemos lo antes posible.',
+    error: 'No se pudo enviar. Inténtalo de nuevo o escríbenos por email o WhatsApp.',
+  },
+  va: {
+    sending: 'Enviant…',
+    ok: 'Missatge enviat! Et respondrem com més prompte millor.',
+    error: 'No s’ha pogut enviar. Torna-ho a provar o escriu-nos per email o WhatsApp.',
+  },
+  en: {
+    sending: 'Sending…',
+    ok: 'Message sent! We’ll get back to you as soon as possible.',
+    error: 'Couldn’t send. Please try again or reach us by email or WhatsApp.',
+  },
+}[lang];
 ---
 
 <!-- Contacto -->
 <section class="section contact" id="contact">
-  <div class="container contact__grid">
-    <div class="contact__intro">
-      <span class="kicker" data-reveal>{t('contact.kicker')}</span>
-      <h1 class="section-title" data-reveal style="--reveal-delay:60ms">{t('contact.title')}</h1>
-      <p class="lead" data-reveal style="--reveal-delay:120ms">{t('contact.subtitle')}</p>
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('contact.kicker')}</span>
+      <h1 class="section-title">{t('contact.title')}</h1>
+      <p class="lead">{t('contact.subtitle')}</p>
+    </div>
 
+    <div class="contact__grid">
+      <div class="contact__intro">
       {
         site.bookingUrl && (
           <a
@@ -75,6 +97,10 @@ const directs = [
     </div>
 
     <form class="contact__form card" id="contact-form" data-reveal style="--reveal-delay:120ms">
+      <input type="hidden" name="access_key" value={site.web3formsKey} />
+      <input type="hidden" name="subject" value="Nuevo mensaje desde la web de MetaLogic" />
+      <input type="hidden" name="from_name" value="Web MetaLogic" />
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="field">
         <label for="name">{t('contact.form.name')}</label>
         <input type="text" id="name" name="name" required placeholder={t('contact.form.namePlaceholder')} autocomplete="name" />
@@ -91,34 +117,63 @@ const directs = [
         {t('contact.form.send')}
         <Icon name="arrow" />
       </button>
+      <p id="form-status" class="form__status" role="status" aria-live="polite"></p>
     </form>
+    </div>
   </div>
 </section>
 
-<script define:vars={{ email: site.email }}>
-  // Sin backend: el formulario abre el cliente de correo con los datos ya rellenados.
-  // 👉 Para recibir los mensajes automáticamente, sustituye este bloque por un
-  //    servicio como Formspree o Web3Forms (action="https://...").
+<script define:vars={{ msg: formMsg }}>
+  // Envío sin recargar la página vía Web3Forms. Los mensajes llegan al email.
   const form = document.getElementById('contact-form');
-  form?.addEventListener('submit', (e) => {
+  const status = document.getElementById('form-status');
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const name = String(data.get('name') || '');
-    const from = String(data.get('email') || '');
-    const message = String(data.get('message') || '');
-    const subject = encodeURIComponent(`Nuevo proyecto web — ${name}`);
-    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${from}\n\n${message}`);
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    const btn = form.querySelector('button[type="submit"]');
+    const label = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = msg.sending;
+    status.textContent = '';
+    status.className = 'form__status';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.reset();
+        status.textContent = msg.ok;
+        status.classList.add('form__status--ok');
+      } else {
+        status.textContent = msg.error;
+        status.classList.add('form__status--err');
+      }
+    } catch (err) {
+      status.textContent = msg.error;
+      status.classList.add('form__status--err');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = label;
+    }
   });
 </script>
 
 <style>
   /* Contacto */
+  .contact .section-head {
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
   .contact__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
+  }
+  /* Sin cabecera ya en la columna: el primer bloque arranca alineado arriba. */
+  .contact__intro > :first-child {
+    margin-top: 0;
   }
   .contact__book {
     display: flex;
@@ -267,7 +322,28 @@ const directs = [
   }
   .form__submit {
     margin-top: 0.4rem;
-    width: 100%;
+    align-self: center;
+  }
+  /* Honeypot antispam: oculto para humanos, visible para bots */
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .form__status {
+    margin-top: 0.3rem;
+    font-size: 0.92rem;
+    min-height: 1.2em;
+    font-weight: 500;
+  }
+  .form__status--ok {
+    color: #1c9e57;
+  }
+  .form__status--err {
+    color: #e0492a;
   }
 
   @media (max-width: 800px) {

@@ -27,6 +27,14 @@ const { lang, path = '', title, description } = Astro.props;
 <style is:global>
   /* Las páginas internas (sin hero) necesitan separación de la cabecera fija */
   .main--inner {
-    padding-top: 5.5rem;
+    padding-top: 4.5rem;
+  }
+  /* Menos espacio arriba: la 1ª sección no necesita tanto padding superior */
+  .main--inner > :first-child {
+    padding-block-start: clamp(1.25rem, 3vw, 2.25rem);
+  }
+  /* El kicker de la 1ª sección repite dónde estás (Portfolio, Precios…): fuera */
+  .main--inner > :first-child .kicker {
+    display: none;
   }
 </style>

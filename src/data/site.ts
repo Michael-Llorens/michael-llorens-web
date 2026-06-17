@@ -20,13 +20,17 @@ export const site = {
   // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
   url: 'https://metalogic.vercel.app',
 
-  // ⚠️ PLACEHOLDER — cambia por tu email real (cuando tengas el dominio)
-  email: 'hola@metalogicweb.com',
+  // Email de contacto
+  email: 'metalogicweb@gmail.com',
 
-  // ⚠️ PLACEHOLDER — cambia por tu teléfono real (formato visible)
-  phoneDisplay: '+34 600 000 000',
-  // ⚠️ PLACEHOLDER — mismo número en formato internacional para enlaces tel: y WhatsApp
-  phoneRaw: '34600000000',
+  // Teléfono (formato visible)
+  phoneDisplay: '+34 722 169 108',
+  // Mismo número en formato internacional para enlaces tel: y WhatsApp
+  phoneRaw: '34722169108',
+
+  // Clave de Web3Forms: los mensajes del formulario llegan a tu email.
+  // Gratis en https://web3forms.com (puedes regenerarla cuando quieras).
+  web3formsKey: '7f4353a5-0a07-4dd8-b092-91387d0ee11b',
 
   location: 'Xàtiva, Valencia (España)',
 

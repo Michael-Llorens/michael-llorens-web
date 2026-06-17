@@ -937,19 +937,19 @@ export const getPricingIncludes = (lang: Lang) => pricingIncludes[lang];
 const pricingDetails: Localized<Service[]> = {
   es: [
     { icon: 'bolt', title: 'Plazos claros', description: 'Entrega típica de 1 a 4 semanas según el alcance. Acordamos una fecha realista antes de empezar.' },
-    { icon: 'shield', title: 'Forma de pago', description: '50% para reservar el proyecto y 50% a la entrega. Sin sorpresas ni costes ocultos.' },
+    { icon: 'shield', title: 'Forma de pago', description: '30% para reservar el proyecto y 70% a la entrega. Sin sorpresas ni costes ocultos.' },
     { icon: 'check', title: 'Revisiones incluidas', description: 'Validamos cada fase contigo, con rondas de cambios para dejar la web justo como la imaginas.' },
     { icon: 'spark', title: 'Qué pasa después', description: 'Soporte tras el lanzamiento y planes de mantenimiento opcionales para seguir creciendo.' },
   ],
   va: [
     { icon: 'bolt', title: 'Terminis clars', description: 'Entrega típica d’1 a 4 setmanes segons l’abast. Acordem una data realista abans de començar.' },
-    { icon: 'shield', title: 'Forma de pagament', description: '50% per a reservar el projecte i 50% a l’entrega. Sense sorpreses ni costos ocults.' },
+    { icon: 'shield', title: 'Forma de pagament', description: '30% per a reservar el projecte i 70% a l’entrega. Sense sorpreses ni costos ocults.' },
     { icon: 'check', title: 'Revisions incloses', description: 'Validem cada fase amb tu, amb rondes de canvis per a deixar la web tal com la imagines.' },
     { icon: 'spark', title: 'Què passa després', description: 'Suport després del llançament i plans de manteniment opcionals per a seguir creixent.' },
   ],
   en: [
     { icon: 'bolt', title: 'Clear timelines', description: 'Typical delivery of 1 to 4 weeks depending on scope. We agree on a realistic date before starting.' },
-    { icon: 'shield', title: 'Payment terms', description: '50% to book the project and 50% on delivery. No surprises, no hidden costs.' },
+    { icon: 'shield', title: 'Payment terms', description: '30% to book the project and 70% on delivery. No surprises, no hidden costs.' },
     { icon: 'check', title: 'Revisions included', description: 'We validate each phase with you, with rounds of changes to get the site exactly as you imagine it.' },
     { icon: 'spark', title: 'What happens next', description: 'Post-launch support and optional maintenance plans so you keep growing.' },
   ],
