@@ -42,8 +42,6 @@ export const site = {
 
   // ⚠️ PLACEHOLDER — cambia o elimina los que no uses
   socials: {
-    github: 'https://github.com/Michael-Llorens',
-    linkedin: 'https://www.linkedin.com/in/michael-llorens',
     // ⚠️ PLACEHOLDER — pon aquí tu usuario real de Instagram
     instagram: 'https://www.instagram.com/metalogicweb',
   },

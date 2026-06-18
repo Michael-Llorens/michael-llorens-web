@@ -30,10 +30,9 @@ const legalLinks = [
 const services = getServices(lang).slice(0, 5);
 
 const socials = [
-  { name: 'github', href: site.socials.github },
-  { name: 'linkedin', href: site.socials.linkedin },
   { name: 'instagram', href: site.socials.instagram },
   { name: 'whatsapp', href: whatsappLink(lang) },
+  { name: 'mail', href: `mailto:${site.email}` },
 ].filter((s) => s.href);
 ---
 
@@ -44,7 +43,6 @@ const socials = [
         <a href={localizedPath(lang)} class="footer__logo" aria-label={site.name}>
           <img src="/logo-full.png" alt={site.name} width="623" height="645" loading="lazy" />
         </a>
-        <p class="footer__tagline">{t('footer.tagline')}</p>
         <div class="footer__socials">
           {
             socials.map((s) => (
@@ -60,6 +58,7 @@ const socials = [
             ))
           }
         </div>
+        <p class="footer__tagline">{t('footer.tagline')}</p>
       </div>
 
       <div class="footer__col">
@@ -120,7 +119,7 @@ const socials = [
   }
   .footer__tagline {
     color: var(--text-muted);
-    margin: 1rem 0 1.3rem;
+    margin: 1.1rem 0 0;
     font-size: 0.95rem;
     max-width: 32ch;
   }
@@ -128,6 +127,7 @@ const socials = [
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-top: 1.2rem;
   }
   .footer__social {
     display: grid;
