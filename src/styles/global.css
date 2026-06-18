@@ -434,17 +434,17 @@ h4 {
   filter: brightness(1.05);
 }
 
-/* btn-ghost ahora es igual que btn-primary: todos los botones del mismo color */
 .btn-ghost {
-  background: var(--gradient);
-  color: #0a0a12;
-  font-weight: 700;
-  box-shadow: 0 10px 30px -8px var(--accent-glow);
+  background: var(--surface-hover);
+  border: 1.5px solid var(--accent);
+  color: var(--text);
+  backdrop-filter: blur(8px);
 }
 
 .btn-ghost:hover {
-  box-shadow: 0 16px 40px -12px var(--accent-glow);
-  filter: brightness(1.05);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px -16px var(--accent-glow);
 }
 
 /* btn-lg ya NO cambia el tamaño: todos los botones miden igual (coherencia).
