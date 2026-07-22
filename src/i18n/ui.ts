@@ -125,12 +125,15 @@ export const ui = {
     'proof.perf': 'Rendimiento',
 
     // --- Backend & APIs ---
-    'backend.kicker': 'Más que webs',
+    // Alineado con la sección "extras.*" de la home: allí se presenta el qué
+    // (reservas, pedidos, paneles...) de forma comercial; aquí va el cómo,
+    // con más profundidad técnica.
+    'backend.kicker': 'Más que una web',
     'backend.title': 'Backend, APIs y software a medida',
     'backend.subtitle':
-      'No solo diseñamos webs bonitas: programamos la lógica que hace funcionar tu negocio por dentro, de los pedidos a los pagos. Somos full-stack.',
-    'backend.proof': 'Lo aplicamos en El Buey Madurado: desarrollamos la gestión completa de pedidos, reservas y acceso seguro.',
-    'backend.cta': 'Cuéntanos qué necesitas',
+      'En la home ya has visto qué se puede sumar a tu web: reservas, pedidos, paneles o áreas privadas. Aquí va el cómo — programo esa lógica de principio a fin, de la base de datos a la interfaz, sin plantillas ni atajos.',
+    'backend.proof': 'Lo apliqué en El Buey Madurado: desarrollé la gestión completa de pedidos, reservas y acceso seguro.',
+    'backend.cta': 'Cuéntame qué necesitas',
 
     // --- Proceso ---
     'process.kicker': 'Cómo trabajamos',

@@ -196,9 +196,9 @@ const extras: Localized<Service[]> = {
     },
     {
       icon: 'globe',
-      title: 'SEO local, reseñas y multiidioma',
+      title: 'Reseñas, multiidioma y analítica',
       description:
-        'Tu ficha de Google, tus reseñas, tu mapa y tu web en varios idiomas trabajando juntos para que te encuentren donde y como te buscan.',
+        'Pido reseñas de forma automática después de cada servicio, preparo tu web en varios idiomas si tienes clientes fuera de tu zona, y dejo medido lo importante para saber qué funciona de verdad.',
     },
   ],
   va: [
@@ -234,9 +234,9 @@ const extras: Localized<Service[]> = {
     },
     {
       icon: 'globe',
-      title: 'SEO local, ressenyes i multiidioma',
+      title: 'Ressenyes, multiidioma i analítica',
       description:
-        'La teua fitxa de Google, les teues ressenyes, el teu mapa i la teua web en diversos idiomes treballant junts perquè et troben on i com et busquen.',
+        'Demane ressenyes de manera automàtica després de cada servei, preparo la teua web en diversos idiomes si tens clients fora de la teua zona, i deixe mesurat el que importa per a saber què funciona de veres.',
     },
   ],
   en: [
@@ -272,9 +272,9 @@ const extras: Localized<Service[]> = {
     },
     {
       icon: 'globe',
-      title: 'Local SEO, reviews and multilingual sites',
+      title: 'Reviews, multilingual sites and analytics',
       description:
-        'Your Google profile, reviews, map listing and multilingual website working together so people find you however they search.',
+        'I request reviews automatically after each service, prepare your website in several languages if you have clients outside your area, and set up the tracking that matters so you know what’s actually working.',
     },
   ],
 };
