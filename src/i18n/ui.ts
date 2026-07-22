@@ -48,7 +48,6 @@ export const ui = {
     'clients.title': 'Negocios que ya confían en MetaLogic',
 
     // --- Hero ---
-    'hero.badge': 'Disponible para nuevos proyectos · Xàtiva, Valencia y toda España',
     'hero.title.1': 'Diseño web que',
     'hero.title.2': 'vende',
     'hero.title.3': 'en Xàtiva y Valencia',
@@ -247,7 +246,6 @@ export const ui = {
     // --- Clients ---
     'clients.title': 'Negocis que ja confien en MetaLogic',
 
-    'hero.badge': 'Disponible per a nous projectes · Xàtiva, València i tota Espanya',
     'hero.title.1': 'Disseny web que',
     'hero.title.2': 'posiciona',
     'hero.title.3': 'i converteix',
@@ -427,7 +425,6 @@ export const ui = {
     // --- Clients ---
     'clients.title': 'Businesses that already trust MetaLogic',
 
-    'hero.badge': 'Available for new projects · Xàtiva, Valencia and all of Spain',
     'hero.title.1': 'Web design that',
     'hero.title.2': 'ranks',
     'hero.title.3': 'and converts',

@@ -26,11 +26,6 @@ const shots = getProjects(lang)
 
   <div class="container hero__inner">
     <div class="hero__text">
-      <span class="hero__badge" data-reveal style="--reveal-delay:0ms">
-        <span class="hero__badge-dot" aria-hidden="true"></span>
-        {t('hero.badge')}
-      </span>
-
       <h1 class="display hero__title" data-reveal style="--reveal-delay:60ms">
         {t('hero.title.1')}{' '}
         <span class="gradient-text">{t('hero.title.2')}</span>{' '}
@@ -298,36 +293,6 @@ const shots = getProjects(lang)
     .hero__visual {
       max-width: none;
     }
-  }
-  .hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.85rem;
-    margin-bottom: 1.2rem;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    border: 1px solid var(--border-strong);
-    color: var(--text-muted);
-    font-size: 0.82rem;
-    font-weight: 500;
-  }
-  .hero__badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent-2);
-    flex-shrink: 0;
-    animation: badge-pulse 2.4s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__badge-dot {
-      animation: none;
-    }
-  }
-  @keyframes badge-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
   }
   .hero__title {
     margin-bottom: 1.5rem;
