@@ -8,159 +8,108 @@ import type { Lang } from '../i18n/config';
 
 type Localized<T> = Record<Lang, T>;
 
-/* ───────────────── SERVICIOS ───────────────── */
-export interface Service {
+/* ───────────────── SERVICIOS (3 pilares) ─────────────────
+   Antes eran 6 tarjetas sueltas (una por servicio). Se agrupan en 3
+   bloques con sentido de negocio: cómo se construye la web, cómo se
+   encuentra, y el diferenciador de IA. Cada pilar lleva unas etiquetas
+   cortas para no perder el detalle de qué incluye. */
+export interface Pillar {
   icon: string; // nombre del icono (ver Icon.astro)
+  // Ancla estable (no traducida) para enlazar desde el footer:
+  // /servicios#<slug>.
+  slug: string;
   title: string;
   description: string;
-  // Ancla estable (no traducida) para enlazar directo a esta tarjeta desde
-  // el footer u otras páginas: /servicios#<slug>. Opcional: solo lo usan
-  // los 6 servicios principales, no el bloque de backend/APIs.
-  slug?: string;
-  // Etiqueta corta opcional (p. ej. "Ventaja competitiva" en GEO), se
-  // muestra en el panel de la pestaña activa en Services.astro.
+  tags: string[];
+  // Etiqueta corta opcional (solo la lleva el pilar de IA/GEO).
   badge?: string;
 }
 
-const services: Localized<Service[]> = {
+const pillars: Localized<Pillar[]> = {
   es: [
     {
       icon: 'code',
-      title: 'Desarrollo web a medida',
       slug: 'desarrollo-web',
+      title: 'Una web a medida',
+      tags: ['Desarrollo a medida', 'Diseño UX/UI', 'Rendimiento 100/100'],
       description:
-        'Nada de plantillas con tu logo pegado encima. Programo tu web a medida, pensada para cómo vende tu negocio de verdad: tu carta, tus reservas, tus productos.',
+        'Diseño, programo y optimizo tu web a medida — sin plantillas ni relleno, pensada para que cada pantalla lleve a una acción.',
     },
     {
       icon: 'search',
-      title: 'Posicionamiento SEO',
       slug: 'seo',
+      title: 'Que te encuentren',
+      tags: ['SEO técnico', 'SEO local', 'Google Business'],
       description:
-        'Trabajo la parte técnica, el contenido y el SEO local desde el primer día. El objetivo no es "más tráfico" a secas: es que aparezcas cuando alguien busca justo lo que ofreces.',
-    },
-    {
-      icon: 'palette',
-      title: 'Diseño UX/UI',
-      slug: 'diseno-ux-ui',
-      description:
-        'Cada pantalla tiene un único objetivo: que llames, escribas o compres. Menos elementos y más claridad — un diseño bonito que no lleva a ninguna acción no sirve de nada.',
-    },
-    {
-      icon: 'bolt',
-      title: 'Rendimiento y Core Web Vitals',
-      slug: 'rendimiento',
-      description:
-        'Menos de un segundo de carga. No es un capricho técnico: Google lo premia en el posicionamiento y cada segundo de espera de más te cuesta visitas.',
-    },
-    {
-      icon: 'pin',
-      title: 'SEO local y Google Business',
-      slug: 'seo-local',
-      description:
-        'Optimizo tu ficha de Google y tu web para que aparezcas cuando alguien busca en tu barrio o tu ciudad — el tráfico que de verdad acaba entrando por la puerta.',
+        'Trabajo el SEO técnico, de contenidos y local para que aparezcas en Google justo cuando alguien busca lo que ofreces — en tu ciudad y en tu sector.',
     },
     {
       icon: 'spark',
-      title: 'Posicionamiento en IA (GEO)',
       slug: 'geo-ia',
+      title: 'El futuro de las búsquedas',
       badge: 'Ventaja competitiva',
+      tags: ['ChatGPT', 'Gemini', 'Google IA'],
       description:
-        'Preparo tu web para que ChatGPT, Gemini y las respuestas con IA de Google te mencionen cuando alguien pregunta por tu servicio. Casi nadie lo hace bien todavía: es ventaja mientras dure.',
+        'Preparo tu web para que ChatGPT, Gemini y las respuestas con IA de Google te recomienden cuando alguien pregunta por tu servicio. Casi nadie lo hace bien todavía: es ventaja mientras dure.',
     },
   ],
   va: [
     {
       icon: 'code',
-      title: 'Desenvolupament web a mida',
       slug: 'desarrollo-web',
+      title: 'Una web a mida',
+      tags: ['Desenvolupament a mida', 'Disseny UX/UI', 'Rendiment 100/100'],
       description:
-        'Webs i botigues online creades des de zero amb tecnologia moderna. Res de plantilles genèriques: codi net, ràpid i pensat per al teu negoci.',
+        'Dissenye, programe i optimitze la teua web a mida — sense plantilles ni farciment, pensada perquè cada pantalla porte a una acció.',
     },
     {
       icon: 'search',
-      title: 'Posicionament SEO',
       slug: 'seo',
+      title: 'Que et troben',
+      tags: ['SEO tècnic', 'SEO local', 'Google Business'],
       description:
-        'SEO tècnic, de continguts i local perquè aparegues en Google quan els teus clients et busquen. Més visibilitat, més visites, més vendes.',
-    },
-    {
-      icon: 'palette',
-      title: 'Disseny UX/UI',
-      slug: 'diseno-ux-ui',
-      description:
-        'Disseny atractiu i fàcil d’usar, orientat a convertir. Cada pantalla guia el visitant cap a l’acció que t’importa: contactar o comprar.',
-    },
-    {
-      icon: 'bolt',
-      title: 'Rendiment i Core Web Vitals',
-      slug: 'rendimiento',
-      description:
-        'Webs ultraràpides que carreguen en menys d’un segon. La velocitat millora el teu posicionament i redueix l’abandó de visitants.',
-    },
-    {
-      icon: 'pin',
-      title: 'SEO local i Google Business',
-      slug: 'seo-local',
-      description:
-        'Ideal per a negocis de zona: optimitzem la teua fitxa de Google i la teua web perquè destaques en la teua ciutat i atragues clients pròxims.',
+        'Treballe el SEO tècnic, de continguts i local perquè aparegues en Google justament quan algú busca el que ofereixes — en la teua ciutat i en el teu sector.',
     },
     {
       icon: 'spark',
-      title: 'Posicionament en IA (GEO)',
       slug: 'geo-ia',
+      title: 'El futur de les cerques',
       badge: 'Avantatge competitiu',
+      tags: ['ChatGPT', 'Gemini', 'Google IA'],
       description:
-        'El futur de les cerques. Preparem la teua web perquè ChatGPT, Gemini, Perplexity i les respostes amb IA de Google et recomanen a tu.',
+        'Preparo la teua web perquè ChatGPT, Gemini i les respostes amb IA de Google et recomanen quan algú pregunta pel teu servei. Quasi ningú ho fa bé encara: és avantatge mentre dure.',
     },
   ],
   en: [
     {
       icon: 'code',
-      title: 'Custom web development',
       slug: 'desarrollo-web',
+      title: 'A website built for you',
+      tags: ['Custom development', 'UX/UI design', '100/100 performance'],
       description:
-        'Websites and online stores built from scratch with modern technology. No generic templates: clean, fast code designed for your business.',
+        'I design, build and optimize your website from scratch — no templates, no filler, every screen built to drive one action.',
     },
     {
       icon: 'search',
-      title: 'SEO & search ranking',
       slug: 'seo',
+      title: 'Get found',
+      tags: ['Technical SEO', 'Local SEO', 'Google Business'],
       description:
-        'Technical, content and local SEO so you show up on Google when your clients search for you. More visibility, more visits, more sales.',
-    },
-    {
-      icon: 'palette',
-      title: 'UX/UI design',
-      slug: 'diseno-ux-ui',
-      description:
-        'Attractive, easy-to-use design built to convert. Every screen guides the visitor toward the action that matters: contacting or buying.',
-    },
-    {
-      icon: 'bolt',
-      title: 'Performance & Core Web Vitals',
-      slug: 'rendimiento',
-      description:
-        'Ultra-fast websites that load in under a second. Speed boosts your ranking and reduces visitor drop-off.',
-    },
-    {
-      icon: 'pin',
-      title: 'Local SEO & Google Business',
-      slug: 'seo-local',
-      description:
-        'Perfect for local businesses: we optimize your Google profile and website so you stand out in your city and attract nearby clients.',
+        'I handle technical, content and local SEO so you show up on Google exactly when someone searches for what you offer — in your city and your niche.',
     },
     {
       icon: 'spark',
-      title: 'AI search optimization (GEO)',
       slug: 'geo-ia',
+      title: 'The future of search',
       badge: 'Competitive edge',
+      tags: ['ChatGPT', 'Gemini', 'Google AI'],
       description:
-        'The future of search. We prepare your website so ChatGPT, Gemini, Perplexity and Google’s AI answers recommend you.',
+        'I prepare your website so ChatGPT, Gemini and Google’s AI answers recommend you when someone asks about your service. Almost nobody does this well yet: it’s an edge while it lasts.',
     },
   ],
 };
 
-export const getServices = (lang: Lang) => services[lang];
+export const getPillars = (lang: Lang) => pillars[lang];
 
 /* ───────────────── EXTRAS (funciones que se pueden sumar a la web) ─────────────────
    Sección de home "Tu web puede crecer con tu negocio": NO es un catálogo de

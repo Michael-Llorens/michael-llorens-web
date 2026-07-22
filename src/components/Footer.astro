@@ -1,7 +1,7 @@
 ---
 import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
-import { getServices } from '../data/content';
+import { getPillars } from '../data/content';
 import { site, whatsappLink } from '../data/site';
 import Icon from './Icon.astro';
 
@@ -27,7 +27,7 @@ const legalLinks = [
   { href: '/politica-de-cookies', label: t('legal.cookies') },
 ];
 
-const services = getServices(lang).slice(0, 5);
+const services = getPillars(lang);
 
 const socials = [
   { name: 'instagram', href: site.socials.instagram },
@@ -74,9 +74,7 @@ const socials = [
           {
             services.map((s) => (
               <li>
-                <a href={s.slug ? `${localizedPath(lang, 'servicios')}#${s.slug}` : localizedPath(lang, 'servicios')}>
-                  {s.title}
-                </a>
+                <a href={`${localizedPath(lang, 'servicios')}#${s.slug}`}>{s.title}</a>
               </li>
             ))
           }

@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
-import { getServices } from '../data/content';
+import { getPillars } from '../data/content';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 const { lang, asPageTitle = false } = Astro.props;
 const t = useTranslations(lang);
-const services = getServices(lang);
+const pillars = getPillars(lang);
 const TitleTag = asPageTitle ? 'h1' : 'h2';
 ---
 
@@ -23,154 +23,77 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
       <p class="lead">{t('services.subtitle')}</p>
     </div>
 
-    <div class="services__tabs card card-glow" data-reveal>
-      <div class="services__pills" role="tablist" aria-label={t('services.title')}>
-        {
-          services.map((s, i) => (
-            <button
-              type="button"
-              id={s.slug}
-              class:list={['pill', i === 0 && 'is-active']}
-              data-index={i}
-              data-slug={s.slug}
-              role="tab"
-              aria-selected={i === 0 ? 'true' : 'false'}
-              aria-controls={`panel-${s.slug}`}
-            >
-              <Icon name={s.icon} />
-              <span>{s.title}</span>
-            </button>
-          ))
-        }
-      </div>
-
-      <div class="services__panels">
-        {
-          services.map((s, i) => (
-            <div id={`panel-${s.slug}`} class:list={['panel', i === 0 && 'is-active']} data-index={i} role="tabpanel">
-              <span class="panel__icon" aria-hidden="true">
-                <Icon name={s.icon} />
-              </span>
-              <div class="panel__body">
-                {s.badge && <span class="panel__badge">{s.badge}</span>}
-                <h3 class="panel__title">{s.title}</h3>
-                <p class="panel__desc">{s.description}</p>
-              </div>
+    <div class="pillars">
+      {
+        pillars.map((p, i) => (
+          <article id={p.slug} class="pillar card card-glow" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <span class="pillar__watermark" aria-hidden="true">
+              <Icon name={p.icon} />
+            </span>
+            <div class="pillar__icon">
+              <Icon name={p.icon} />
             </div>
-          ))
-        }
-      </div>
+            {p.badge && <span class="pillar__badge">{p.badge}</span>}
+            <h3 class="pillar__title">{p.title}</h3>
+            <p class="pillar__desc">{p.description}</p>
+            <ul class="pillar__tags">
+              {p.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
 
-<script>
-  // Pestañas de servicios: click cambia el panel visible. Sin JS, se ve
-  // el primer servicio completo (nada queda oculto de forma rota).
-  document.querySelectorAll<HTMLElement>('.services__tabs').forEach((wrap) => {
-    const pills = Array.from(wrap.querySelectorAll<HTMLElement>('.pill'));
-    const panels = Array.from(wrap.querySelectorAll<HTMLElement>('.panel'));
-
-    const activate = (index: string) => {
-      pills.forEach((p) => {
-        const active = p.dataset.index === index;
-        p.classList.toggle('is-active', active);
-        p.setAttribute('aria-selected', String(active));
-      });
-      panels.forEach((p) => p.classList.toggle('is-active', p.dataset.index === index));
-    };
-
-    pills.forEach((pill) => {
-      pill.addEventListener('click', () => activate(pill.dataset.index || '0'));
-    });
-
-    // Deep-link: los enlaces del footer llegan como /servicios#seo.
-    // El navegador ya hace scroll a la pestaña (tiene ese id); aquí solo
-    // activamos su panel en vez del primero.
-    const hash = location.hash.replace('#', '');
-    if (hash) {
-      const match = pills.find((p) => p.dataset.slug === hash);
-      if (match) activate(match.dataset.index || '0');
-    }
-  });
-</script>
-
 <style>
-  .services__tabs {
-    padding: 0;
-    overflow: hidden;
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
   }
-  .services__pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: clamp(1.2rem, 3vw, 1.6rem);
-    border-bottom: 1px solid var(--border);
-  }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.6rem 1.05rem;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text-muted);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.88rem;
-    cursor: pointer;
-    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
-    scroll-margin-top: 6rem;
-  }
-  .pill:hover {
-    border-color: var(--accent);
-    color: var(--text);
-  }
-  .pill :global(svg) {
-    width: 1.1rem;
-    height: 1.1rem;
-    flex-shrink: 0;
-  }
-  .pill.is-active {
-    background: var(--gradient);
-    border-color: transparent;
-    color: #0a0a12;
-  }
-
-  .services__panels {
+  .pillar {
     position: relative;
-    padding: clamp(1.6rem, 4vw, 2.6rem);
-  }
-  .panel {
-    display: none;
-    gap: 1.4rem;
-    align-items: flex-start;
-  }
-  .panel.is-active {
+    z-index: 0; /* contiene el watermark en su propio contexto de apilamiento */
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: clamp(1.7rem, 3vw, 2.2rem);
+    scroll-margin-top: 6rem; /* deja hueco bajo el header fijo al llegar por ancla */
   }
-  .panel__icon {
+  .pillar__watermark {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    width: 9rem;
+    height: 9rem;
+    color: var(--accent);
+    opacity: 0.06;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .pillar__watermark :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .pillar__icon {
     display: grid;
     place-items: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 15px;
     background: var(--accent-soft);
     border: 1px solid var(--border-strong);
     color: var(--accent-2);
-    flex-shrink: 0;
   }
-  .panel__icon :global(svg) {
-    width: 30px;
-    height: 30px;
+  .pillar__icon :global(svg) {
+    width: 26px;
+    height: 26px;
   }
-  .panel__body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-  .panel__badge {
+  .pillar__badge {
     display: inline-block;
     width: fit-content;
     font-family: var(--font-display);
@@ -183,19 +106,34 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
     padding: 0.28rem 0.7rem;
     border-radius: 999px;
   }
-  .panel__title {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  .pillar__title {
+    font-size: 1.35rem;
   }
-  .panel__desc {
+  .pillar__desc {
     color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 62ch;
+    font-size: 0.96rem;
+    flex-grow: 1;
+  }
+  .pillar__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  .pillar__tags li {
+    font-size: 0.76rem;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
   }
 
-  @media (max-width: 700px) {
-    .panel {
-      flex-direction: column;
-      gap: 1rem;
+  @media (max-width: 860px) {
+    .pillars {
+      grid-template-columns: 1fr;
     }
   }
 </style>
