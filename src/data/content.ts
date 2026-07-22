@@ -17,11 +17,8 @@ export interface Service {
   // el footer u otras páginas: /servicios#<slug>. Opcional: solo lo usan
   // los 6 servicios principales, no el bloque de backend/APIs.
   slug?: string;
-  // Tamaño de la tarjeta en el bento grid de la home. Sin definir = tarjeta
-  // normal. 'primary' = tarjeta grande (el servicio base). 'wide' = franja
-  // ancha horizontal (el diferenciador). Solo se usa en Services.astro.
-  featured?: 'primary' | 'wide';
-  // Etiqueta corta opcional, solo para la tarjeta 'wide'.
+  // Etiqueta corta opcional (p. ej. "Ventaja competitiva" en GEO), se
+  // muestra en el panel de la pestaña activa en Services.astro.
   badge?: string;
 }
 
@@ -31,7 +28,6 @@ const services: Localized<Service[]> = {
       icon: 'code',
       title: 'Desarrollo web a medida',
       slug: 'desarrollo-web',
-      featured: 'primary',
       description:
         'Nada de plantillas con tu logo pegado encima. Programo tu web a medida, pensada para cómo vende tu negocio de verdad: tu carta, tus reservas, tus productos.',
     },
@@ -67,7 +63,6 @@ const services: Localized<Service[]> = {
       icon: 'spark',
       title: 'Posicionamiento en IA (GEO)',
       slug: 'geo-ia',
-      featured: 'wide',
       badge: 'Ventaja competitiva',
       description:
         'Preparo tu web para que ChatGPT, Gemini y las respuestas con IA de Google te mencionen cuando alguien pregunta por tu servicio. Casi nadie lo hace bien todavía: es ventaja mientras dure.',
@@ -78,7 +73,6 @@ const services: Localized<Service[]> = {
       icon: 'code',
       title: 'Desenvolupament web a mida',
       slug: 'desarrollo-web',
-      featured: 'primary',
       description:
         'Webs i botigues online creades des de zero amb tecnologia moderna. Res de plantilles genèriques: codi net, ràpid i pensat per al teu negoci.',
     },
@@ -114,7 +108,6 @@ const services: Localized<Service[]> = {
       icon: 'spark',
       title: 'Posicionament en IA (GEO)',
       slug: 'geo-ia',
-      featured: 'wide',
       badge: 'Avantatge competitiu',
       description:
         'El futur de les cerques. Preparem la teua web perquè ChatGPT, Gemini, Perplexity i les respostes amb IA de Google et recomanen a tu.',
@@ -125,7 +118,6 @@ const services: Localized<Service[]> = {
       icon: 'code',
       title: 'Custom web development',
       slug: 'desarrollo-web',
-      featured: 'primary',
       description:
         'Websites and online stores built from scratch with modern technology. No generic templates: clean, fast code designed for your business.',
     },
@@ -161,7 +153,6 @@ const services: Localized<Service[]> = {
       icon: 'spark',
       title: 'AI search optimization (GEO)',
       slug: 'geo-ia',
-      featured: 'wide',
       badge: 'Competitive edge',
       description:
         'The future of search. We prepare your website so ChatGPT, Gemini, Perplexity and Google’s AI answers recommend you.',
