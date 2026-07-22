@@ -49,10 +49,10 @@ export const ui = {
 
     // --- Hero ---
     'hero.title.1': 'Diseño web que',
-    'hero.title.2': 'vende',
+    'hero.title.2': 'factura',
     'hero.title.3': 'en Xàtiva y Valencia',
     'hero.subtitle':
-      'Programo cada web a mano, sin plantillas ni bloques genéricos: código propio, carga en menos de un segundo y estructurada para que Google la entienda desde el primer día. Un único interlocutor de principio a fin — sin comerciales de por medio.',
+      'Sin plantillas ni relleno. Código a medida que carga en un segundo, se posiciona en Google y te trae clientes de verdad.',
     'hero.cta.primary': 'Pide presupuesto en 24h',
     'hero.cta.secondary': 'Ver proyectos reales',
     'hero.trust': 'Webs a medida · Rendimiento 100/100 verificable · SEO desde el primer día',
