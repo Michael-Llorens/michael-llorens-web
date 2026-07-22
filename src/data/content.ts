@@ -13,6 +13,10 @@ export interface Service {
   icon: string; // nombre del icono (ver Icon.astro)
   title: string;
   description: string;
+  // Ancla estable (no traducida) para enlazar directo a esta tarjeta desde
+  // el footer u otras páginas: /servicios#<slug>. Opcional: solo lo usan
+  // los 6 servicios principales, no el bloque de backend/APIs.
+  slug?: string;
 }
 
 const services: Localized<Service[]> = {
@@ -20,74 +24,86 @@ const services: Localized<Service[]> = {
     {
       icon: 'code',
       title: 'Desarrollo web a medida',
+      slug: 'desarrollo-web',
       description:
-        'Webs y tiendas online creadas desde cero con tecnología moderna. Nada de plantillas genéricas: código limpio, rápido y pensado para tu negocio.',
+        'Cero plantillas, cero page builders. Cada web se programa línea a línea con tecnología moderna, pensada para tu negocio concreto: tu carta, tus reservas, tus productos.',
     },
     {
       icon: 'search',
       title: 'Posicionamiento SEO',
+      slug: 'seo',
       description:
-        'SEO técnico, de contenidos y local para que aparezcas en Google cuando tus clientes te buscan. Más visibilidad, más visitas, más ventas.',
+        'Trabajo la parte técnica, el contenido y el SEO local desde el primer día. El objetivo no es "más tráfico" a secas: es que aparezcas cuando alguien busca justo lo que ofreces.',
     },
     {
       icon: 'palette',
       title: 'Diseño UX/UI',
+      slug: 'diseno-ux-ui',
       description:
-        'Diseño atractivo y fácil de usar, orientado a convertir. Cada pantalla guía al visitante hacia la acción que te importa: contactar o comprar.',
+        'Cada pantalla tiene un único objetivo: que llames, escribas o compres. Menos elementos y más claridad — un diseño bonito que no lleva a ninguna acción no sirve de nada.',
     },
     {
       icon: 'bolt',
       title: 'Rendimiento y Core Web Vitals',
+      slug: 'rendimiento',
       description:
-        'Webs ultrarrápidas que cargan en menos de un segundo. La velocidad mejora tu posicionamiento y reduce el abandono de visitantes.',
+        'Menos de un segundo de carga. No es un capricho técnico: Google lo premia en el posicionamiento y cada segundo de espera de más te cuesta visitas.',
     },
     {
       icon: 'pin',
       title: 'SEO local y Google Business',
+      slug: 'seo-local',
       description:
-        'Ideal para negocios de zona: optimizamos tu ficha de Google y tu web para que destaques en tu ciudad y atraigas clientes cercanos.',
+        'Optimizo tu ficha de Google y tu web para que aparezcas cuando alguien busca en tu barrio o tu ciudad — el tráfico que de verdad acaba entrando por la puerta.',
     },
     {
       icon: 'spark',
       title: 'Posicionamiento en IA (GEO)',
+      slug: 'geo-ia',
       description:
-        'El futuro de las búsquedas. Preparamos tu web para que ChatGPT, Gemini, Perplexity y las respuestas con IA de Google te recomienden a ti.',
+        'Preparo tu web para que ChatGPT, Gemini y las respuestas con IA de Google te mencionen cuando alguien pregunta por tu servicio. Casi nadie lo hace bien todavía: es ventaja mientras dure.',
     },
   ],
   va: [
     {
       icon: 'code',
       title: 'Desenvolupament web a mida',
+      slug: 'desarrollo-web',
       description:
         'Webs i botigues online creades des de zero amb tecnologia moderna. Res de plantilles genèriques: codi net, ràpid i pensat per al teu negoci.',
     },
     {
       icon: 'search',
       title: 'Posicionament SEO',
+      slug: 'seo',
       description:
         'SEO tècnic, de continguts i local perquè aparegues en Google quan els teus clients et busquen. Més visibilitat, més visites, més vendes.',
     },
     {
       icon: 'palette',
       title: 'Disseny UX/UI',
+      slug: 'diseno-ux-ui',
       description:
         'Disseny atractiu i fàcil d’usar, orientat a convertir. Cada pantalla guia el visitant cap a l’acció que t’importa: contactar o comprar.',
     },
     {
       icon: 'bolt',
       title: 'Rendiment i Core Web Vitals',
+      slug: 'rendimiento',
       description:
         'Webs ultraràpides que carreguen en menys d’un segon. La velocitat millora el teu posicionament i redueix l’abandó de visitants.',
     },
     {
       icon: 'pin',
       title: 'SEO local i Google Business',
+      slug: 'seo-local',
       description:
         'Ideal per a negocis de zona: optimitzem la teua fitxa de Google i la teua web perquè destaques en la teua ciutat i atragues clients pròxims.',
     },
     {
       icon: 'spark',
       title: 'Posicionament en IA (GEO)',
+      slug: 'geo-ia',
       description:
         'El futur de les cerques. Preparem la teua web perquè ChatGPT, Gemini, Perplexity i les respostes amb IA de Google et recomanen a tu.',
     },
@@ -96,36 +112,42 @@ const services: Localized<Service[]> = {
     {
       icon: 'code',
       title: 'Custom web development',
+      slug: 'desarrollo-web',
       description:
         'Websites and online stores built from scratch with modern technology. No generic templates: clean, fast code designed for your business.',
     },
     {
       icon: 'search',
       title: 'SEO & search ranking',
+      slug: 'seo',
       description:
         'Technical, content and local SEO so you show up on Google when your clients search for you. More visibility, more visits, more sales.',
     },
     {
       icon: 'palette',
       title: 'UX/UI design',
+      slug: 'diseno-ux-ui',
       description:
         'Attractive, easy-to-use design built to convert. Every screen guides the visitor toward the action that matters: contacting or buying.',
     },
     {
       icon: 'bolt',
       title: 'Performance & Core Web Vitals',
+      slug: 'rendimiento',
       description:
         'Ultra-fast websites that load in under a second. Speed boosts your ranking and reduces visitor drop-off.',
     },
     {
       icon: 'pin',
       title: 'Local SEO & Google Business',
+      slug: 'seo-local',
       description:
         'Perfect for local businesses: we optimize your Google profile and website so you stand out in your city and attract nearby clients.',
     },
     {
       icon: 'spark',
       title: 'AI search optimization (GEO)',
+      slug: 'geo-ia',
       description:
         'The future of search. We prepare your website so ChatGPT, Gemini, Perplexity and Google’s AI answers recommend you.',
     },
@@ -286,31 +308,31 @@ const projectCopy: Localized<Record<string, { category: string; description: str
       category: 'Web corporativa · Software de gestión (SaaS)',
       description:
         'Web corporativa para un software de gestión empresarial (ERP): facturación, contabilidad, CRM, stock y TPV. Decenas de páginas optimizadas para SEO, con integraciones de ecommerce y documentación para desarrolladores.',
-      result: 'Una web SaaS rápida y orientada a SEO que explica un producto complejo y convierte visitas en clientes.',
+      result: 'Explica un ERP complejo en un lenguaje que entiende cualquier pyme, con decenas de páginas pensadas para posicionar cada función por separado en Google.',
     },
     'taxi-xativa': {
       category: 'Web de servicios · Transporte',
       description:
         'Web rápida para un servicio de taxi local con calculadora de tarifas en tiempo real, reserva por WhatsApp y SEO local optimizado para destacar en su zona.',
-      result: 'Reservas directas por WhatsApp y mayor visibilidad en las búsquedas locales de taxi.',
+      result: 'Calculadora de tarifa en tiempo real + reserva directa por WhatsApp: el cliente sabe el precio antes de pedir el taxi.',
     },
     'clinica-laura-serra': {
       category: 'Web local · Salud animal',
       description:
         'Página para una clínica veterinaria de barrio: servicios, horarios, contacto directo por WhatsApp y un diseño cercano que transmite confianza.',
-      result: 'Contacto inmediato por WhatsApp y una imagen profesional que genera confianza.',
+      result: 'Una web de barrio que no parece "una web de barrio": cercana, rápida y con el WhatsApp siempre a un toque.',
     },
     onllum: {
       category: 'Web corporativa · Energía',
       description:
         'Web de asesoría energética con calculadora de ahorro interactiva, pensada para generar leads y explicar servicios complejos de forma sencilla.',
-      result: 'Calculadora que capta leads cualificados y explica servicios complejos con claridad.',
+      result: 'Una calculadora convierte una explicación técnica en un número que el cliente entiende en diez segundos.',
     },
     'el-buey-madurado': {
       category: 'App full-stack · Restaurante',
       description:
         'Aplicación completa de gestión para un restaurante: carta digital, gestión de pedidos, reservas de mesa y autenticación segura con JWT. Frontend y backend a medida.',
-      result: 'Gestión integral del restaurante en una sola plataforma, de la carta a las reservas.',
+      result: 'Carta digital, reservas y gestión de pedidos en una sola plataforma a medida, sin depender de apps de terceros.',
     },
   },
   va: {

@@ -27,9 +27,9 @@ const scores = [
       <div class="proof__scores">
         {
           scores.map((s, i) => (
-            <div class="gauge" data-value={s.value} style={`--delay:${i * 120}ms`}>
-              <div class="gauge__ring">
-                <span class="gauge__num" data-count={s.value}>0</span>
+            <div class="gauge" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+              <div class="gauge__ring" style={`--p:${(s.value / 100) * 360}deg`}>
+                <span class="gauge__num">{s.value}</span>
               </div>
               <span class="gauge__label">{s.label}</span>
             </div>
@@ -39,44 +39,6 @@ const scores = [
     </div>
   </div>
 </section>
-
-<script>
-  const gauges = document.querySelectorAll<HTMLElement>('.gauge');
-  const animate = (g: HTMLElement) => {
-    const target = Number(g.dataset.value || '0');
-    const numEl = g.querySelector<HTMLElement>('.gauge__num');
-    const ring = g.querySelector<HTMLElement>('.gauge__ring');
-    if (!numEl || !ring) return;
-    const dur = 1400;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const val = Math.round(eased * target);
-      numEl.textContent = String(val);
-      ring.style.setProperty('--p', String((val / 100) * 360) + 'deg');
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setTimeout(() => animate(e.target as HTMLElement), Number((e.target as HTMLElement).style.getPropertyValue('--delay').replace('ms', '')) || 0);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    gauges.forEach((g) => io.observe(g));
-  } else {
-    gauges.forEach(animate);
-  }
-</script>
 
 <style>
   .proof__box {

@@ -9,7 +9,7 @@ export const ui = {
     // --- Metadatos / SEO ---
     'meta.title': 'Diseño web y SEO en Xàtiva y Valencia | MetaLogic',
     'meta.description':
-      'Diseño web y SEO en Xàtiva y Valencia. Creamos webs rápidas y optimizadas para Google que captan clientes y hacen crecer tu negocio. Presupuesto gratis.',
+      'Diseño y desarrollo web a medida en Xàtiva y Valencia. Sin plantillas, sin permanencia: código propio, carga en menos de 1s y SEO desde el primer día. Presupuesto en 24h.',
 
     // --- Navegación ---
     'nav.services': 'Servicios',
@@ -48,22 +48,22 @@ export const ui = {
     'clients.title': 'Negocios que ya confían en MetaLogic',
 
     // --- Hero ---
-    'hero.badge': 'Disponible para nuevos proyectos',
+    'hero.badge': 'Disponible para nuevos proyectos · Xàtiva, Valencia y toda España',
     'hero.title.1': 'Diseño web que',
-    'hero.title.2': 'posiciona',
-    'hero.title.3': 'y convierte',
+    'hero.title.2': 'vende',
+    'hero.title.3': 'en Xàtiva y Valencia',
     'hero.subtitle':
-      'En MetaLogic diseñamos y desarrollamos webs rápidas, modernas y optimizadas para aparecer en Google y convertir visitas en clientes.',
-    'hero.cta.primary': 'Empezar mi proyecto',
-    'hero.cta.secondary': 'Ver proyectos',
-    'hero.trust': 'Webs a medida · Rendimiento 100/100 · SEO desde el primer día',
-    'hero.guarantee': 'Presupuesto sin compromiso · Sin permanencias · Hablamos antes de empezar',
+      'Programo cada web a mano, sin plantillas ni bloques genéricos: código propio, carga en menos de un segundo y estructurada para que Google la entienda desde el primer día. Un único interlocutor de principio a fin — sin comerciales de por medio.',
+    'hero.cta.primary': 'Pide presupuesto en 24h',
+    'hero.cta.secondary': 'Ver proyectos reales',
+    'hero.trust': 'Webs a medida · Rendimiento 100/100 verificable · SEO desde el primer día',
+    'hero.guarantee': 'Presupuesto claro en 24h · Sin permanencia · Código y dominio siempre tuyos',
 
     // --- Stats ---
     'stats.projects.value': '5+',
     'stats.projects.label': 'Proyectos reales entregados',
-    'stats.performance.value': '100',
-    'stats.performance.label': 'Objetivo en PageSpeed',
+    'stats.performance.value': '0',
+    'stats.performance.label': 'Plantillas genéricas usadas',
     'stats.languages.value': '3',
     'stats.languages.label': 'Idiomas de desarrollo web',
     'stats.response.value': '24 h',
@@ -145,6 +145,11 @@ export const ui = {
     'testimonials.title': 'Lo que dicen los clientes',
     'testimonials.subtitle':
       'La mejor publicidad es el trabajo bien hecho y un cliente contento.',
+
+    // --- Nota honesta mientras no hay testimonios reales publicados ---
+    'social.pending.title': 'Todavía no publico testimonios inventados',
+    'social.pending.text':
+      'Prefiero no rellenar este hueco con una frase sin cara detrás. En cuanto tenga el permiso de mis primeros clientes de esta nueva etapa, los verás aquí con nombre y negocio real. Mientras tanto, no me creas a mí: entra en cualquiera de los proyectos de arriba, ahora mismo, desde tu móvil.',
 
     // --- FAQ ---
     'faq.kicker': 'Preguntas frecuentes',
@@ -231,7 +236,7 @@ export const ui = {
     // --- Clients ---
     'clients.title': 'Negocis que ja confien en MetaLogic',
 
-    'hero.badge': 'Disponible per a nous projectes',
+    'hero.badge': 'Disponible per a nous projectes · Xàtiva, València i tota Espanya',
     'hero.title.1': 'Disseny web que',
     'hero.title.2': 'posiciona',
     'hero.title.3': 'i converteix',
@@ -244,8 +249,8 @@ export const ui = {
 
     'stats.projects.value': '5+',
     'stats.projects.label': 'Projectes reals entregats',
-    'stats.performance.value': '100',
-    'stats.performance.label': 'Objectiu en PageSpeed',
+    'stats.performance.value': '0',
+    'stats.performance.label': 'Plantilles genèriques usades',
     'stats.languages.value': '3',
     'stats.languages.label': 'Idiomes de desenvolupament web',
     'stats.response.value': '24 h',
@@ -318,6 +323,10 @@ export const ui = {
     'testimonials.title': 'El que diuen els clients',
     'testimonials.subtitle':
       'La millor publicitat és el treball ben fet i un client content.',
+
+    'social.pending.title': 'Encara no publique testimonis inventats',
+    'social.pending.text':
+      'Preferisc no omplir este espai amb una frase sense cara darrere. En quant tinga el permís dels meus primers clients d’esta nova etapa, els veuràs ací amb nom i negoci real. Mentrestant, no em cregues a mi: entra en qualsevol dels projectes de dalt, ara mateix, des del teu mòbil.',
 
     'faq.kicker': 'Preguntes freqüents',
     'faq.title': 'Resol els teus dubtes',
@@ -400,7 +409,7 @@ export const ui = {
     // --- Clients ---
     'clients.title': 'Businesses that already trust MetaLogic',
 
-    'hero.badge': 'Available for new projects',
+    'hero.badge': 'Available for new projects · Xàtiva, Valencia and all of Spain',
     'hero.title.1': 'Web design that',
     'hero.title.2': 'ranks',
     'hero.title.3': 'and converts',
@@ -413,8 +422,8 @@ export const ui = {
 
     'stats.projects.value': '5+',
     'stats.projects.label': 'Real projects delivered',
-    'stats.performance.value': '100',
-    'stats.performance.label': 'PageSpeed target',
+    'stats.performance.value': '0',
+    'stats.performance.label': 'Generic templates used',
     'stats.languages.value': '3',
     'stats.languages.label': 'Web languages',
     'stats.response.value': '24 h',
@@ -487,6 +496,10 @@ export const ui = {
     'testimonials.title': 'What clients say',
     'testimonials.subtitle':
       'The best advertising is great work and a happy client.',
+
+    'social.pending.title': 'I don’t publish made-up testimonials yet',
+    'social.pending.text':
+      'I’d rather leave this gap empty than fill it with a quote with no face behind it. As soon as my first clients from this new chapter agree to it, you’ll see them here with a real name and business. Until then, don’t take my word for it: open any of the projects above right now, on your phone.',
 
     'faq.kicker': 'FAQ',
     'faq.title': 'Frequently asked questions',

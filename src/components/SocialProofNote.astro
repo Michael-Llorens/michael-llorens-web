@@ -1,0 +1,47 @@
+---
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+/* Nota honesta que sustituye a los testimonios mientras no tengamos
+   citas reales con nombre y negocio verificable (ver Testimonials.astro,
+   que sigue en el repo pero deliberadamente fuera de las páginas hasta
+   entonces: publicar una cita sin cara detrás resta más de lo que suma). */
+---
+
+<section class="section proof-note" aria-labelledby="proof-note-title">
+  <div class="container">
+    <div class="proof-note__box card" data-reveal>
+      <span class="kicker">{t('testimonials.kicker')}</span>
+      <h2 class="proof-note__title" id="proof-note-title">{t('social.pending.title')}</h2>
+      <p class="proof-note__text">{t('social.pending.text')}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof-note {
+    padding-block: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .proof-note__box {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    padding: clamp(1.8rem, 4vw, 2.6rem);
+  }
+  .proof-note__title {
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+    margin: 0.4rem 0 0.8rem;
+  }
+  .proof-note__text {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+</style>

@@ -71,7 +71,15 @@ const socials = [
       <div class="footer__col">
         <h3 class="footer__title">{t('footer.services')}</h3>
         <ul>
-          {services.map((s) => <li><a href={localizedPath(lang, 'servicios')}>{s.title}</a></li>)}
+          {
+            services.map((s) => (
+              <li>
+                <a href={s.slug ? `${localizedPath(lang, 'servicios')}#${s.slug}` : localizedPath(lang, 'servicios')}>
+                  {s.title}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 

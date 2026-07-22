@@ -26,7 +26,7 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
     <div class="grid grid-3">
       {
         services.map((s, i) => (
-          <article class="card card-glow service" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+          <article id={s.slug} class="card card-glow service" data-reveal style={`--reveal-delay:${i * 70}ms`}>
             <div class="service__icon">
               <Icon name={s.icon} />
             </div>
@@ -44,6 +44,7 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
+    scroll-margin-top: 6rem; /* deja hueco bajo el header fijo al llegar por ancla */
   }
   .service__icon {
     display: grid;
