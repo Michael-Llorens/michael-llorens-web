@@ -113,6 +113,12 @@ const formMsg = {
         <label for="message">{t('contact.form.message')}</label>
         <textarea id="message" name="message" rows="5" required placeholder={t('contact.form.messagePlaceholder')}></textarea>
       </div>
+      <label class="consent">
+        <input type="checkbox" name="privacy_accepted" required />
+        <span>
+          {t('contact.form.consent.pre')}{' '}<a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer">{t('contact.form.consent.link')}</a>.
+        </span>
+      </label>
       <button type="submit" class="btn btn-primary btn-lg form__submit">
         {t('contact.form.send')}
         <Icon name="arrow" />
@@ -319,6 +325,30 @@ const formMsg = {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .consent input {
+    margin-top: 0.2rem;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: var(--accent);
+  }
+  .consent a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .consent a:hover {
+    color: var(--accent-2);
   }
   .form__submit {
     margin-top: 0.4rem;
