@@ -26,7 +26,7 @@ const services: Localized<Service[]> = {
       title: 'Desarrollo web a medida',
       slug: 'desarrollo-web',
       description:
-        'Cero plantillas, cero page builders. Cada web se programa línea a línea con tecnología moderna, pensada para tu negocio concreto: tu carta, tus reservas, tus productos.',
+        'Nada de plantillas con tu logo pegado encima. Programo tu web a medida, pensada para cómo vende tu negocio de verdad: tu carta, tus reservas, tus productos.',
     },
     {
       icon: 'search',
