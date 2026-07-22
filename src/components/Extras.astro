@@ -1,0 +1,116 @@
+---
+import { type Lang, localizedPath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import { getExtras } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items = getExtras(lang);
+---
+
+<section class="section extras">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker">{t('extras.kicker')}</span>
+      <h2 class="section-title">{t('extras.title')}</h2>
+      <p class="lead">{t('extras.subtitle')}</p>
+    </div>
+
+    <div class="extras__grid">
+      {
+        items.map((item, i) => (
+          <div class="extra card" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <span class="extra__ic"><Icon name={item.icon} /></span>
+            <div>
+              <h3 class="extra__title">{item.title}</h3>
+              <p class="extra__desc">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="extras__note" data-reveal>
+      {t('extras.note')}{' '}
+      <a href={localizedPath(lang, 'contacto')} class="extras__link">
+        {t('extras.cta')}
+        <Icon name="arrow" />
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .extras__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  .extra {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 1.4rem 1.5rem;
+  }
+  .extra__ic {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-2);
+  }
+  .extra__ic :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .extra__title {
+    font-size: 1.02rem;
+    margin-bottom: 0.3rem;
+  }
+  .extra__desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .extras__note {
+    margin-top: clamp(2rem, 4vw, 2.6rem);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .extras__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent-2);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .extras__link:hover {
+    text-decoration: underline;
+  }
+  .extras__link :global(svg) {
+    width: 0.95em;
+    height: 0.95em;
+  }
+
+  @media (max-width: 900px) {
+    .extras__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .extras__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

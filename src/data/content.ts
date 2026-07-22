@@ -156,6 +156,131 @@ const services: Localized<Service[]> = {
 
 export const getServices = (lang: Lang) => services[lang];
 
+/* ───────────────── EXTRAS (funciones que se pueden sumar a la web) ─────────────────
+   Sección de home "Tu web puede crecer con tu negocio": NO es un catálogo de
+   software a medida, son piezas concretas y frecuentes en pymes/negocios
+   locales. Deliberadamente fuera: PDAs de restaurante, marketplaces, ERPs —
+   si un proyecto los necesita, se habla aparte (ver extras.note), no se
+   promocionan aquí como oferta principal. */
+const extras: Localized<Service[]> = {
+  es: [
+    {
+      icon: 'calendar',
+      title: 'Reservas y citas online',
+      description:
+        'Que tus clientes reserven mesa, cita o servicio sin llamarte. Tú solo confirmas y organizas tu agenda desde un único sitio.',
+    },
+    {
+      icon: 'cart',
+      title: 'Pedidos, carta y tienda online',
+      description:
+        'Carta digital, pedidos para recoger o entregar, o una tienda sencilla para un catálogo concreto de productos — sin la complejidad de un ecommerce gigante.',
+    },
+    {
+      icon: 'mail',
+      title: 'Formularios inteligentes y captación de leads',
+      description:
+        'Formularios con los campos justos que filtran quién te interesa de verdad. Cada contacto te llega ordenado y listo para responder.',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Automatizaciones con WhatsApp',
+      description:
+        'Confirmaciones de reserva, recordatorios de cita o avisos de pedido, automáticos y por el canal donde tus clientes ya te escriben.',
+    },
+    {
+      icon: 'lock',
+      title: 'Áreas privadas y paneles de gestión',
+      description:
+        'Una zona con acceso solo para tus clientes o tu equipo, y un panel sencillo para ver reservas, pedidos o mensajes sin depender de hojas de cálculo.',
+    },
+    {
+      icon: 'globe',
+      title: 'SEO local, reseñas y multiidioma',
+      description:
+        'Tu ficha de Google, tus reseñas, tu mapa y tu web en varios idiomas trabajando juntos para que te encuentren donde y como te buscan.',
+    },
+  ],
+  va: [
+    {
+      icon: 'calendar',
+      title: 'Reserves i cites en línia',
+      description:
+        'Que els teus clients reserven taula, cita o servei sense telefonar-te. Tu només confirmes i organitzes la teua agenda des d’un únic lloc.',
+    },
+    {
+      icon: 'cart',
+      title: 'Comandes, carta i botiga en línia',
+      description:
+        'Carta digital, comandes per a recollir o repartir, o una botiga senzilla per a un catàleg concret de productes — sense la complexitat d’un ecommerce gegant.',
+    },
+    {
+      icon: 'mail',
+      title: 'Formularis intel·ligents i captació de leads',
+      description:
+        'Formularis amb els camps justos que filtren qui t’interessa de veres. Cada contacte t’arriba ordenat i preparat per a respondre.',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Automatitzacions amb WhatsApp',
+      description:
+        'Confirmacions de reserva, recordatoris de cita o avisos de comanda, automàtics i pel canal on els teus clients ja et parlen.',
+    },
+    {
+      icon: 'lock',
+      title: 'Àrees privades i panells de gestió',
+      description:
+        'Una zona amb accés només per als teus clients o el teu equip, i un panell senzill per a veure reserves, comandes o missatges sense dependre de fulls de càlcul.',
+    },
+    {
+      icon: 'globe',
+      title: 'SEO local, ressenyes i multiidioma',
+      description:
+        'La teua fitxa de Google, les teues ressenyes, el teu mapa i la teua web en diversos idiomes treballant junts perquè et troben on i com et busquen.',
+    },
+  ],
+  en: [
+    {
+      icon: 'calendar',
+      title: 'Online bookings and appointments',
+      description:
+        'Let clients book a table, appointment or service without calling you. You just confirm and manage your schedule from one place.',
+    },
+    {
+      icon: 'cart',
+      title: 'Orders, menus and simple online stores',
+      description:
+        'A digital menu, pickup or delivery orders, or a simple store for a focused product catalog — without the complexity of a huge e-commerce platform.',
+    },
+    {
+      icon: 'mail',
+      title: 'Smart forms and lead capture',
+      description:
+        'Forms with just the right fields that filter who’s genuinely interested. Every contact reaches you organized and ready to answer.',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'WhatsApp automations',
+      description:
+        'Booking confirmations, appointment reminders or order alerts, automatic and through the channel your clients already message you on.',
+    },
+    {
+      icon: 'lock',
+      title: 'Private areas and management dashboards',
+      description:
+        'A members-only area for your clients or team, and a simple dashboard to see bookings, orders or messages without relying on spreadsheets.',
+    },
+    {
+      icon: 'globe',
+      title: 'Local SEO, reviews and multilingual sites',
+      description:
+        'Your Google profile, reviews, map listing and multilingual website working together so people find you however they search.',
+    },
+  ],
+};
+
+export const getExtras = (lang: Lang) => extras[lang];
+
 /* ───────────────── BACKEND & APIs ─────────────────
    Lenguaje orientado a beneficios para clientes NO técnicos. */
 const backend: Localized<Service[]> = {

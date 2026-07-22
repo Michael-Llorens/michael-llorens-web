@@ -88,6 +88,14 @@ export const ui = {
     'work.next': 'Proyecto siguiente',
     'work.goto': 'Ir al proyecto',
 
+    // --- Extras / funciones que se pueden sumar a la web ---
+    'extras.kicker': 'Más que una web',
+    'extras.title': 'Tu web puede crecer con tu negocio',
+    'extras.subtitle':
+      'Empezamos con una web que vende. Si tu negocio lo necesita, sumamos las piezas justas para ganarte tiempo — sin líos y sin pagar por lo que no vas a usar.',
+    'extras.note': '¿Tu negocio necesita algo distinto o más grande? Cuéntamelo y lo miramos juntos.',
+    'extras.cta': 'Cuéntame tu caso',
+
     // --- Precios ---
     'pricing.kicker': 'Precios',
     'pricing.title': 'Planes claros, sin sorpresas',
@@ -273,6 +281,13 @@ export const ui = {
     'work.next': 'Projecte següent',
     'work.goto': 'Anar al projecte',
 
+    'extras.kicker': 'Més que una web',
+    'extras.title': 'La teua web pot créixer amb el teu negoci',
+    'extras.subtitle':
+      'Comencem amb una web que ven. Si el teu negoci ho necessita, sumem les peces justes per a guanyar-te temps — sense embolics i sense pagar pel que no faràs servir.',
+    'extras.note': 'El teu negoci necessita alguna cosa diferent o més gran? Conta-m’ho i ho mirem junts.',
+    'extras.cta': 'Conta’m el teu cas',
+
     'pricing.kicker': 'Preus',
     'pricing.title': 'Plans clars, sense sorpreses',
     'pricing.subtitle':
@@ -445,6 +460,13 @@ export const ui = {
     'work.prev': 'Previous project',
     'work.next': 'Next project',
     'work.goto': 'Go to project',
+
+    'extras.kicker': 'More than a website',
+    'extras.title': 'Your website can grow with your business',
+    'extras.subtitle':
+      'We start with a website that sells. If your business needs it, we add exactly the pieces that save you time — no clutter, no paying for what you won’t use.',
+    'extras.note': 'Need something different or bigger? Tell me about it and we’ll figure it out together.',
+    'extras.cta': 'Tell me about your project',
 
     'pricing.kicker': 'Pricing',
     'pricing.title': 'Clear plans, no surprises',
