@@ -23,15 +23,28 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
       <p class="lead">{t('services.subtitle')}</p>
     </div>
 
-    <div class="grid grid-3">
+    <div class="services__bento">
       {
         services.map((s, i) => (
-          <article id={s.slug} class="card card-glow service" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+          <article
+            id={s.slug}
+            class:list={['card', 'card-glow', 'service', s.featured && `service--${s.featured}`]}
+            data-reveal
+            style={`--reveal-delay:${i * 70}ms`}
+          >
+            {s.featured === 'primary' && (
+              <span class="service__watermark" aria-hidden="true">
+                <Icon name={s.icon} />
+              </span>
+            )}
             <div class="service__icon">
               <Icon name={s.icon} />
             </div>
-            <h3 class="service__title">{s.title}</h3>
-            <p class="service__desc">{s.description}</p>
+            <div class="service__content">
+              {s.badge && <span class="service__badge">{s.badge}</span>}
+              <h3 class="service__title">{s.title}</h3>
+              <p class="service__desc">{s.description}</p>
+            </div>
           </article>
         ))
       }
@@ -40,6 +53,15 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
 </section>
 
 <style>
+  /* Bento: la base grande, el diferenciador en franja ancha, el resto
+     en tarjetas normales. Sistema de 4 columnas para que encaje sin
+     huecos: 1 grande (2×2) + 4 normales (1×1) + 1 ancha (4×1) = 12
+     celdas exactas. */
+  .services__bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
   .service {
     display: flex;
     flex-direction: column;
@@ -55,11 +77,16 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
     background: var(--accent-soft);
     border: 1px solid var(--border-strong);
     color: var(--accent-2);
-    margin-bottom: 0.4rem;
+    flex-shrink: 0;
   }
   .service__icon :global(svg) {
     width: 26px;
     height: 26px;
+  }
+  .service__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
   .service__title {
     font-size: 1.25rem;
@@ -67,5 +94,100 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
   .service__desc {
     color: var(--text-muted);
     font-size: 0.96rem;
+  }
+  .service__badge {
+    display: inline-block;
+    width: fit-content;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0a0a12;
+    background: var(--gradient);
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Tarjeta grande: el servicio base, prioridad visual */
+  .service--primary {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: clamp(1.8rem, 3vw, 2.6rem);
+    z-index: 0; /* contiene el watermark en su propio contexto de apilamiento */
+  }
+  .service__watermark {
+    position: absolute;
+    bottom: -1.75rem;
+    right: -1.75rem;
+    width: 10rem;
+    height: 10rem;
+    color: var(--accent);
+    opacity: 0.07;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .service__watermark :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .service--primary .service__icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+  }
+  .service--primary .service__icon :global(svg) {
+    width: 32px;
+    height: 32px;
+  }
+  .service--primary .service__title {
+    font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  }
+  .service--primary .service__desc {
+    font-size: 1.02rem;
+    max-width: 36ch;
+  }
+
+  /* Franja ancha: el diferenciador, layout horizontal */
+  .service--wide {
+    grid-column: span 4;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  @media (max-width: 900px) {
+    .services__bento {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .service--primary {
+      grid-column: span 2;
+      grid-row: span 1;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .service--primary .service__desc {
+      max-width: none;
+    }
+    .service--wide {
+      grid-column: span 2;
+    }
+  }
+  @media (max-width: 560px) {
+    .services__bento {
+      grid-template-columns: 1fr;
+    }
+    .service--primary,
+    .service--wide {
+      grid-column: span 1;
+      grid-row: span 1;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .service--primary .service__desc {
+      max-width: none;
+    }
   }
 </style>
