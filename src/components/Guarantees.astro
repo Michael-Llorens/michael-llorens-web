@@ -19,11 +19,13 @@ const items = getGuarantees(lang);
       <h2 class="section-title">{t('guarantees.title')}</h2>
     </div>
 
-    <div class="guarantees__grid">
+    <div class="guarantees__strip card card-glow" data-reveal>
       {
-        items.map((g, i) => (
-          <div class="guarantee card card-glow" data-reveal style={`--reveal-delay:${i * 70}ms`}>
-            <span class="guarantee__ic"><Icon name={g.icon} /></span>
+        items.map((g) => (
+          <div class="guarantee">
+            <span class="guarantee__ic">
+              <Icon name={g.icon} />
+            </span>
             <h3 class="guarantee__title">{g.title}</h3>
             <p class="guarantee__desc">{g.description}</p>
           </div>
@@ -34,18 +36,28 @@ const items = getGuarantees(lang);
 </section>
 
 <style>
-  .guarantees__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
+  .guarantees__strip {
+    display: flex;
+    padding: clamp(1.8rem, 4vw, 2.4rem) clamp(1.2rem, 3vw, 2rem);
   }
   .guarantee {
+    position: relative;
+    flex: 1;
     text-align: center;
-    padding: 1.8rem 1.3rem;
+    padding-inline: clamp(0.8rem, 2vw, 1.5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.55rem;
+  }
+  .guarantee:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 8%;
+    height: 84%;
+    width: 1px;
+    background: var(--border);
   }
   .guarantee__ic {
     display: grid;
@@ -63,20 +75,28 @@ const items = getGuarantees(lang);
     height: 25px;
   }
   .guarantee__title {
-    font-size: 1.08rem;
+    font-size: 1.05rem;
   }
   .guarantee__desc {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
-  @media (max-width: 860px) {
-    .guarantees__grid {
-      grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 780px) {
+    .guarantees__strip {
+      flex-direction: column;
+      gap: 1.6rem;
     }
-  }
-  @media (max-width: 460px) {
-    .guarantees__grid {
-      grid-template-columns: 1fr;
+    .guarantee {
+      padding-inline: 0;
+    }
+    .guarantee:not(:last-child)::after {
+      right: auto;
+      top: auto;
+      bottom: -0.8rem;
+      left: 15%;
+      width: 70%;
+      height: 1px;
     }
   }
 </style>
