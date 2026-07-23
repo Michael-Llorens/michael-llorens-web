@@ -55,8 +55,6 @@ export const ui = {
       'Sin plantillas ni relleno. Código a medida que carga en un segundo, se posiciona en Google y te trae clientes de verdad.',
     'hero.cta.primary': 'Pide presupuesto en 24h',
     'hero.cta.secondary': 'Ver proyectos reales',
-    'hero.trust': 'Webs a medida · Rendimiento 100/100 verificable · SEO desde el primer día',
-    'hero.guarantee': 'Presupuesto claro en 24h · Sin permanencia · Código y dominio siempre tuyos',
 
     // --- Stats ---
     'stats.projects.value': '5+',
@@ -255,8 +253,6 @@ export const ui = {
       'En MetaLogic dissenyem i desenvolupem webs ràpides, modernes i optimitzades per a aparéixer en Google i convertir visites en clients. El teu soci de confiança en disseny web i SEO a Xàtiva i València.',
     'hero.cta.primary': 'Començar el meu projecte',
     'hero.cta.secondary': 'Veure projectes',
-    'hero.trust': 'Webs a mida · Rendiment 100/100 · SEO des del primer dia',
-    'hero.guarantee': 'Pressupost sense compromís · Sense permanències · Parlem abans de començar',
 
     'stats.projects.value': '5+',
     'stats.projects.label': 'Projectes reals entregats',
@@ -436,8 +432,6 @@ export const ui = {
       'At MetaLogic we design and build fast, modern websites engineered to rank on Google and turn visitors into customers. Your trusted partner in web design and SEO in Xàtiva and Valencia.',
     'hero.cta.primary': 'Start my project',
     'hero.cta.secondary': 'View work',
-    'hero.trust': 'Custom-built · 100/100 performance · SEO from day one',
-    'hero.guarantee': 'Free quote · No lock-in contracts · We talk before starting',
 
     'stats.projects.value': '5+',
     'stats.projects.label': 'Real projects delivered',

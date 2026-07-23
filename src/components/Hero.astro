@@ -43,12 +43,6 @@ const shots = getProjects(lang)
         </a>
         <a href={localizedPath(lang, 'proyectos')} class="btn btn-ghost">{t('hero.cta.secondary')}</a>
       </div>
-
-      <p class="hero__trust" data-reveal style="--reveal-delay:300ms">
-        <Icon name="check" class="trust-ic" />
-        {t('hero.trust')}
-      </p>
-      <p class="hero__guarantee" data-reveal style="--reveal-delay:360ms">{t('hero.guarantee')}</p>
     </div>
 
     <div class="hero__visual" data-reveal style="--reveal-delay:260ms">
@@ -187,7 +181,7 @@ const shots = getProjects(lang)
     text-align: center;
     max-width: 1180px;
     width: 100%;
-    padding-block: 1rem;
+
   }
   .hero__text {
     min-width: 0;
@@ -298,7 +292,7 @@ const shots = getProjects(lang)
     margin-bottom: 1.5rem;
   }
   .hero__subtitle {
-    color: var(--text-muted);
+    color: #000000;
     font-size: clamp(1.05rem, 1.8vw, 1.3rem);
     max-width: 660px;
     margin-inline: auto;
@@ -311,23 +305,4 @@ const shots = getProjects(lang)
     flex-wrap: wrap;
     margin-bottom: 2rem;
   }
-  .hero__trust {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--text-dim);
-    font-size: 0.9rem;
-  }
-  .hero__guarantee {
-    margin-top: 0.7rem;
-    color: var(--text-dim);
-    font-size: 0.82rem;
-    opacity: 0.85;
-  }
-  .hero__trust :global(svg) {
-    width: 1.05rem;
-    height: 1.05rem;
-    color: var(--accent-2);
-  }
-
 </style>
