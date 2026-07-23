@@ -19,15 +19,15 @@ const items = getGuarantees(lang);
       <h2 class="section-title">{t('guarantees.title')}</h2>
     </div>
 
-    <div class="guarantees__strip card card-glow" data-reveal>
+    <div class="promises" data-reveal>
       {
         items.map((g) => (
-          <div class="guarantee">
-            <span class="guarantee__ic">
+          <div class="promise">
+            <span class="promise__ic">
               <Icon name={g.icon} />
             </span>
-            <h3 class="guarantee__title">{g.title}</h3>
-            <p class="guarantee__desc">{g.description}</p>
+            <h3 class="promise__title">{g.title}</h3>
+            <p class="promise__desc">{g.description}</p>
           </div>
         ))
       }
@@ -36,67 +36,51 @@ const items = getGuarantees(lang);
 </section>
 
 <style>
-  .guarantees__strip {
-    display: flex;
-    padding: clamp(1.8rem, 4vw, 2.4rem) clamp(1.2rem, 3vw, 2rem);
+  .promises {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(2rem, 4vw, 2.6rem);
   }
-  .guarantee {
-    position: relative;
-    flex: 1;
-    text-align: center;
-    padding-inline: clamp(0.8rem, 2vw, 1.5rem);
+  .promise {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.55rem;
+    text-align: center;
+    gap: 0.7rem;
   }
-  .guarantee:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 8%;
-    height: 84%;
-    width: 1px;
-    background: var(--border);
-  }
-  .guarantee__ic {
+  .promise__ic {
     display: grid;
     place-items: center;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    border: 1px solid var(--border-strong);
     color: var(--accent-2);
-    margin-bottom: 0.3rem;
+    transition: transform 0.3s var(--ease), color 0.3s ease;
   }
-  .guarantee__ic :global(svg) {
-    width: 25px;
-    height: 25px;
+  .promise__ic :global(svg) {
+    width: 52px;
+    height: 52px;
+    stroke-width: 1.4;
   }
-  .guarantee__title {
-    font-size: 1.05rem;
+  .promise:hover .promise__ic {
+    color: var(--accent);
+    transform: translateY(-3px) scale(1.06);
   }
-  .guarantee__desc {
+  .promise__title {
+    font-size: 1.08rem;
+  }
+  .promise__desc {
     color: var(--text-muted);
     font-size: 0.88rem;
+    max-width: 24ch;
   }
 
   @media (max-width: 780px) {
-    .guarantees__strip {
-      flex-direction: column;
-      gap: 1.6rem;
+    .promises {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 2.6rem;
     }
-    .guarantee {
-      padding-inline: 0;
-    }
-    .guarantee:not(:last-child)::after {
-      right: auto;
-      top: auto;
-      bottom: -0.8rem;
-      left: 15%;
-      width: 70%;
-      height: 1px;
+  }
+  @media (max-width: 460px) {
+    .promises {
+      grid-template-columns: 1fr;
     }
   }
 </style>
