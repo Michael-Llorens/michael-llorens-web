@@ -11,8 +11,7 @@ type Localized<T> = Record<Lang, T>;
 /* ───────────────── SERVICIOS (3 pilares) ─────────────────
    Antes eran 6 tarjetas sueltas (una por servicio). Se agrupan en 3
    bloques con sentido de negocio: cómo se construye la web, cómo se
-   encuentra, y el diferenciador de IA. Cada pilar lleva unas etiquetas
-   cortas para no perder el detalle de qué incluye. */
+   encuentra, y el diferenciador de IA. */
 export interface Pillar {
   icon: string; // nombre del icono (ver Icon.astro)
   // Ancla estable (no traducida) para enlazar desde el footer:
@@ -20,7 +19,6 @@ export interface Pillar {
   slug: string;
   title: string;
   description: string;
-  tags: string[];
   // Etiqueta corta opcional (solo la lleva el pilar de IA/GEO).
   badge?: string;
 }
@@ -31,7 +29,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'code',
       slug: 'desarrollo-web',
       title: 'Una web a medida',
-      tags: ['Desarrollo a medida', 'Diseño UX/UI', 'Rendimiento 100/100'],
       description:
         'Diseño, programo y optimizo tu web a medida — sin plantillas ni relleno, pensada para que cada pantalla lleve a una acción.',
     },
@@ -39,7 +36,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'search',
       slug: 'seo',
       title: 'Que te encuentren',
-      tags: ['SEO técnico', 'SEO local', 'Google Business'],
       description:
         'Trabajo el SEO técnico, de contenidos y local para que aparezcas en Google justo cuando alguien busca lo que ofreces — en tu ciudad y en tu sector.',
     },
@@ -48,7 +44,6 @@ const pillars: Localized<Pillar[]> = {
       slug: 'geo-ia',
       title: 'El futuro de las búsquedas',
       badge: 'Ventaja competitiva',
-      tags: ['ChatGPT', 'Gemini', 'Google IA'],
       description:
         'Preparo tu web para que ChatGPT, Gemini y las respuestas con IA de Google te recomienden cuando alguien pregunta por tu servicio. Casi nadie lo hace bien todavía: es ventaja mientras dure.',
     },
@@ -58,7 +53,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'code',
       slug: 'desarrollo-web',
       title: 'Una web a mida',
-      tags: ['Desenvolupament a mida', 'Disseny UX/UI', 'Rendiment 100/100'],
       description:
         'Dissenye, programe i optimitze la teua web a mida — sense plantilles ni farciment, pensada perquè cada pantalla porte a una acció.',
     },
@@ -66,7 +60,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'search',
       slug: 'seo',
       title: 'Que et troben',
-      tags: ['SEO tècnic', 'SEO local', 'Google Business'],
       description:
         'Treballe el SEO tècnic, de continguts i local perquè aparegues en Google justament quan algú busca el que ofereixes — en la teua ciutat i en el teu sector.',
     },
@@ -75,7 +68,6 @@ const pillars: Localized<Pillar[]> = {
       slug: 'geo-ia',
       title: 'El futur de les cerques',
       badge: 'Avantatge competitiu',
-      tags: ['ChatGPT', 'Gemini', 'Google IA'],
       description:
         'Preparo la teua web perquè ChatGPT, Gemini i les respostes amb IA de Google et recomanen quan algú pregunta pel teu servei. Quasi ningú ho fa bé encara: és avantatge mentre dure.',
     },
@@ -85,7 +77,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'code',
       slug: 'desarrollo-web',
       title: 'A website built for you',
-      tags: ['Custom development', 'UX/UI design', '100/100 performance'],
       description:
         'I design, build and optimize your website from scratch — no templates, no filler, every screen built to drive one action.',
     },
@@ -93,7 +84,6 @@ const pillars: Localized<Pillar[]> = {
       icon: 'search',
       slug: 'seo',
       title: 'Get found',
-      tags: ['Technical SEO', 'Local SEO', 'Google Business'],
       description:
         'I handle technical, content and local SEO so you show up on Google exactly when someone searches for what you offer — in your city and your niche.',
     },
@@ -102,7 +92,6 @@ const pillars: Localized<Pillar[]> = {
       slug: 'geo-ia',
       title: 'The future of search',
       badge: 'Competitive edge',
-      tags: ['ChatGPT', 'Gemini', 'Google AI'],
       description:
         'I prepare your website so ChatGPT, Gemini and Google’s AI answers recommend you when someone asks about your service. Almost nobody does this well yet: it’s an edge while it lasts.',
     },
