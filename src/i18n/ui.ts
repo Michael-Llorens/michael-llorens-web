@@ -49,7 +49,7 @@ export const ui = {
 
     // --- Hero ---
     'hero.title.1': 'Una web que',
-    'hero.title.2': 'te consigue clientes',
+    'hero.title.2': 'consigue clientes',
     'hero.title.3': 'mientras tú trabajas',
     'hero.subtitle':
       'Sin plantillas ni relleno. Código a medida que carga en un segundo, se posiciona en Google y te trae clientes de verdad.',
