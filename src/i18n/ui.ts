@@ -44,8 +44,6 @@ export const ui = {
     'sectors.cta': 'Quiero una web para mi negocio',
     'sectors.all': 'Ver todos los sectores',
 
-    // --- Clientes ---
-    'clients.title': 'Negocios que ya confían en MetaLogic',
 
     // --- Hero ---
     'hero.title.1': 'Una web que',
@@ -243,8 +241,6 @@ export const ui = {
     'sectors.cta': 'Vull una web per al meu negoci',
     'sectors.all': 'Veure tots els sectors',
 
-    // --- Clients ---
-    'clients.title': 'Negocis que ja confien en MetaLogic',
 
     'hero.title.1': 'Disseny web que',
     'hero.title.2': 'posiciona',
@@ -422,8 +418,6 @@ export const ui = {
     'sectors.cta': 'I want a website for my business',
     'sectors.all': 'See all sectors',
 
-    // --- Clients ---
-    'clients.title': 'Businesses that already trust MetaLogic',
 
     'hero.title.1': 'Web design that',
     'hero.title.2': 'ranks',
