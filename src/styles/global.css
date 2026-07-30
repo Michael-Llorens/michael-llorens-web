@@ -257,20 +257,10 @@ h4 {
   letter-spacing: -0.025em;
 }
 
+/* Antes texto con gradiente clipeado (cliché de landing genérica);
+   ahora color sólido y firme, consistente con el resto del sistema. */
 .gradient-text {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-/* Palabra destacada del hero: color sólido y firme, sin brillo animado
-   recorriéndola — un estudio serio no necesita un efecto de "shimmer"
-   para que su titular destaque. */
-.hero__title .gradient-text {
   color: var(--accent);
-  -webkit-text-fill-color: var(--accent);
 }
 
 /* ───────────────── Layout helpers ───────────────── */
