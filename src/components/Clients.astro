@@ -26,14 +26,14 @@ const clients = getProjects(lang).map((p) => ({ name: p.name, logo: logos[p.slug
 ---
 
 <section class="clients" aria-label={t('clients.title')}>
-  <div class="container">
-    <p class="clients__title" data-reveal>{t('clients.title')}</p>
-    <ul class="clients__row" data-reveal>
+  <div class="container clients__inner" data-reveal>
+    <span class="clients__label">{t('clients.title')}</span>
+    <ul class="clients__row">
       {
         clients.map((c) => (
           <li class="clients__item">
             {c.logo ? (
-              <img src={c.logo} alt={c.name} height="28" loading="lazy" />
+              <img src={c.logo} alt={c.name} height="20" loading="lazy" />
             ) : (
               <span class="clients__name">{c.name}</span>
             )}
@@ -45,48 +45,78 @@ const clients = getProjects(lang).map((p) => ({ name: p.name, logo: logos[p.slug
 </section>
 
 <style>
+  /* Franja de confianza compacta: valida rápido sin competir con el
+     portfolio (que es la prueba social real, con capturas). */
   .clients {
-    padding-block: clamp(2rem, 4vw, 3rem);
+    padding-block: clamp(1.3rem, 2.6vw, 1.8rem);
+    border-block: 1px solid var(--border);
   }
-  .clients__title {
-    text-align: center;
+  .clients__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem 1.6rem;
+  }
+  .clients__label {
+    flex-shrink: 0;
     color: var(--text-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 1.4rem;
+    white-space: nowrap;
   }
   .clients__row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: clamp(1.5rem, 5vw, 3.5rem);
   }
   .clients__item {
-    opacity: 0.75;
-    transition: opacity 0.25s ease, color 0.25s ease;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.25s ease;
+  }
+  .clients__item:not(:last-child)::after {
+    content: '';
+    width: 1px;
+    height: 13px;
+    margin-inline: 1rem;
+    background: var(--border-strong);
   }
   .clients__item:hover {
     opacity: 1;
   }
   .clients__name {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: -0.005em;
     color: var(--text-muted);
     white-space: nowrap;
+    transition: color 0.25s ease;
   }
   .clients__item:hover .clients__name {
     color: var(--text);
   }
   .clients__item img {
     width: auto;
-    height: 28px;
+    height: 20px;
     filter: grayscale(1);
-    transition: filter 0.25s ease;
+    opacity: 0.85;
+    transition: filter 0.25s ease, opacity 0.25s ease;
   }
   .clients__item:hover img {
     filter: grayscale(0);
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .clients__inner {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
   }
 </style>
