@@ -294,6 +294,13 @@ h4 {
   padding-block: clamp(3rem, 6vw, 4.5rem);
 }
 
+/* Rompe la monotonía de "bloques apilados idénticos": alterna un tono
+   de fondo apenas perceptible entre secciones para separar capítulos
+   de la página sin usar líneas ni cajas. */
+.section--alt {
+  background: var(--bg-soft);
+}
+
 .section-head {
   max-width: 640px;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
