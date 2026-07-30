@@ -15,7 +15,7 @@ const projects = getProjects(lang);
 const slides = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
 ---
 
-<section class="section" id="work">
+<section class="section section--alt" id="work">
   <div class="container">
     <div class="section-head center" data-reveal>
       <span class="kicker">{t('work.kicker')}</span>
