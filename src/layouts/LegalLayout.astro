@@ -7,6 +7,7 @@ import { useTranslations } from '../i18n/ui';
 import { localizedPath } from '../i18n/config';
 import Footer from '../components/Footer.astro';
 import Icon from './../components/Icon.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -73,6 +74,8 @@ const canonical = new URL(`/${slug}`, site.url).href;
     </main>
 
     <Footer lang="es" />
+
+    <Analytics />
 
     <script>
       const tgl = document.getElementById('theme-toggle');
