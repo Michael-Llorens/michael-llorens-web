@@ -111,41 +111,39 @@ const details = getPricingDetails(lang);
     flex-direction: column;
     padding: 2.2rem 1.8rem;
     border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+    background: var(--surface);
     border: 1px solid var(--border);
-    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
-      box-shadow 0.35s var(--ease);
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+      box-shadow 0.3s var(--ease);
   }
   .plan:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: var(--border-strong);
+    box-shadow: var(--shadow);
   }
+  /* El plan destacado se distingue por un borde sólido, no por brillo
+     ni por escalarse por encima de sus vecinos. */
   .plan--featured {
-    border-color: transparent;
-    background:
-      linear-gradient(var(--surface), var(--bg-soft)) padding-box,
-      var(--gradient) border-box;
-    border: 1.5px solid transparent;
-    box-shadow: 0 24px 60px -24px var(--accent-glow);
-    transform: scale(1.03);
+    border: 1.5px solid var(--accent);
+    background: var(--accent-soft);
   }
   .plan--featured:hover {
-    transform: scale(1.03) translateY(-6px);
+    transform: translateY(-4px);
   }
   .plan__badge {
     position: absolute;
-    top: -0.85rem;
+    top: -0.8rem;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--gradient);
-    color: #0a0a12;
+    background: var(--accent);
+    color: var(--on-accent);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.78rem;
-    padding: 0.35rem 1rem;
-    border-radius: 999px;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
     white-space: nowrap;
-    box-shadow: 0 8px 20px -8px var(--accent-glow);
   }
   .plan__name {
     font-size: 1.35rem;
@@ -161,10 +159,7 @@ const details = getPricingDetails(lang);
     font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 700;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent);
   }
   .plan__note {
     font-size: 0.82rem;

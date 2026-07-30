@@ -146,7 +146,6 @@ const jsonLd = {
   </head>
   <body>
     <a href="#main" class="skip-link">Saltar al contenido</a>
-    <div class="cursor-glow" aria-hidden="true"></div>
     <slot />
 
     <!-- Animaciones de entrada al hacer scroll -->
@@ -171,67 +170,6 @@ const jsonLd = {
         els.forEach((el) => io.observe(el));
       };
       reveal();
-
-      // Efectos solo en dispositivos con puntero fino (ratón) y sin reduced-motion
-      const finePointer =
-        window.matchMedia('(pointer: fine)').matches &&
-        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (finePointer) {
-        // Resplandor naranja que sigue al cursor por toda la página
-        const glow = document.querySelector<HTMLElement>('.cursor-glow');
-        // Spotlight que sigue al cursor sobre las tarjetas
-        let ticking = false;
-        let lastEvt: PointerEvent | null = null;
-        const updateSpotlight = () => {
-          ticking = false;
-          if (!lastEvt) return;
-          if (glow) {
-            glow.style.transform = `translate3d(${lastEvt.clientX}px, ${lastEvt.clientY}px, 0)`;
-            if (!glow.classList.contains('is-on')) glow.classList.add('is-on');
-          }
-          const card = (lastEvt.target as HTMLElement)?.closest<HTMLElement>('.card, .plan');
-          if (!card) return;
-          const r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', `${((lastEvt.clientX - r.left) / r.width) * 100}%`);
-          card.style.setProperty('--my', `${((lastEvt.clientY - r.top) / r.height) * 100}%`);
-        };
-        document.addEventListener(
-          'pointermove',
-          (e) => {
-            lastEvt = e;
-            if (!ticking) {
-              ticking = true;
-              requestAnimationFrame(updateSpotlight);
-            }
-          },
-          { passive: true }
-        );
-        document.addEventListener('pointerleave', () => glow?.classList.remove('is-on'));
-
-        // Inclinación 3D sutil de las tarjetas hacia el cursor
-        const tiltCards = Array.from(
-          document.querySelectorAll<HTMLElement>('.card, .plan')
-        ).filter(
-          (c) =>
-            !c.closest('.carousel') &&
-            !c.matches('.diag__card, .contact__form, .includes, .compare__wrap, .terminal')
-        );
-        tiltCards.forEach((card) => {
-          card.addEventListener('pointermove', (e) => {
-            const r = card.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width - 0.5;
-            const py = (e.clientY - r.top) / r.height - 0.5;
-            const max = 4.5;
-            card.style.transition = 'transform 0.12s ease-out';
-            card.style.transform = `perspective(900px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg) translateY(-4px)`;
-          });
-          card.addEventListener('pointerleave', () => {
-            card.style.transition = 'transform 0.4s var(--ease)';
-            card.style.transform = '';
-          });
-        });
-      }
     </script>
 
     <style>

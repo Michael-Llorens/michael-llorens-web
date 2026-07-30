@@ -18,9 +18,6 @@ const shots = getProjects(lang)
 
 <section class="hero">
   <div class="hero__bg" aria-hidden="true">
-    <div class="aurora"></div>
-    <div class="orb orb--1"></div>
-    <div class="orb orb--2"></div>
     <div class="grid-lines"></div>
   </div>
 
@@ -114,54 +111,9 @@ const shots = getProjects(lang)
     inset: 0;
     z-index: -1;
   }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-    animation: float 14s ease-in-out infinite;
-  }
-  .orb--1 {
-    width: 38rem;
-    height: 38rem;
-    top: -12rem;
-    right: -10rem;
-    background: radial-gradient(circle, rgba(251, 84, 18, 0.5), transparent 70%);
-  }
-  .orb--2 {
-    width: 32rem;
-    height: 32rem;
-    bottom: -14rem;
-    left: -8rem;
-    background: radial-gradient(circle, rgba(255, 138, 76, 0.4), transparent 70%);
-    animation-delay: -6s;
-  }
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-2rem, 2rem) scale(1.08); }
-  }
-
-  /* Aurora: degradado naranja que deriva lentamente */
-  .aurora {
-    position: absolute;
-    inset: -25%;
-    background:
-      radial-gradient(38% 50% at 28% 32%, rgba(251, 84, 18, 0.22), transparent 60%),
-      radial-gradient(34% 46% at 72% 42%, rgba(255, 138, 76, 0.16), transparent 62%),
-      radial-gradient(46% 42% at 52% 78%, rgba(255, 120, 56, 0.12), transparent 65%);
-    filter: blur(48px);
-    will-change: transform;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .aurora {
-      animation: aurora-move 20s ease-in-out infinite alternate;
-    }
-  }
-  @keyframes aurora-move {
-    0% { transform: translate3d(-4%, -2%, 0) scale(1); }
-    50% { transform: translate3d(4%, 3%, 0) scale(1.12); }
-    100% { transform: translate3d(-2%, 5%, 0) scale(1.06); }
-  }
+  /* Retícula fija, sin animación: da textura arquitectónica al hero sin
+     recurrir a manchas de color flotando (el recurso más visto en
+     landings genéricas). */
   .grid-lines {
     position: absolute;
     inset: 0;
@@ -169,8 +121,8 @@ const shots = getProjects(lang)
       linear-gradient(var(--grid-line) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 35%, #000 30%, transparent 75%);
   }
 
   .hero__inner {
@@ -276,7 +228,7 @@ const shots = getProjects(lang)
       align-items: center;
     }
     .hero__title {
-      font-size: clamp(2.3rem, 4vw, 3.5rem);
+      font-size: clamp(2.6rem, 3.7vw, 3.9rem);
     }
     .hero__inner .hero__subtitle {
       margin-inline: 0;
@@ -292,9 +244,10 @@ const shots = getProjects(lang)
     margin-bottom: 1.5rem;
   }
   .hero__subtitle {
-    color: #000000;
-    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
-    max-width: 660px;
+    color: var(--text-muted);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.55;
+    max-width: 52ch;
     margin-inline: auto;
     margin-bottom: 2.4rem;
   }

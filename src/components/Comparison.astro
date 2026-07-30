@@ -54,7 +54,7 @@ const { cols, rows } = getComparison(lang);
 
 <style>
   .compare__wrap {
-    padding: 0.5rem;
+    padding: 0;
     overflow-x: auto;
   }
   .compare__table {
@@ -64,30 +64,37 @@ const { cols, rows } = getComparison(lang);
   }
   .compare__table th,
   .compare__table td {
-    padding: 1.05rem 1.2rem;
+    padding: 1.15rem 1.3rem;
     text-align: left;
     font-size: 0.95rem;
   }
   .compare__table thead th {
     font-family: var(--font-display);
     font-weight: 600;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
     border-bottom: 1px solid var(--border);
+    padding-block: 1.3rem;
   }
   .compare__feat-head {
     color: var(--text-dim) !important;
   }
   .compare__me-head {
     text-align: center !important;
+    background: var(--accent-soft);
   }
   .compare__me-badge {
-    display: inline-block;
-    background: var(--gradient);
-    color: #0a0a12;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--accent);
+    color: var(--on-accent);
     font-weight: 700;
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
   }
   .compare__table tbody tr {
     border-bottom: 1px solid var(--border);
@@ -102,6 +109,7 @@ const { cols, rows } = getComparison(lang);
   .compare__me {
     text-align: center;
     background: var(--accent-soft);
+    border-inline: 1px solid var(--card-border);
   }
   .compare__me span {
     display: inline-block;
@@ -112,22 +120,14 @@ const { cols, rows } = getComparison(lang);
   .compare__me :global(svg) {
     width: 1.05rem;
     height: 1.05rem;
-    color: var(--accent-2);
+    color: var(--accent);
     display: inline-block;
     vertical-align: middle;
     margin-right: 0.4rem;
+    stroke-width: 2.4;
   }
   .compare__other {
     color: var(--text-dim);
-  }
-  /* Esquinas redondeadas de la columna destacada */
-  .compare__table tbody tr:first-child .compare__me {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
-  .compare__table tbody tr:last-child .compare__me {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
   }
 
   /* ── Móvil: la tabla se apila en tarjetas (sin scroll horizontal) ── */
