@@ -177,6 +177,9 @@ const formMsg = {
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
+  .contact__grid > * {
+    min-width: 0;
+  }
   /* Sin cabecera ya en la columna: el primer bloque arranca alineado arriba. */
   .contact__intro > :first-child {
     margin-top: 0;
@@ -280,13 +283,18 @@ const formMsg = {
     width: 20px;
     height: 20px;
   }
+  .contact__direct > span:last-child {
+    min-width: 0;
+  }
   .contact__direct-label {
     display: block;
     font-size: 0.78rem;
     color: var(--text-dim);
   }
   .contact__direct strong {
+    display: block;
     font-size: 0.98rem;
+    overflow-wrap: break-word;
   }
 
   /* Formulario */

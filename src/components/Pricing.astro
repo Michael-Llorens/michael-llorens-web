@@ -295,15 +295,23 @@ const details = getPricingDetails(lang);
       grid-template-columns: 1fr;
     }
   }
-  @media (max-width: 900px) {
+  /* Tablet: 2 columnas en vez de saltar directo a 1 (con 3 planes
+     apilados, la página se hacía kilométrica en iPads y similares). */
+  @media (max-width: 880px) {
     .plans {
-      grid-template-columns: 1fr;
-      max-width: 440px;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 700px;
       margin-inline: auto;
     }
     .plan--featured,
     .plan--featured:hover {
       transform: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .plans {
+      grid-template-columns: 1fr;
+      max-width: 440px;
     }
   }
 </style>

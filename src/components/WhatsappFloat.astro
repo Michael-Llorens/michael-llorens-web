@@ -54,6 +54,18 @@ const t = copy[lang];
       auto = window.setTimeout(hide, 7000);
     }, 3000);
   }
+
+  // Aparta el botón flotante cuando el footer entra en pantalla, para que
+  // no tape el crédito final ni los enlaces legales.
+  const floatBtn = document.querySelector<HTMLElement>('.whatsapp-float');
+  const footer = document.querySelector('footer.footer');
+  if (floatBtn && footer) {
+    const io = new IntersectionObserver(
+      ([entry]) => floatBtn.classList.toggle('is-clear', entry.isIntersecting),
+      { rootMargin: '0px 0px -12px 0px' }
+    );
+    io.observe(footer);
+  }
 </script>
 
 <style>
@@ -71,7 +83,15 @@ const t = copy[lang];
     justify-content: center;
     z-index: 95;
     box-shadow: 0 10px 26px -8px var(--accent-glow);
-    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease,
+      opacity 0.25s ease;
+  }
+  /* Cuando el footer está a la vista, se aparta para no tapar el
+     crédito final ni los enlaces legales. */
+  .whatsapp-float.is-clear {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
   }
   .whatsapp-float :global(svg) {
     width: 30px;
