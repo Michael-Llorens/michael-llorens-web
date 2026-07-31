@@ -31,7 +31,7 @@ const t = copy[lang];
 </div>
 
 <a class="whatsapp-float" href={wa} target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M12.04 2a9.9 9.9 0 0 0-8.46 15.05L2 22l5.07-1.33A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.2 8.2 0 1 1 6.95 3.85Zm4.5-6.14c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.38-1.72c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.21.88 2.39 1 2.55.13.17 1.74 2.66 4.21 3.73.59.25 1.05.4 1.4.52.59.18 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z" />
   </svg>
 </a>
@@ -76,15 +76,15 @@ const t = copy[lang];
     right: 24px;
     width: 56px;
     height: 56px;
-    background: #25d366;
+    background: transparent;
+    color: #25d366;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 95;
-    box-shadow: 0 10px 26px -8px rgba(37, 211, 102, 0.45);
-    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease,
-      opacity 0.25s ease;
+    filter: drop-shadow(rgba(37, 211, 102, 0.45) 0px 6px 14px);
+    transition: filter 0.3s ease, opacity 0.25s ease;
   }
   /* Cuando el footer está a la vista, se aparta para no tapar el
      crédito final ni los enlaces legales. */
@@ -94,13 +94,11 @@ const t = copy[lang];
     transform: translateY(8px);
   }
   .whatsapp-float :global(svg) {
-    width: 30px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
   }
   .whatsapp-float:hover {
-    background: #20bd5a;
-    box-shadow: 0 14px 34px -8px rgba(37, 211, 102, 0.6);
-    transform: translateY(-2px);
+    filter: drop-shadow(rgba(37, 211, 102, 0.65) 0px 8px 22px);
   }
 
   /* ── Popup flotante ── */
