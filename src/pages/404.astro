@@ -15,18 +15,18 @@ import { site } from '../data/site';
         try {
           var t = localStorage.getItem('theme');
           if (t !== 'light' && t !== 'dark') {
-            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            t = 'light';
           }
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.setAttribute('data-theme', 'light');
         }
       })();
     </script>
     <title>Página no encontrada · {site.name}</title>
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0a12" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <main class="nf">
