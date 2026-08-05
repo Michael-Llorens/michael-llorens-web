@@ -43,13 +43,6 @@ const sectorSchema = {
 
 <section class="section sector-hero">
   <div class="container">
-    <nav class="crumbs" aria-label="Migas de pan">
-      <a href={localizedPath(lang)}>{t('nav.home')}</a>
-      <span class="crumbs__sep" aria-hidden="true">›</span>
-      <a href={`${localizedPath(lang, 'servicios')}#sectores`}>{t('nav.services')}</a>
-      <span class="crumbs__sep" aria-hidden="true">›</span>
-      <span aria-current="page">{sector.name}</span>
-    </nav>
     <div class="sector-hero__head" data-reveal>
       <span class="sector-hero__icon"><Icon name={sector.icon} /></span>
       <h1 class="sector-hero__title">{sector.name}</h1>
@@ -98,6 +91,7 @@ const sectorSchema = {
 <style>
   .sector-hero {
     text-align: center;
+    padding-block: clamp(1.2rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
   }
   .sector-hero__back {
     display: inline-block;
