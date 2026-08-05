@@ -137,6 +137,33 @@ const sectors: Localized<Sector[]> = {
         'SEO local desde el primer día',
       ],
     },
+    {
+      slug: 'torneos-y-eventos',
+      icon: 'trophy',
+      name: 'Torneos y eventos deportivos',
+      tagline: 'Marcadores en directo y clasificaciones, sin folios ni grupos de WhatsApp',
+      intro:
+        'Ligas de pádel, torneos de fútbol sala, campeonatos de cualquier deporte… los jugadores quieren ver resultados y clasificación al momento, no esperar a que alguien actualice un Excel.',
+      pains: [
+        'Clasificaciones en papel o Excel que nadie mira actualizadas.',
+        'Grupos de WhatsApp saturados de fotos de resultados.',
+        'Jugadores preguntando todo el rato cuándo y contra quién juegan.',
+        'Cero imagen de cara a patrocinadores o al club.',
+      ],
+      solutions: [
+        'Marcador y clasificación en directo, accesibles desde el móvil de cualquiera.',
+        'Cuadro de partidos y horarios siempre actualizados y visibles.',
+        'Panel para que tú (o el árbitro) metáis resultados en segundos.',
+        'Una web con tu marca, lista para enseñar a patrocinadores.',
+      ],
+      includes: [
+        'Clasificación y marcador en tiempo real',
+        'Cuadro de eliminatorias o liga por grupos',
+        'Calendario de partidos y horarios',
+        'Panel de gestión para actualizar resultados',
+        'Diseño con tu marca o la del club',
+      ],
+    },
   ],
   va: [
     {
@@ -247,6 +274,33 @@ const sectors: Localized<Sector[]> = {
         'SEO local des del primer dia',
       ],
     },
+    {
+      slug: 'torneos-y-eventos',
+      icon: 'trophy',
+      name: 'Torneigs i esdeveniments esportius',
+      tagline: 'Marcadors en directe i classificacions, sense fulls ni grups de WhatsApp',
+      intro:
+        'Lligues de pàdel, torneigs de futbol sala, campionats de qualsevol esport… els jugadors volen veure resultats i classificació a l’instant, no esperar que algú actualitze un Excel.',
+      pains: [
+        'Classificacions en paper o Excel que ningú mira actualitzades.',
+        'Grups de WhatsApp saturats de fotos de resultats.',
+        'Jugadors preguntant contínuament quan i contra qui juguen.',
+        'Cap imatge de cara a patrocinadors o al club.',
+      ],
+      solutions: [
+        'Marcador i classificació en directe, accessibles des del mòbil de qualsevol.',
+        'Quadre de partits i horaris sempre actualitzats i visibles.',
+        'Panell perquè tu (o l’àrbitre) inserisca resultats en segons.',
+        'Una web amb la teua marca, preparada per a mostrar a patrocinadors.',
+      ],
+      includes: [
+        'Classificació i marcador en temps real',
+        'Quadre d’eliminatòries o lliga per grups',
+        'Calendari de partits i horaris',
+        'Panell de gestió per a actualitzar resultats',
+        'Disseny amb la teua marca o la del club',
+      ],
+    },
   ],
   en: [
     {
@@ -355,6 +409,33 @@ const sectors: Localized<Sector[]> = {
         'Trust section (about you, guarantees)',
         'Blog/resources to capture traffic (optional)',
         'Local SEO from day one',
+      ],
+    },
+    {
+      slug: 'torneos-y-eventos',
+      icon: 'trophy',
+      name: 'Tournaments & sports events',
+      tagline: 'Live scoreboards and standings, no spreadsheets or WhatsApp chaos',
+      intro:
+        'Padel leagues, five-a-side football tournaments, championships for any sport… players want to see results and standings instantly, not wait for someone to update a spreadsheet.',
+      pains: [
+        'Standings on paper or in a spreadsheet nobody keeps updated.',
+        'WhatsApp groups flooded with photos of results.',
+        'Players constantly asking when and against whom they play.',
+        'No professional image for sponsors or the club.',
+      ],
+      solutions: [
+        'Live scoreboard and standings, accessible from anyone’s phone.',
+        'Match schedule and bracket always up to date and visible.',
+        'A dashboard so you (or the referee) can enter results in seconds.',
+        'A branded website, ready to show sponsors.',
+      ],
+      includes: [
+        'Real-time standings and scoreboard',
+        'Knockout bracket or group-stage league',
+        'Match schedule and times',
+        'Management dashboard to update results',
+        'Design with your brand or the club’s',
       ],
     },
   ],

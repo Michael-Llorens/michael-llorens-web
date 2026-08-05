@@ -144,6 +144,12 @@ const extras: Localized<Service[]> = {
       description:
         'Pido reseñas de forma automática después de cada servicio, preparo tu web en varios idiomas si tienes clientes fuera de tu zona, y dejo medido lo importante para saber qué funciona de verdad.',
     },
+    {
+      icon: 'trophy',
+      title: 'Marcadores y clasificaciones en directo',
+      description:
+        'Para ligas y torneos —de pádel, fútbol o lo que organices—, con resultados y clasificación siempre actualizados y visibles desde el móvil, sin depender de un Excel.',
+    },
   ],
   va: [
     {
@@ -181,6 +187,12 @@ const extras: Localized<Service[]> = {
       title: 'Ressenyes, multiidioma i analítica',
       description:
         'Demane ressenyes de manera automàtica després de cada servei, preparo la teua web en diversos idiomes si tens clients fora de la teua zona, i deixe mesurat el que importa per a saber què funciona de veres.',
+    },
+    {
+      icon: 'trophy',
+      title: 'Marcadors i classificacions en directe',
+      description:
+        'Per a lligues i torneigs —de pàdel, futbol o el que organitzes—, amb resultats i classificació sempre actualitzats i visibles des del mòbil, sense dependre d’un Excel.',
     },
   ],
   en: [
@@ -220,6 +232,12 @@ const extras: Localized<Service[]> = {
       description:
         'I request reviews automatically after each service, prepare your website in several languages if you have clients outside your area, and set up the tracking that matters so you know what’s actually working.',
     },
+    {
+      icon: 'trophy',
+      title: 'Live scoreboards and standings',
+      description:
+        'For leagues and tournaments — padel, football or whatever you run — with results and standings always up to date and visible from any phone, no spreadsheet required.',
+    },
   ],
 };
 
@@ -253,6 +271,12 @@ const backend: Localized<Service[]> = {
       description:
         'Reservas sin solapamientos y áreas privadas con acceso seguro y permisos por roles.',
     },
+    {
+      icon: 'trophy',
+      title: 'Apps para torneos y eventos',
+      description:
+        'Marcador en directo, clasificaciones y cuadros de partidos a medida — para ligas de pádel, campeonatos o cualquier evento con resultados que seguir.',
+    },
   ],
   va: [
     {
@@ -279,6 +303,12 @@ const backend: Localized<Service[]> = {
       description:
         'Reserves sense solapaments i àrees privades amb accés segur i permisos per rols.',
     },
+    {
+      icon: 'trophy',
+      title: 'Apps per a torneigs i esdeveniments',
+      description:
+        'Marcador en directe, classificacions i quadres de partits a mesura — per a lligues de pàdel, campionats o qualsevol esdeveniment amb resultats a seguir.',
+    },
   ],
   en: [
     {
@@ -304,6 +334,12 @@ const backend: Localized<Service[]> = {
       title: 'Bookings & secure access',
       description:
         'Bookings with no double-booking and private areas with secure, role-based access.',
+    },
+    {
+      icon: 'trophy',
+      title: 'Apps for tournaments & events',
+      description:
+        'Live scoreboards, standings and custom match brackets — for padel leagues, championships or any event with results to track.',
     },
   ],
 };
