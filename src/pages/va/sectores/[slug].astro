@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../../components/PageLayout.astro';
 import SectorPage from '../../../components/SectorPage.astro';
+import ScoreboardDemo from '../../../components/ScoreboardDemo.astro';
 import FinalCta from '../../../components/FinalCta.astro';
 import { getSectorSlugs, getSector } from '../../../data/sectors';
 
@@ -20,5 +21,6 @@ const sector = getSector(lang, slug as string)!;
   description={sector.intro}
 >
   <SectorPage lang={lang} sector={sector} />
+  {sector.slug === 'torneos-y-eventos' && <ScoreboardDemo lang={lang} />}
   <FinalCta lang={lang} />
 </PageLayout>

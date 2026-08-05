@@ -52,7 +52,6 @@ const sectorSchema = {
     </nav>
     <div class="sector-hero__head" data-reveal>
       <span class="sector-hero__icon"><Icon name={sector.icon} /></span>
-      <span class="kicker">{t('sectors.kicker')}</span>
       <h1 class="sector-hero__title">{sector.name}</h1>
       <p class="sector-hero__tagline">{sector.tagline}</p>
       <p class="sector-hero__intro">{sector.intro}</p>
@@ -121,16 +120,13 @@ const sectorSchema = {
   .sector-hero__icon {
     display: grid;
     place-items: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 18px;
-    background: var(--accent-soft);
     color: var(--accent-2);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
   }
   .sector-hero__icon :global(svg) {
-    width: 30px;
-    height: 30px;
+    width: 72px;
+    height: 72px;
+    stroke-width: 1.3;
   }
   .sector-hero__title {
     font-family: var(--font-display);
