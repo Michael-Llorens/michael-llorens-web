@@ -113,42 +113,50 @@ const extras: Localized<Service[]> = {
       title: 'Reservas y citas online',
       description:
         'Que tus clientes reserven mesa, cita o servicio sin llamarte. Tú solo confirmas y organizas tu agenda desde un único sitio.',
-    },
-    {
-      icon: 'cart',
-      title: 'Pedidos, carta y tienda online',
-      description:
-        'Carta digital, pedidos para recoger o entregar, o una tienda sencilla para un catálogo concreto de productos — sin la complejidad de un ecommerce gigante.',
-    },
-    {
-      icon: 'mail',
-      title: 'Formularios inteligentes y captación de leads',
-      description:
-        'Formularios con los campos justos que filtran quién te interesa de verdad. Cada contacto te llega ordenado y listo para responder.',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'Automatizaciones con WhatsApp',
-      description:
-        'Confirmaciones de reserva, recordatorios de cita o avisos de pedido, automáticos y por el canal donde tus clientes ya te escriben.',
-    },
-    {
-      icon: 'lock',
-      title: 'Áreas privadas y paneles de gestión',
-      description:
-        'Una zona con acceso solo para tus clientes o tu equipo, y un panel sencillo para ver reservas, pedidos o mensajes sin depender de hojas de cálculo.',
-    },
-    {
-      icon: 'globe',
-      title: 'Reseñas, multiidioma y analítica',
-      description:
-        'Pido reseñas de forma automática después de cada servicio, preparo tu web en varios idiomas si tienes clientes fuera de tu zona, y dejo medido lo importante para saber qué funciona de verdad.',
+      href: 'servicios#backend',
     },
     {
       icon: 'trophy',
       title: 'Marcadores y clasificaciones en directo',
       description:
         'Para ligas y torneos —de pádel, fútbol o lo que organices—, con resultados y clasificación siempre actualizados y visibles desde el móvil, sin depender de un Excel.',
+      badge: 'Tendencia',
+      href: 'sectores/torneos-y-eventos',
+    },
+    {
+      icon: 'cart',
+      title: 'Pedidos, carta y tienda online',
+      description:
+        'Carta digital, pedidos para recoger o entregar, o una tienda sencilla para un catálogo concreto de productos — sin la complejidad de un ecommerce gigante.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'mail',
+      title: 'Formularios inteligentes y captación de leads',
+      description:
+        'Formularios con los campos justos que filtran quién te interesa de verdad. Cada contacto te llega ordenado y listo para responder.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Automatizaciones con WhatsApp',
+      description:
+        'Confirmaciones de reserva, recordatorios de cita o avisos de pedido, automáticos y por el canal donde tus clientes ya te escriben.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'lock',
+      title: 'Áreas privadas y paneles de gestión',
+      description:
+        'Una zona con acceso solo para tus clientes o tu equipo, y un panel sencillo para ver reservas, pedidos o mensajes sin depender de hojas de cálculo.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'globe',
+      title: 'Reseñas, multiidioma y analítica',
+      description:
+        'Pido reseñas de forma automática después de cada servicio, preparo tu web en varios idiomas si tienes clientes fuera de tu zona, y dejo medido lo importante para saber qué funciona de verdad.',
+      href: 'servicios#backend',
     },
   ],
   va: [
@@ -157,42 +165,50 @@ const extras: Localized<Service[]> = {
       title: 'Reserves i cites en línia',
       description:
         'Que els teus clients reserven taula, cita o servei sense telefonar-te. Tu només confirmes i organitzes la teua agenda des d’un únic lloc.',
-    },
-    {
-      icon: 'cart',
-      title: 'Comandes, carta i botiga en línia',
-      description:
-        'Carta digital, comandes per a recollir o repartir, o una botiga senzilla per a un catàleg concret de productes — sense la complexitat d’un ecommerce gegant.',
-    },
-    {
-      icon: 'mail',
-      title: 'Formularis intel·ligents i captació de leads',
-      description:
-        'Formularis amb els camps justos que filtren qui t’interessa de veres. Cada contacte t’arriba ordenat i preparat per a respondre.',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'Automatitzacions amb WhatsApp',
-      description:
-        'Confirmacions de reserva, recordatoris de cita o avisos de comanda, automàtics i pel canal on els teus clients ja et parlen.',
-    },
-    {
-      icon: 'lock',
-      title: 'Àrees privades i panells de gestió',
-      description:
-        'Una zona amb accés només per als teus clients o el teu equip, i un panell senzill per a veure reserves, comandes o missatges sense dependre de fulls de càlcul.',
-    },
-    {
-      icon: 'globe',
-      title: 'Ressenyes, multiidioma i analítica',
-      description:
-        'Demane ressenyes de manera automàtica després de cada servei, preparo la teua web en diversos idiomes si tens clients fora de la teua zona, i deixe mesurat el que importa per a saber què funciona de veres.',
+      href: 'servicios#backend',
     },
     {
       icon: 'trophy',
       title: 'Marcadors i classificacions en directe',
       description:
         'Per a lligues i torneigs —de pàdel, futbol o el que organitzes—, amb resultats i classificació sempre actualitzats i visibles des del mòbil, sense dependre d’un Excel.',
+      badge: 'Tendència',
+      href: 'sectores/torneos-y-eventos',
+    },
+    {
+      icon: 'cart',
+      title: 'Comandes, carta i botiga en línia',
+      description:
+        'Carta digital, comandes per a recollir o repartir, o una botiga senzilla per a un catàleg concret de productes — sense la complexitat d’un ecommerce gegant.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'mail',
+      title: 'Formularis intel·ligents i captació de leads',
+      description:
+        'Formularis amb els camps justos que filtren qui t’interessa de veres. Cada contacte t’arriba ordenat i preparat per a respondre.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Automatitzacions amb WhatsApp',
+      description:
+        'Confirmacions de reserva, recordatoris de cita o avisos de comanda, automàtics i pel canal on els teus clients ja et parlen.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'lock',
+      title: 'Àrees privades i panells de gestió',
+      description:
+        'Una zona amb accés només per als teus clients o el teu equip, i un panell senzill per a veure reserves, comandes o missatges sense dependre de fulls de càlcul.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'globe',
+      title: 'Ressenyes, multiidioma i analítica',
+      description:
+        'Demane ressenyes de manera automàtica després de cada servei, preparo la teua web en diversos idiomes si tens clients fora de la teua zona, i deixe mesurat el que importa per a saber què funciona de veres.',
+      href: 'servicios#backend',
     },
   ],
   en: [
@@ -201,42 +217,50 @@ const extras: Localized<Service[]> = {
       title: 'Online bookings and appointments',
       description:
         'Let clients book a table, appointment or service without calling you. You just confirm and manage your schedule from one place.',
-    },
-    {
-      icon: 'cart',
-      title: 'Orders, menus and simple online stores',
-      description:
-        'A digital menu, pickup or delivery orders, or a simple store for a focused product catalog — without the complexity of a huge e-commerce platform.',
-    },
-    {
-      icon: 'mail',
-      title: 'Smart forms and lead capture',
-      description:
-        'Forms with just the right fields that filter who’s genuinely interested. Every contact reaches you organized and ready to answer.',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'WhatsApp automations',
-      description:
-        'Booking confirmations, appointment reminders or order alerts, automatic and through the channel your clients already message you on.',
-    },
-    {
-      icon: 'lock',
-      title: 'Private areas and management dashboards',
-      description:
-        'A members-only area for your clients or team, and a simple dashboard to see bookings, orders or messages without relying on spreadsheets.',
-    },
-    {
-      icon: 'globe',
-      title: 'Reviews, multilingual sites and analytics',
-      description:
-        'I request reviews automatically after each service, prepare your website in several languages if you have clients outside your area, and set up the tracking that matters so you know what’s actually working.',
+      href: 'servicios#backend',
     },
     {
       icon: 'trophy',
       title: 'Live scoreboards and standings',
       description:
         'For leagues and tournaments — padel, football or whatever you run — with results and standings always up to date and visible from any phone, no spreadsheet required.',
+      badge: 'Trending',
+      href: 'sectores/torneos-y-eventos',
+    },
+    {
+      icon: 'cart',
+      title: 'Orders, menus and simple online stores',
+      description:
+        'A digital menu, pickup or delivery orders, or a simple store for a focused product catalog — without the complexity of a huge e-commerce platform.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'mail',
+      title: 'Smart forms and lead capture',
+      description:
+        'Forms with just the right fields that filter who’s genuinely interested. Every contact reaches you organized and ready to answer.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'WhatsApp automations',
+      description:
+        'Booking confirmations, appointment reminders or order alerts, automatic and through the channel your clients already message you on.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'lock',
+      title: 'Private areas and management dashboards',
+      description:
+        'A members-only area for your clients or team, and a simple dashboard to see bookings, orders or messages without relying on spreadsheets.',
+      href: 'servicios#backend',
+    },
+    {
+      icon: 'globe',
+      title: 'Reviews, multilingual sites and analytics',
+      description:
+        'I request reviews automatically after each service, prepare your website in several languages if you have clients outside your area, and set up the tracking that matters so you know what’s actually working.',
+      href: 'servicios#backend',
     },
   ],
 };

@@ -23,13 +23,20 @@ const items = getExtras(lang);
     <div class="extras__grid">
       {
         items.map((item, i) => (
-          <div class="extra card" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+          <a
+            href={localizedPath(lang, item.href)}
+            class="extra card"
+            data-reveal
+            style={`--reveal-delay:${i * 60}ms`}
+          >
             <span class="extra__ic"><Icon name={item.icon} /></span>
             <div>
+              {item.badge && <span class="extra__badge">{item.badge}</span>}
               <h3 class="extra__title">{item.title}</h3>
               <p class="extra__desc">{item.description}</p>
             </div>
-          </div>
+            <Icon name="arrowUpRight" class="extra__arrow" />
+          </a>
         ))
       }
     </div>
@@ -51,10 +58,13 @@ const items = getExtras(lang);
     gap: 1.1rem;
   }
   .extra {
+    position: relative;
     display: flex;
     gap: 0.9rem;
     align-items: flex-start;
     padding: 1.4rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
   }
   .extra__ic {
     display: grid;
@@ -71,6 +81,16 @@ const items = getExtras(lang);
     width: 20px;
     height: 20px;
   }
+  .extra__badge {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
   .extra__title {
     font-size: 1.02rem;
     margin-bottom: 0.3rem;
@@ -79,6 +99,22 @@ const items = getExtras(lang);
     color: var(--text-muted);
     font-size: 0.88rem;
     line-height: 1.55;
+  }
+  .extra :global(.extra__arrow) {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    color: var(--text-dim);
+    opacity: 0;
+    transform: translate(-3px, 3px);
+    transition: opacity 0.2s ease, transform 0.25s var(--ease), color 0.2s ease;
+  }
+  .extra:hover :global(.extra__arrow) {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--accent-2);
   }
 
   .extras__note {
