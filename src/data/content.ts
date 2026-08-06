@@ -778,7 +778,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: '¿Qué es el SEO y por qué lo necesito?',
       answer:
-        'El SEO es el conjunto de técnicas para que tu web aparezca en Google cuando alguien busca tus servicios. Sin SEO, tu web es invisible. Lo integramos desde el principio para que captes clientes de forma orgánica.',
+        'El SEO es el conjunto de técnicas para que tu web aparezca en Google cuando alguien busca tus servicios. Sin SEO, tu web es invisible. Lo integramos desde el principio para que captes clientes de forma orgánica. Eso sí: nadie serio puede prometerte el puesto 1 (si te lo garantizan, desconfía); lo que sí te garantizo es hacerlo bien desde la base, sin atajos que luego penalicen tu web.',
     },
     {
       question: '¿Trabajas con WordPress o haces webs a medida?',
@@ -803,7 +803,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: '¿Cómo funciona el pago?',
       answer:
-        'Normalmente con un anticipo para reservar el proyecto y el resto a la entrega, según los hitos que acordemos. Todo claro desde el principio, sin sorpresas ni costes ocultos.',
+        'Depende del proyecto: en encargos pequeños suele ser todo junto, y en los más grandes lo dividimos en un anticipo para reservar y el resto en hitos hasta la entrega. Sea como sea, lo dejamos por escrito antes de empezar, sin sorpresas ni costes ocultos.',
     },
   ],
   va: [
@@ -820,7 +820,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Què és el SEO i per què el necessite?',
       answer:
-        'El SEO és el conjunt de tècniques perquè la teua web aparega en Google quan algú busca els teus serveis. Sense SEO, la teua web és invisible. L’integrem des del principi perquè captes clients de forma orgànica.',
+        'El SEO és el conjunt de tècniques perquè la teua web aparega en Google quan algú busca els teus serveis. Sense SEO, la teua web és invisible. L’integrem des del principi perquè captes clients de forma orgànica. Això sí: ningú seriós pot prometre’t el lloc 1 (si t’ho garanteixen, desconfia); el que sí et garantisc és fer-ho bé des de la base, sense dreceres que després penalitzen la teua web.',
     },
     {
       question: 'Treballes amb WordPress o fas webs a mida?',
@@ -845,7 +845,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'Com funciona el pagament?',
       answer:
-        'Normalment amb un avançament per a reservar el projecte i la resta a l’entrega, segons les fites que acordem. Tot clar des del principi, sense sorpreses ni costos ocults.',
+        'Depén del projecte: en encàrrecs xicotets sol ser tot junt, i en els més grans ho dividim en un avançament per a reservar i la resta en fites fins a l’entrega. Siga com siga, ho deixem per escrit abans de començar, sense sorpreses ni costos ocults.',
     },
   ],
   en: [
@@ -862,7 +862,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'What is SEO and why do I need it?',
       answer:
-        'SEO is the set of techniques that make your website appear on Google when someone searches for your services. Without SEO, your website is invisible. We build it in from the start so you capture clients organically.',
+        'SEO is the set of techniques that make your website appear on Google when someone searches for your services. Without SEO, your website is invisible. We build it in from the start so you capture clients organically. That said: nobody serious can promise you the #1 spot (if they guarantee it, be wary); what I do guarantee is doing it right from the ground up, with no shortcuts that end up penalizing your site.',
     },
     {
       question: 'Do you use WordPress or build custom sites?',
@@ -887,7 +887,7 @@ const faqs: Localized<Faq[]> = {
     {
       question: 'How does payment work?',
       answer:
-        'Usually a deposit to book the project and the rest on delivery, based on the milestones we agree. Everything clear from the start — no surprises or hidden costs.',
+        'It depends on the project: small jobs are usually paid in one go, and bigger ones are split into a deposit to book the project and the rest across milestones up to delivery. Either way, it’s agreed in writing before we start — no surprises or hidden costs.',
     },
   ],
 };
