@@ -8,8 +8,13 @@ interface Props {
   project: Project;
   lang: Lang;
   index?: number;
+  /** -1 cuando la tarjeta vive en una slide de carrusel oculta (aria-hidden), para no dejar el enlace enfocable. */
+  linkTabIndex?: number;
+  /** h2 cuando el título de la sección que envuelve la tarjeta es h1 (p. ej. /proyectos). */
+  titleTag?: 'h2' | 'h3';
 }
-const { project: p, lang, index = 0 } = Astro.props;
+const { project: p, lang, index = 0, linkTabIndex, titleTag = 'h3' } = Astro.props;
+const NameTag = titleTag;
 const t = useTranslations(lang);
 const hasLink = p.url && p.url !== '#';
 const featured = !!p.featured;
@@ -58,7 +63,7 @@ const featured = !!p.featured;
 
   <div class="project__body">
     <span class="project__cat">{p.category}</span>
-    <h3 class="project__name">{p.name}</h3>
+    <NameTag class="project__name">{p.name}</NameTag>
     <p class="project__desc">{p.description}</p>
 
     <p class="project__result">
@@ -85,7 +90,7 @@ const featured = !!p.featured;
 
     {
       hasLink && (
-        <a href={p.url} class="project__link" target="_blank" rel="noopener noreferrer">
+        <a href={p.url} class="project__link" target="_blank" rel="noopener noreferrer" tabindex={linkTabIndex}>
           {t('work.visit')}
           <Icon name="arrowUpRight" />
         </a>

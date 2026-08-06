@@ -35,7 +35,12 @@ const slides = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.fe
                 aria-label={`${i + 1} / ${slides.length} — ${p.name}`}
                 aria-hidden={i === 0 ? 'false' : 'true'}
               >
-                <ProjectCard project={{ ...p, featured: true }} lang={lang} index={0} />
+                <ProjectCard
+                  project={{ ...p, featured: true }}
+                  lang={lang}
+                  index={0}
+                  linkTabIndex={i === 0 ? undefined : -1}
+                />
               </div>
             ))
           }
@@ -98,7 +103,16 @@ const slides = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.fe
 
     const render = () => {
       track.style.transform = `translateX(-${index * 100}%)`;
-      slides.forEach((s, i) => s.setAttribute('aria-hidden', i === index ? 'false' : 'true'));
+      slides.forEach((s, i) => {
+        const active = i === index;
+        s.setAttribute('aria-hidden', active ? 'false' : 'true');
+        // Las slides ocultas no pueden contener elementos enfocables
+        // (rompe lectores de pantalla y navegación de agentes IA).
+        s.querySelectorAll<HTMLElement>('a, button').forEach((el) => {
+          if (active) el.removeAttribute('tabindex');
+          else el.setAttribute('tabindex', '-1');
+        });
+      });
       dots.forEach((d, i) => d.setAttribute('aria-selected', i === index ? 'true' : 'false'));
       setHeight();
     };

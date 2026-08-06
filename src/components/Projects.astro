@@ -29,7 +29,7 @@ const rest = projects.filter((p) => !p.featured);
     {
       featured.length > 0 && (
         <div class="projects-featured">
-          {featured.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
+          {featured.map((p, i) => <ProjectCard project={p} lang={lang} index={i} titleTag="h2" />)}
         </div>
       )
     }
@@ -37,7 +37,7 @@ const rest = projects.filter((p) => !p.featured);
     {
       full && (
         <div class="grid projects">
-          {rest.map((p, i) => <ProjectCard project={p} lang={lang} index={i} />)}
+          {rest.map((p, i) => <ProjectCard project={p} lang={lang} index={i} titleTag="h2" />)}
         </div>
       )
     }

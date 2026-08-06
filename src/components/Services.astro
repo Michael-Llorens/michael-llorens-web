@@ -13,6 +13,7 @@ const { lang, asPageTitle = false } = Astro.props;
 const t = useTranslations(lang);
 const pillars = getPillars(lang);
 const TitleTag = asPageTitle ? 'h1' : 'h2';
+const PillarTitleTag = asPageTitle ? 'h2' : 'h3';
 ---
 
 <section class="section" id="services">
@@ -36,7 +37,7 @@ const TitleTag = asPageTitle ? 'h1' : 'h2';
               </div>
               {p.badge && <span class="pillar__badge">{p.badge}</span>}
             </div>
-            <h3 class="pillar__title">{p.title}</h3>
+            <PillarTitleTag class="pillar__title">{p.title}</PillarTitleTag>
             <p class="pillar__desc">{p.description}</p>
           </article>
         ))

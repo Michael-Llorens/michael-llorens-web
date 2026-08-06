@@ -31,7 +31,7 @@ const details = getPricingDetails(lang);
             style={`--reveal-delay:${i * 90}ms`}
           >
             {plan.badge && <span class="plan__badge">{plan.badge}</span>}
-            <h3 class="plan__name">{plan.name}</h3>
+            <h2 class="plan__name">{plan.name}</h2>
             <div class="plan__price">
               <span class="plan__amount">{plan.price}</span>
               <span class="plan__note">{plan.priceNote}</span>
@@ -49,7 +49,7 @@ const details = getPricingDetails(lang);
               href={localizedPath(lang, 'contacto')}
               class:list={['btn', plan.highlighted ? 'btn-primary' : 'btn-ghost', 'plan__cta']}
             >
-              {plan.cta}
+              {plan.cta} <span class="visually-hidden">— {plan.name}</span>
               <Icon name="arrow" />
             </a>
           </article>
@@ -62,7 +62,7 @@ const details = getPricingDetails(lang);
     <!-- Incluido en todos los planes -->
     <div class="includes card" data-reveal>
       <div class="includes__head">
-        <h3 class="includes__title">{t('pricing.includes.title')}</h3>
+        <h2 class="includes__title">{t('pricing.includes.title')}</h2>
         <p class="includes__sub">{t('pricing.includes.subtitle')}</p>
       </div>
       <ul class="includes__list">
@@ -80,7 +80,7 @@ const details = getPricingDetails(lang);
     <!-- Cómo trabajamos: plazos, pago, revisiones, después -->
     <div class="pricing-details" data-reveal>
       <div class="section-head center">
-        <h3 class="section-title">{t('pricing.details.title')}</h3>
+        <h2 class="section-title">{t('pricing.details.title')}</h2>
         <p class="lead">{t('pricing.details.subtitle')}</p>
       </div>
       <div class="pricing-details__grid">
@@ -88,7 +88,7 @@ const details = getPricingDetails(lang);
           details.map((d, i) => (
             <article class="pricing-detail card" data-reveal style={`--reveal-delay:${i * 80}ms`}>
               <span class="pricing-detail__ic"><Icon name={d.icon} /></span>
-              <h4 class="pricing-detail__title">{d.title}</h4>
+              <h3 class="pricing-detail__title">{d.title}</h3>
               <p class="pricing-detail__desc">{d.description}</p>
             </article>
           ))

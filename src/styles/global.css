@@ -73,7 +73,11 @@
   --text-muted: #51546a;
   --text-dim: #5c5f73;
 
-  --accent: #e8470a;
+  /* #e8470a fallaba el contraste AA (4.5:1) como texto sobre fondos claros
+     (kickers, etiquetas) y como fondo con texto blanco encima (botones).
+     Esta versión pasa ambos casos con margen, sin notarse casi diferencia
+     de tono con el naranja de marca original. */
+  --accent: #c73a08;
   --accent-2: #c2410c;
   --accent-soft: rgba(232, 71, 10, 0.10);
   --accent-glow: rgba(232, 71, 10, 0.28);
