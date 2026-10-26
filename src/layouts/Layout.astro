@@ -2,9 +2,14 @@
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
 import '../styles/global.css';
+// Mismo archivo que pide el CSS de fontsource: precargarlo evita que el texto
+// cambie de tamaño al llegar la fuente (saltos de diseño) y acelera el LCP.
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import spaceGroteskLatin from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 import { type Lang, LANGUAGES, LANG_HREFLANG, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { site } from '../data/site';
+import { getExtras } from '../data/content';
 import Analytics from '@vercel/analytics/astro';
 
 interface Props {
@@ -13,8 +18,10 @@ interface Props {
   path?: string;
   title?: string;
   description?: string;
+  /** 'article' en las entradas del blog. */
+  ogType?: 'website' | 'article';
 }
-const { lang, path = '', title: pageTitle, description: pageDescription } = Astro.props;
+const { lang, path = '', title: pageTitle, description: pageDescription, ogType = 'website' } = Astro.props;
 const t = useTranslations(lang);
 
 const title = pageTitle ?? t('meta.title');
@@ -26,6 +33,13 @@ const canonical = new URL(localizedPath(lang, path), site.url).href;
 const ogImage = new URL('/og-image.png', site.url).href;
 // Logo cuadrado y ligero (58 KB) para que WhatsApp muestre la miniatura del logo.
 const socialImage = new URL('/og-logo.png', site.url).href;
+
+// Servicios base que se suman a los extras en el catálogo del JSON-LD.
+const CORE_SERVICES: Record<Lang, string[]> = {
+  es: ['Diseño web a medida', 'SEO local y ficha de Google', 'Posicionamiento en buscadores con IA'],
+  va: ['Disseny web a mida', 'SEO local i fitxa de Google', 'Posicionament en cercadors amb IA'],
+  en: ['Custom web design', 'Local SEO and Google Business Profile', 'AI search optimization'],
+};
 
 // JSON-LD: marca / servicio profesional (clave para SEO local y rich results).
 // Entidad de marca, sin nombre personal: MetaLogic es el titular de la presencia online.
@@ -41,10 +55,10 @@ const jsonLd = {
       url: site.url,
       image: ogImage,
       logo: new URL('/logo-full.png', site.url).href,
-      email: `mailto:${site.email}`,
+      email: site.email,
+      telephone: `+${site.phoneRaw}`,
       sameAs: Object.values(site.socials).filter(Boolean),
-      priceRange: '€€',
-      areaServed: ['Xàtiva', 'Valencia', 'España'],
+      areaServed: ['Xàtiva', 'Alzira', 'La Ribera', 'La Costera', 'Valencia', 'España'],
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Xàtiva',
@@ -57,13 +71,22 @@ const jsonLd = {
         longitude: -0.518,
       },
       knowsAbout: [
-        'Desarrollo web',
-        'SEO',
-        'Posicionamiento en buscadores',
-        'Astro',
         'Diseño web',
+        'Desarrollo web',
+        'Desarrollo de aplicaciones multiplataforma',
+        'SEO local',
+        'Google Business Profile',
+        'Reservas online',
         'Core Web Vitals',
       ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: t('services.title'),
+        itemListElement: [...CORE_SERVICES[lang], ...getExtras(lang).map((s) => s.title)].map((name) => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name },
+        })),
+      },
     },
     {
       '@type': 'WebSite',
@@ -83,6 +106,8 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={spaceGroteskLatin} as="font" type="font/woff2" crossorigin />
 
     {/* Detecta el tema (sistema o elección guardada) ANTES de pintar — evita parpadeo */}
     <script is:inline>
@@ -124,7 +149,7 @@ const jsonLd = {
     <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('es', path), site.url).href} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={LANG_HREFLANG[lang]} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
@@ -146,7 +171,7 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <a href="#main" class="skip-link">{t('seo.skip')}</a>
     <slot />
 
     <!-- Animaciones de entrada al hacer scroll -->

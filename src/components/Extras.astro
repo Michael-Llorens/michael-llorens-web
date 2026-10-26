@@ -6,13 +6,18 @@ import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
+  /** En /servicios las tarjetas ya están en su página: llevan a contacto. */
+  linkToContact?: boolean;
 }
-const { lang } = Astro.props;
+const { lang, linkToContact = false } = Astro.props;
 const t = useTranslations(lang);
-const items = getExtras(lang);
+const items = getExtras(lang).map((item) => ({
+  ...item,
+  href: linkToContact && item.href?.startsWith('servicios') ? 'contacto' : item.href,
+}));
 ---
 
-<section class="section section--tight extras">
+<section class="section section--tight extras" id="extras">
   <div class="container">
     <div class="section-head center" data-reveal>
       <span class="kicker">{t('extras.kicker')}</span>

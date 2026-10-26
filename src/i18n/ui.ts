@@ -9,7 +9,18 @@ export const ui = {
     // --- Metadatos / SEO ---
     'meta.title': 'Diseño web y SEO en Xàtiva y Valencia | MetaLogic',
     'meta.description':
-      'Diseño y desarrollo web a medida en Xàtiva y Valencia. Sin plantillas, sin permanencia: código propio, carga en menos de 1s y SEO desde el primer día. Presupuesto en 24h.',
+      'Diseño web a medida en Xàtiva y Valencia: webs rápidas, SEO local, reservas y pedidos por WhatsApp para negocios locales. Presupuesto en 24h.',
+    'seo.services.title': 'Servicios de diseño web, SEO y reservas online | MetaLogic',
+    'seo.services.description': 'Webs a medida, SEO local, ficha de Google, reservas y citas online, pedidos por WhatsApp, apps y paneles para negocios de Xàtiva y Valencia.',
+    'seo.pricing.title': 'Precios de diseño web a medida en Xàtiva | MetaLogic',
+    'seo.pricing.description': 'Planes de web a medida para negocios locales: esencial, profesional o con SEO continuo. Cada presupuesto se adapta a tu negocio, sin compromiso.',
+    'seo.work.title': 'Proyectos de diseño web y SEO | MetaLogic',
+    'seo.work.description': 'Webs reales que hemos diseñado y desarrollado para negocios: restaurantes, clínicas, taxis y empresas. Mira el resultado y lo que consiguen.',
+    'seo.about.title': 'Sobre MetaLogic: estudio de diseño web en Xàtiva',
+    'seo.about.description': 'Estudio de desarrollo web y SEO en Xàtiva. Creamos webs y aplicaciones a medida, rápidas y pensadas para que los negocios locales consigan clientes.',
+    'seo.contact.title': 'Contacto y presupuesto de diseño web | MetaLogic',
+    'seo.contact.description': 'Cuéntanos qué necesita tu negocio y te respondemos en 24h con una propuesta a medida y sin compromiso. Por WhatsApp, teléfono o formulario.',
+    'seo.skip': 'Saltar al contenido',
 
     // --- Navegación ---
     'nav.services': 'Servicios',
@@ -123,10 +134,10 @@ export const ui = {
     // Alineado con la sección "extras.*" de la home: allí se presenta el qué
     // (reservas, pedidos, paneles...) de forma comercial; aquí va el cómo,
     // con más profundidad técnica.
-    'backend.kicker': 'Más que una web',
+    'backend.kicker': 'Desarrollo a medida',
     'backend.title': 'Backend, APIs y software a medida',
     'backend.subtitle':
-      'En la home ya has visto qué se puede sumar a tu web: reservas, pedidos, paneles o áreas privadas. Aquí va el cómo — programo esa lógica de principio a fin, de la base de datos a la interfaz, sin plantillas ni atajos.',
+      'Reservas, pedidos, paneles o áreas privadas: así funcionan por dentro. Programo esa lógica de principio a fin, de la base de datos a la interfaz, sin plantillas ni atajos.',
     'backend.proof': 'Lo apliqué en El Buey Madurado: desarrollé la gestión completa de pedidos, reservas y acceso seguro.',
     'backend.cta': 'Cuéntame qué necesitas',
 
@@ -207,7 +218,18 @@ export const ui = {
   va: {
     'meta.title': 'Disseny web i SEO a Xàtiva i València | MetaLogic',
     'meta.description':
-      'Disseny web i SEO a Xàtiva i València. Creem webs ràpides i optimitzades per a Google que capten clients i fan créixer el teu negoci. Pressupost gratis.',
+      'Disseny web a mida a Xàtiva i València: webs ràpides, SEO local, reserves i comandes per WhatsApp per a negocis locals. Pressupost en 24h.',
+    'seo.services.title': 'Serveis de disseny web, SEO i reserves en línia | MetaLogic',
+    'seo.services.description': 'Webs a mida, SEO local, fitxa de Google, reserves i cites en línia, comandes per WhatsApp, apps i panells per a negocis de Xàtiva i València.',
+    'seo.pricing.title': 'Preus de disseny web a mida a Xàtiva | MetaLogic',
+    'seo.pricing.description': 'Plans de web a mida per a negocis locals: essencial, professional o amb SEO continu. Cada pressupost s’adapta al teu negoci, sense compromís.',
+    'seo.work.title': 'Projectes de disseny web i SEO | MetaLogic',
+    'seo.work.description': 'Webs reals que hem dissenyat i desenvolupat per a negocis: restaurants, clíniques, taxis i empreses. Mira el resultat i el que aconsegueixen.',
+    'seo.about.title': 'Sobre MetaLogic: estudi de disseny web a Xàtiva',
+    'seo.about.description': 'Estudi de desenvolupament web i SEO a Xàtiva. Creem webs i aplicacions a mida, ràpides i pensades perquè els negocis locals aconseguisquen clients.',
+    'seo.contact.title': 'Contacte i pressupost de disseny web | MetaLogic',
+    'seo.contact.description': 'Conta’ns què necessita el teu negoci i et responem en 24h amb una proposta a mida i sense compromís. Per WhatsApp, telèfon o formulari.',
+    'seo.skip': 'Salta al contingut',
 
     'nav.services': 'Serveis',
     'nav.work': 'Projectes',
@@ -308,10 +330,10 @@ export const ui = {
     'proof.a11y': 'Accessibilitat',
     'proof.perf': 'Rendiment',
 
-    'backend.kicker': 'Més que webs',
+    'backend.kicker': 'Desenvolupament a mida',
     'backend.title': 'Backend, APIs i programari a mida',
     'backend.subtitle':
-      'No només dissenyem webs boniques: programem la lògica que fa funcionar el teu negoci per dins, de les comandes als pagaments. Som full-stack.',
+      'No només dissenyem webs boniques: programem la lògica que fa funcionar el teu negoci per dins, de les reserves a les comandes. Som full-stack.',
     'backend.proof': 'Ho vam aplicar en El Buey Madurado: vam desenvolupar la gestió completa de comandes, reserves i accés segur.',
     'backend.cta': 'Conta’ns què necessites',
 
@@ -384,7 +406,18 @@ export const ui = {
   en: {
     'meta.title': 'Web design & SEO in Xàtiva and Valencia | MetaLogic',
     'meta.description':
-      'Web design and SEO in Xàtiva and Valencia. We build fast, Google-optimized websites that capture clients and grow your business. Free quote.',
+      'Custom web design in Xàtiva and Valencia: fast websites, local SEO, bookings and WhatsApp orders for local businesses. Quote within 24h.',
+    'seo.services.title': 'Web design, SEO & online booking services | MetaLogic',
+    'seo.services.description': 'Custom websites, local SEO, Google Business Profile, online bookings, WhatsApp orders, apps and dashboards for businesses in Xàtiva and Valencia.',
+    'seo.pricing.title': 'Custom web design pricing in Xàtiva | MetaLogic',
+    'seo.pricing.description': 'Custom website plans for local businesses: essential, professional or with ongoing SEO. Every quote is tailored to your business, no commitment.',
+    'seo.work.title': 'Web design & SEO projects | MetaLogic',
+    'seo.work.description': 'Real websites we have designed and built for businesses: restaurants, clinics, taxis and companies. See the results and what they achieve.',
+    'seo.about.title': 'About MetaLogic: web design studio in Xàtiva',
+    'seo.about.description': 'Web development and SEO studio in Xàtiva. We build custom, fast websites and apps designed to help local businesses win more clients.',
+    'seo.contact.title': 'Contact & web design quote | MetaLogic',
+    'seo.contact.description': 'Tell us what your business needs and we’ll reply within 24h with a tailored proposal, no commitment. Via WhatsApp, phone or contact form.',
+    'seo.skip': 'Skip to content',
 
     'nav.services': 'Services',
     'nav.work': 'Work',
@@ -485,10 +518,10 @@ export const ui = {
     'proof.a11y': 'Accessibility',
     'proof.perf': 'Performance',
 
-    'backend.kicker': 'Beyond websites',
+    'backend.kicker': 'Custom development',
     'backend.title': 'Backend, APIs & custom software',
     'backend.subtitle':
-      'We don’t just design pretty websites: we build the logic that runs your business under the hood, from orders to payments. We’re full-stack.',
+      'We don’t just design pretty websites: we build the logic that runs your business under the hood, from bookings to orders. We’re full-stack.',
     'backend.proof': 'We applied it at El Buey Madurado: we built the full order management, reservations and secure access.',
     'backend.cta': 'Tell us what you need',
 

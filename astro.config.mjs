@@ -30,6 +30,8 @@ export default defineConfig({
     }),
   ],
   build: {
-    inlineStylesheets: 'auto',
+    // Todo el CSS del sitio son pocos KB: inlinearlo quita las peticiones que
+    // bloqueaban el primer pintado (Lighthouse estimaba ~670 ms en móvil).
+    inlineStylesheets: 'always',
   },
 });

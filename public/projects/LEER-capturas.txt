@@ -17,4 +17,9 @@ indica la ruta en src/data/content.ts.
    }
 
 Tamaño recomendado: 1280 x 800 px (relación 16:10), formato JPG o WebP.
+
+3) (Recomendado) Crea la versión ligera para móvil, con el mismo nombre + "-640".
+   Desde la carpeta del proyecto:
+   node -e "require('sharp')('public/projects/taxi.webp').resize(640).webp({quality:78}).toFile('public/projects/taxi-640.webp')"
+   La web la usa sola en móviles si existe (ver src/data/responsive.ts).
 Mientras no añadas "image", se mostrará un mockup elegante con el nombre del proyecto.

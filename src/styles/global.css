@@ -545,6 +545,15 @@ h4 {
   transform: none;
 }
 
+/* La 1ª sección de cada página se ve al cargar: sin animación de entrada.
+   Ocultarla hasta que corre el JS retrasaba el LCP (el H1) y movía la cabecera. */
+#main > :first-child [data-reveal],
+#main > [data-reveal]:first-child {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

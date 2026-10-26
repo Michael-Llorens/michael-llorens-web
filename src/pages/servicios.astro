@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../components/PageLayout.astro';
 import Services from '../components/Services.astro';
+import Extras from '../components/Extras.astro';
 import BackendApis from '../components/BackendApis.astro';
 import Process from '../components/Process.astro';
 import SectorsList from '../components/SectorsList.astro';
@@ -14,10 +15,11 @@ const t = useTranslations(lang);
 <PageLayout
   lang={lang}
   path="servicios"
-  title={`${t('nav.services')} · MetaLogic`}
-  description={t('services.subtitle')}
+  title={t('seo.services.title')}
+  description={t('seo.services.description')}
 >
   <Services lang={lang} asPageTitle />
+  <Extras lang={lang} linkToContact />
   <BackendApis lang={lang} />
   <Process lang={lang} />
   <SectorsList lang={lang} />

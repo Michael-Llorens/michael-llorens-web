@@ -11,11 +11,12 @@ interface Props {
   path?: string;
   title?: string;
   description?: string;
+  ogType?: 'website' | 'article';
 }
-const { lang, path = '', title, description } = Astro.props;
+const { lang, path = '', title, description, ogType } = Astro.props;
 ---
 
-<Layout lang={lang} path={path} title={title} description={description}>
+<Layout lang={lang} path={path} title={title} description={description} ogType={ogType}>
   <Header lang={lang} active={path} />
   <main id="main" class:list={[{ 'main--inner': path !== '' }]}>
     <slot />

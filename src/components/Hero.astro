@@ -2,6 +2,7 @@
 import { type Lang, localizedPath } from '../i18n/config';
 import { useTranslations } from '../i18n/ui';
 import { getProjects } from '../data/content';
+import { projectSrcset } from '../data/responsive';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -50,6 +51,8 @@ const shots = getProjects(lang)
             <figure class="hero__card" data-i={i}>
               <img
                 src={s.image}
+                srcset={projectSrcset(s.image)}
+                sizes="(max-width: 900px) 92vw, 560px"
                 alt={`Web de ${s.name} diseñada por MetaLogic`}
                 width="1280"
                 height="800"

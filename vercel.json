@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/sectores/servicios-profesionales", "destination": "/sectores/oficios-reparaciones", "permanent": true },
+    { "source": "/sectores/servicios-profesionales/", "destination": "/sectores/oficios-reparaciones", "permanent": true },
+    { "source": "/va/sectores/servicios-profesionales", "destination": "/va/sectores/oficios-reparaciones", "permanent": true },
+    { "source": "/va/sectores/servicios-profesionales/", "destination": "/va/sectores/oficios-reparaciones", "permanent": true },
+    { "source": "/en/sectores/servicios-profesionales", "destination": "/en/sectores/oficios-reparaciones", "permanent": true },
+    { "source": "/en/sectores/servicios-profesionales/", "destination": "/en/sectores/oficios-reparaciones", "permanent": true }
+  ]
+}

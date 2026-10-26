@@ -101,19 +101,70 @@ const pillars: Localized<Pillar[]> = {
 export const getPillars = (lang: Lang) => pillars[lang];
 
 /* ───────────────── EXTRAS (funciones que se pueden sumar a la web) ─────────────────
-   Sección de home "Tu web puede crecer con tu negocio": NO es un catálogo de
-   software a medida, son piezas concretas y frecuentes en pymes/negocios
-   locales. Deliberadamente fuera: PDAs de restaurante, marketplaces, ERPs —
-   si un proyecto los necesita, se habla aparte (ver extras.note), no se
-   promocionan aquí como oferta principal. */
+   Sección "Tu web puede crecer con tu negocio" (home y /servicios): piezas
+   concretas y frecuentes en negocios locales. Lo que ofrecemos HOY:
+   pedidos y reservas que se pagan en el local, enlaces de pago para cobrar
+   por adelantado y confirmación por WhatsApp. Deliberadamente fuera: tiendas
+   online con envíos, cobro online dentro del pedido, marketplaces y ERPs —
+   si un proyecto lo necesita, se habla aparte (ver extras.note). */
+export interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+  badge?: string;
+}
+
 const extras: Localized<Service[]> = {
   es: [
     {
       icon: 'calendar',
       title: 'Reservas y citas online',
       description:
-        'Que tus clientes reserven mesa, cita o servicio sin llamarte. Tú solo confirmas y organizas tu agenda desde un único sitio.',
+        'Tus clientes reservan mesa, cita o servicio desde la web, con nuestro sistema o conectando el que ya usas (Booksy, CoverManager, Google Calendar).',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Confirmaciones y recordatorios',
+      description:
+        'Avisos automáticos por WhatsApp o email para confirmar y recordar cada cita o reserva: menos huecos vacíos y clientes que no vienen.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'cart',
+      title: 'Pedidos y encargos online',
+      description:
+        'Carta o catálogo con pedido para recoger o entregar en tu zona. Te llega al WhatsApp o al panel y se paga en el local, sin comisiones de plataformas.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'check',
+      title: 'Pedido confirmado por WhatsApp',
+      description:
+        'Al terminar, el cliente confirma el pedido desde su propio WhatsApp con un toque: sabes que el número y el pedido son reales antes de prepararlo.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'lock',
+      title: 'Enlaces de pago',
+      description:
+        'Cobra por adelantado bonos, tarjetas regalo, señales o inscripciones con un enlace de pago seguro. El dinero va directo a tu cuenta.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'layers',
+      title: 'Apps y paneles de gestión',
+      description:
+        'Una app con tu marca (Android, iPhone o instalable desde la web) y un panel sencillo para ver reservas, pedidos y clientes sin hojas de cálculo.',
       href: 'servicios#backend',
+    },
+    {
+      icon: 'star',
+      title: 'Fidelización y reseñas',
+      description:
+        'Tarjeta de puntos o sellos en el móvil, bonos y cupones, y petición automática de reseña en Google después de cada servicio.',
+      href: 'servicios#extras',
     },
     {
       icon: 'trophy',
@@ -123,49 +174,56 @@ const extras: Localized<Service[]> = {
       badge: 'Tendencia',
       href: 'sectores/torneos-y-eventos',
     },
-    {
-      icon: 'cart',
-      title: 'Pedidos, carta y tienda online',
-      description:
-        'Carta digital, pedidos para recoger o entregar, o una tienda sencilla para un catálogo concreto de productos — sin la complejidad de un ecommerce gigante.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'mail',
-      title: 'Formularios inteligentes y captación de leads',
-      description:
-        'Formularios con los campos justos que filtran quién te interesa de verdad. Cada contacto te llega ordenado y listo para responder.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'Automatizaciones con WhatsApp',
-      description:
-        'Confirmaciones de reserva, recordatorios de cita o avisos de pedido, automáticos y por el canal donde tus clientes ya te escriben.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'lock',
-      title: 'Áreas privadas y paneles de gestión',
-      description:
-        'Una zona con acceso solo para tus clientes o tu equipo, y un panel sencillo para ver reservas, pedidos o mensajes sin depender de hojas de cálculo.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'globe',
-      title: 'Reseñas, multiidioma y analítica',
-      description:
-        'Pido reseñas de forma automática después de cada servicio, preparo tu web en varios idiomas si tienes clientes fuera de tu zona, y dejo medido lo importante para saber qué funciona de verdad.',
-      href: 'servicios#backend',
-    },
   ],
   va: [
     {
       icon: 'calendar',
       title: 'Reserves i cites en línia',
       description:
-        'Que els teus clients reserven taula, cita o servei sense telefonar-te. Tu només confirmes i organitzes la teua agenda des d’un únic lloc.',
+        'Els teus clients reserven taula, cita o servei des de la web, amb el nostre sistema o connectant el que ja uses (Booksy, CoverManager, Google Calendar).',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Confirmacions i recordatoris',
+      description:
+        'Avisos automàtics per WhatsApp o email per a confirmar i recordar cada cita o reserva: menys buits i menys clients que no vénen.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'cart',
+      title: 'Comandes i encàrrecs en línia',
+      description:
+        'Carta o catàleg amb comanda per a arreplegar o entregar a la teua zona. T’arriba al WhatsApp o al panell i es paga al local, sense comissions de plataformes.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'check',
+      title: 'Comanda confirmada per WhatsApp',
+      description:
+        'En acabar, el client confirma la comanda des del seu propi WhatsApp amb un toc: saps que el número i la comanda són reals abans de preparar-la.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'lock',
+      title: 'Enllaços de pagament',
+      description:
+        'Cobra per avançat bons, targetes regal, senyals o inscripcions amb un enllaç de pagament segur. Els diners van directes al teu compte.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'layers',
+      title: 'Apps i panells de gestió',
+      description:
+        'Una app amb la teua marca (Android, iPhone o instal·lable des de la web) i un panell senzill per a veure reserves, comandes i clients sense fulls de càlcul.',
       href: 'servicios#backend',
+    },
+    {
+      icon: 'star',
+      title: 'Fidelització i ressenyes',
+      description:
+        'Targeta de punts o segells al mòbil, bons i cupons, i petició automàtica de ressenya a Google després de cada servei.',
+      href: 'servicios#extras',
     },
     {
       icon: 'trophy',
@@ -175,49 +233,56 @@ const extras: Localized<Service[]> = {
       badge: 'Tendència',
       href: 'sectores/torneos-y-eventos',
     },
-    {
-      icon: 'cart',
-      title: 'Comandes, carta i botiga en línia',
-      description:
-        'Carta digital, comandes per a recollir o repartir, o una botiga senzilla per a un catàleg concret de productes — sense la complexitat d’un ecommerce gegant.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'mail',
-      title: 'Formularis intel·ligents i captació de leads',
-      description:
-        'Formularis amb els camps justos que filtren qui t’interessa de veres. Cada contacte t’arriba ordenat i preparat per a respondre.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'Automatitzacions amb WhatsApp',
-      description:
-        'Confirmacions de reserva, recordatoris de cita o avisos de comanda, automàtics i pel canal on els teus clients ja et parlen.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'lock',
-      title: 'Àrees privades i panells de gestió',
-      description:
-        'Una zona amb accés només per als teus clients o el teu equip, i un panell senzill per a veure reserves, comandes o missatges sense dependre de fulls de càlcul.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'globe',
-      title: 'Ressenyes, multiidioma i analítica',
-      description:
-        'Demane ressenyes de manera automàtica després de cada servei, preparo la teua web en diversos idiomes si tens clients fora de la teua zona, i deixe mesurat el que importa per a saber què funciona de veres.',
-      href: 'servicios#backend',
-    },
   ],
   en: [
     {
       icon: 'calendar',
       title: 'Online bookings and appointments',
       description:
-        'Let clients book a table, appointment or service without calling you. You just confirm and manage your schedule from one place.',
+        'Clients book a table, appointment or service from your website, with our system or by connecting the one you already use (Booksy, CoverManager, Google Calendar).',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'whatsapp',
+      title: 'Confirmations and reminders',
+      description:
+        'Automatic WhatsApp or email messages to confirm and remind every appointment or booking: fewer empty slots and fewer no-shows.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'cart',
+      title: 'Online orders',
+      description:
+        'A menu or catalog with orders for pickup or local delivery. They reach your WhatsApp or dashboard and are paid in store, with no platform commissions.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'check',
+      title: 'Orders confirmed via WhatsApp',
+      description:
+        'When ordering, customers confirm from their own WhatsApp in one tap, so you know the number and the order are real before you prepare it.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'lock',
+      title: 'Payment links',
+      description:
+        'Take payment in advance for vouchers, gift cards, deposits or sign-ups with a secure payment link. The money goes straight to your account.',
+      href: 'servicios#extras',
+    },
+    {
+      icon: 'layers',
+      title: 'Apps and management dashboards',
+      description:
+        'An app with your brand (Android, iPhone or installable from the web) and a simple dashboard to see bookings, orders and clients without spreadsheets.',
       href: 'servicios#backend',
+    },
+    {
+      icon: 'star',
+      title: 'Loyalty and reviews',
+      description:
+        'Points or stamp cards on the phone, vouchers and coupons, plus an automatic Google review request after every service.',
+      href: 'servicios#extras',
     },
     {
       icon: 'trophy',
@@ -226,41 +291,6 @@ const extras: Localized<Service[]> = {
         'For leagues and tournaments — padel, football or whatever you run — with results and standings always up to date and visible from any phone, no spreadsheet required.',
       badge: 'Trending',
       href: 'sectores/torneos-y-eventos',
-    },
-    {
-      icon: 'cart',
-      title: 'Orders, menus and simple online stores',
-      description:
-        'A digital menu, pickup or delivery orders, or a simple store for a focused product catalog — without the complexity of a huge e-commerce platform.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'mail',
-      title: 'Smart forms and lead capture',
-      description:
-        'Forms with just the right fields that filter who’s genuinely interested. Every contact reaches you organized and ready to answer.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'whatsapp',
-      title: 'WhatsApp automations',
-      description:
-        'Booking confirmations, appointment reminders or order alerts, automatic and through the channel your clients already message you on.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'lock',
-      title: 'Private areas and management dashboards',
-      description:
-        'A members-only area for your clients or team, and a simple dashboard to see bookings, orders or messages without relying on spreadsheets.',
-      href: 'servicios#backend',
-    },
-    {
-      icon: 'globe',
-      title: 'Reviews, multilingual sites and analytics',
-      description:
-        'I request reviews automatically after each service, prepare your website in several languages if you have clients outside your area, and set up the tracking that matters so you know what’s actually working.',
-      href: 'servicios#backend',
     },
   ],
 };
@@ -273,9 +303,9 @@ const backend: Localized<Service[]> = {
   es: [
     {
       icon: 'cart',
-      title: 'Pedidos online',
+      title: 'Pedidos y encargos online',
       description:
-        'Tus clientes piden y pagan desde el móvil; los pedidos llegan directos a tu negocio, las 24 horas.',
+        'Tus clientes piden desde el móvil y lo confirman por WhatsApp; los pedidos llegan ordenados a tu negocio, las 24 horas, y se pagan al recoger.',
     },
     {
       icon: 'layers',
@@ -285,9 +315,9 @@ const backend: Localized<Service[]> = {
     },
     {
       icon: 'plug',
-      title: 'APIs e integraciones',
+      title: 'Integraciones',
       description:
-        'Conecto tu web con pagos, ERPs y las herramientas que ya usas para que todo funcione solo.',
+        'Conecto tu web con las herramientas que ya usas —Google Calendar, Booksy, CoverManager, email u hojas de cálculo— para que todo funcione solo.',
     },
     {
       icon: 'lock',
@@ -305,9 +335,9 @@ const backend: Localized<Service[]> = {
   va: [
     {
       icon: 'cart',
-      title: 'Comandes online',
+      title: 'Comandes i encàrrecs en línia',
       description:
-        'Els teus clients demanen i paguen des del mòbil; les comandes arriben directes al teu negoci, les 24 hores.',
+        'Els teus clients demanen des del mòbil i ho confirmen per WhatsApp; les comandes arriben ordenades al teu negoci, les 24 hores, i es paguen en arreplegar.',
     },
     {
       icon: 'layers',
@@ -317,9 +347,9 @@ const backend: Localized<Service[]> = {
     },
     {
       icon: 'plug',
-      title: 'APIs i integracions',
+      title: 'Integracions',
       description:
-        'Connecte la teua web amb pagaments, ERPs i les ferramentes que ja uses perquè tot funcione sol.',
+        'Connecte la teua web amb les ferramentes que ja uses —Google Calendar, Booksy, CoverManager, email o fulls de càlcul— perquè tot funcione sol.',
     },
     {
       icon: 'lock',
@@ -331,37 +361,37 @@ const backend: Localized<Service[]> = {
       icon: 'trophy',
       title: 'Apps per a torneigs i esdeveniments',
       description:
-        'Marcador en directe, classificacions i quadres de partits a mesura — per a lligues de pàdel, campionats o qualsevol esdeveniment amb resultats a seguir.',
+        'Marcador en directe, classificacions i quadres de partits a mida — per a lligues de pàdel, campionats o qualsevol esdeveniment amb resultats per seguir.',
     },
   ],
   en: [
     {
       icon: 'cart',
-      title: 'Online ordering',
+      title: 'Online orders',
       description:
-        'Your customers order and pay from their phone; orders land straight in your business, 24/7.',
+        'Customers order from their phone and confirm via WhatsApp; orders reach your business neatly, 24 hours a day, and are paid on pickup.',
     },
     {
       icon: 'layers',
       title: 'Management dashboard',
       description:
-        'One simple screen to manage orders, bookings, products and customers. No spreadsheets.',
+        'A simple screen to manage orders, bookings, products and customers. No spreadsheets.',
     },
     {
       icon: 'plug',
-      title: 'APIs & integrations',
+      title: 'Integrations',
       description:
-        'We connect your site with payments, ERPs and the tools you already use so everything runs itself.',
+        'We connect your site with the tools you already use — Google Calendar, Booksy, CoverManager, email or spreadsheets — so everything runs itself.',
     },
     {
       icon: 'lock',
-      title: 'Bookings & secure access',
+      title: 'Bookings and secure access',
       description:
-        'Bookings with no double-booking and private areas with secure, role-based access.',
+        'Bookings without overlaps and private areas with secure access and role-based permissions.',
     },
     {
       icon: 'trophy',
-      title: 'Apps for tournaments & events',
+      title: 'Tournament and event apps',
       description:
         'Live scoreboards, standings and custom match brackets — for padel leagues, championships or any event with results to track.',
     },

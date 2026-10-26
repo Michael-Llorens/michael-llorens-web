@@ -34,25 +34,30 @@ const posts: Localized<BlogPost[]> = {
       date: '2026-06-10',
       readingMin: 6,
       category: 'Precios',
-      title: 'Cuánto cuesta una página web en Xàtiva y Valencia en 2026',
+      title: '¿Cuánto cuesta una página web? De qué depende el precio',
       excerpt:
-        'Precios reales y transparentes de una web profesional para autónomos y pymes en la Comunidad Valenciana, según el tipo de proyecto. Sin letra pequeña.',
+        'Qué hace que una web cueste más o menos, qué debe incluir siempre el presupuesto y cómo pedir uno a medida para tu negocio en Xàtiva y Valencia.',
       body: `
-<p>Es la primera pregunta que nos hace todo el mundo, y es lógica: <strong>¿cuánto cuesta una página web?</strong> La respuesta honesta es «depende», pero eso no ayuda. Así que vamos a darte rangos reales de 2026 para autónomos y pymes en Xàtiva, Valencia y alrededores.</p>
+<p>Es la primera pregunta que nos hace todo el mundo, y es lógica: <strong>¿cuánto cuesta una página web?</strong> La respuesta honesta es «depende del proyecto». No es una evasiva: dos negocios nunca necesitan exactamente lo mismo. Por eso en MetaLogic no trabajamos con tarifas cerradas, sino con presupuestos a medida. Aquí te explicamos de qué depende el precio para que sepas qué estás pagando.</p>
 
-<h2>Rangos de precio en 2026</h2>
+<h2>Qué hace que una web cueste más o menos</h2>
 <ul>
-  <li><strong>Landing o web de una página (300–800 €):</strong> ideal para presentar un servicio concreto o captar contactos. Una sola página bien diseñada y optimizada.</li>
-  <li><strong>Web corporativa para pyme (800–2.000 €):</strong> varias páginas (inicio, servicios, proyectos, contacto), SEO de base, formularios y diseño a medida. Lo más habitual.</li>
-  <li><strong>Tienda online / proyecto a medida (desde 2.000 €):</strong> ecommerce, reservas, calculadoras, integraciones o paneles de gestión. El precio depende de la funcionalidad.</li>
+  <li><strong>Cuántas páginas tiene:</strong> no es lo mismo una web de una página para presentar un servicio que una web con varias secciones, servicios y blog.</li>
+  <li><strong>Qué funcionalidad necesita:</strong> un formulario de contacto no es lo mismo que un sistema de reservas, pedidos para recoger o un panel de gestión.</li>
+  <li><strong>Cuánto trabajo de diseño y contenido hace falta:</strong> textos, fotos, traducciones o una imagen de marca nueva.</li>
+  <li><strong>Cuánto SEO quieres trabajar:</strong> una base bien hecha desde el principio o un trabajo continuo para competir en tu zona.</li>
 </ul>
-<p>Como referencia, la media para pymes en la Comunidad Valenciana se sitúa entre 1.200 € y 2.500 €. Un mantenimiento posterior suele costar entre 30 € y 80 € al mes, e incluye actualizaciones, copias de seguridad y soporte.</p>
 
-<h2>¿Por qué hay tanta diferencia de precio?</h2>
-<p>Una web no es un producto cerrado. El precio cambia según tres cosas: <strong>cuántas páginas</strong> tiene, <strong>qué funcionalidad</strong> necesita (un formulario no es lo mismo que una tienda) y <strong>cuánto trabajo de diseño y contenido</strong> hace falta. Desconfía de quien te dé un precio cerrado sin preguntarte nada: o te está vendiendo una plantilla genérica, o habrá sorpresas después.</p>
+<h2>Los tipos de proyecto más habituales</h2>
+<ul>
+  <li><strong>Web de una página:</strong> ideal para presentar un servicio concreto o captar contactos.</li>
+  <li><strong>Web completa para tu negocio:</strong> varias páginas (inicio, servicios, proyectos, contacto), SEO de base, formularios y diseño a medida. Lo más habitual.</li>
+  <li><strong>Web con funciones a medida:</strong> reservas, pedidos, recordatorios por WhatsApp, apps o paneles de gestión.</li>
+</ul>
+<p>Desconfía de quien te dé un precio cerrado sin preguntarte nada: o te está vendiendo una plantilla genérica, o habrá sorpresas después.</p>
 
 <h2>Plantilla barata vs. web a medida</h2>
-<p>Una plantilla de 50 € parece un chollo hasta que descubres que carga lenta, se parece a otras mil webs y no posiciona en Google. Una web a medida cuesta más al principio, pero está pensada para <strong>tu negocio</strong>: rápida, optimizada para SEO desde el primer día y preparada para crecer. A medio plazo, sale más rentable.</p>
+<p>Una plantilla parece un chollo hasta que descubres que carga lenta, se parece a otras mil webs y no posiciona en Google. Una web a medida está pensada para <strong>tu negocio</strong>: rápida, optimizada para SEO desde el primer día y preparada para crecer. A medio plazo, sale más rentable.</p>
 
 <h2>¿Qué debería incluir siempre el presupuesto?</h2>
 <ul>
@@ -63,7 +68,7 @@ const posts: Localized<BlogPost[]> = {
   <li>Formación básica para que puedas gestionar tu web.</li>
 </ul>
 
-<p>En MetaLogic trabajamos con presupuesto cerrado y sin permanencias: te decimos el precio antes de empezar y no hay sorpresas. ¿Quieres saber cuánto costaría tu proyecto? Te hacemos un <strong>diagnóstico y presupuesto gratis</strong>, sin compromiso.</p>
+<p>En MetaLogic te preparamos un presupuesto a medida en 24 horas, sin compromiso y sin permanencias: sabes el precio antes de empezar y no hay sorpresas. ¿Quieres saber cuánto costaría tu proyecto? Pídenos un <strong>diagnóstico y presupuesto gratis</strong>.</p>
 `,
     },
     {
@@ -227,7 +232,7 @@ const posts: Localized<BlogPost[]> = {
 <ul>
   <li><strong>Landing o web de una página:</strong> 1 a 2 semanas.</li>
   <li><strong>Web corporativa para pyme:</strong> 2 a 4 semanas.</li>
-  <li><strong>Tienda online o proyecto a medida:</strong> a partir de 4-6 semanas, según funcionalidad.</li>
+  <li><strong>Proyecto a medida (reservas, pedidos o apps):</strong> a partir de 4-6 semanas, según funcionalidad.</li>
 </ul>
 
 <h2>¿De qué depende que vaya rápido?</h2>
@@ -308,25 +313,30 @@ const posts: Localized<BlogPost[]> = {
       date: '2026-06-10',
       readingMin: 6,
       category: 'Preus',
-      title: 'Quant costa una pàgina web a Xàtiva i València en 2026',
+      title: 'Quant costa una pàgina web? De què depèn el preu',
       excerpt:
-        'Preus reals i transparents d’una web professional per a autònoms i pimes a la Comunitat Valenciana, segons el tipus de projecte. Sense lletra menuda.',
+        'Què fa que una web coste més o menys, què ha d’incloure sempre el pressupost i com demanar-ne un a mida per al teu negoci a Xàtiva i València.',
       body: `
-<p>És la primera pregunta que ens fa tothom, i és lògica: <strong>quant costa una pàgina web?</strong> La resposta honesta és «depèn», però això no ajuda. Així que et donarem rangs reals de 2026 per a autònoms i pimes a Xàtiva, València i rodalia.</p>
+<p>És la primera pregunta que ens fa tothom, i és lògica: <strong>quant costa una pàgina web?</strong> La resposta honesta és «depèn del projecte». No és una evasiva: dos negocis mai necessiten exactament el mateix. Per això a MetaLogic no treballem amb tarifes tancades, sinó amb pressupostos a mida. Ací t’expliquem de què depèn el preu perquè sàpies què estàs pagant.</p>
 
-<h2>Rangs de preu en 2026</h2>
+<h2>Què fa que una web coste més o menys</h2>
 <ul>
-  <li><strong>Landing o web d’una pàgina (300–800 €):</strong> ideal per a presentar un servei concret o captar contactes. Una sola pàgina ben dissenyada i optimitzada.</li>
-  <li><strong>Web corporativa per a pime (800–2.000 €):</strong> diverses pàgines (inici, serveis, projectes, contacte), SEO de base, formularis i disseny a mida. El més habitual.</li>
-  <li><strong>Botiga en línia / projecte a mida (des de 2.000 €):</strong> ecommerce, reserves, calculadores, integracions o panells de gestió. El preu depèn de la funcionalitat.</li>
+  <li><strong>Quantes pàgines té:</strong> no és el mateix una web d’una pàgina per a presentar un servei que una web amb diverses seccions, serveis i blog.</li>
+  <li><strong>Quina funcionalitat necessita:</strong> un formulari de contacte no és el mateix que un sistema de reserves, comandes per a arreplegar o un panell de gestió.</li>
+  <li><strong>Quant treball de disseny i contingut cal:</strong> textos, fotos, traduccions o una imatge de marca nova.</li>
+  <li><strong>Quant SEO vols treballar:</strong> una base ben feta des del principi o un treball continu per a competir a la teua zona.</li>
 </ul>
-<p>Com a referència, la mitjana per a pimes a la Comunitat Valenciana se situa entre 1.200 € i 2.500 €. Un manteniment posterior sol costar entre 30 € i 80 € al mes, i inclou actualitzacions, còpies de seguretat i suport.</p>
 
-<h2>Per què hi ha tanta diferència de preu?</h2>
-<p>Una web no és un producte tancat. El preu canvia segons tres coses: <strong>quantes pàgines</strong> té, <strong>quina funcionalitat</strong> necessita (un formulari no és el mateix que una botiga) i <strong>quant treball de disseny i contingut</strong> cal. Desconfia de qui et done un preu tancat sense preguntar-te res: o et ven una plantilla genèrica, o hi haurà sorpreses després.</p>
+<h2>Els tipus de projecte més habituals</h2>
+<ul>
+  <li><strong>Web d’una pàgina:</strong> ideal per a presentar un servei concret o captar contactes.</li>
+  <li><strong>Web completa per al teu negoci:</strong> diverses pàgines (inici, serveis, projectes, contacte), SEO de base, formularis i disseny a mida. El més habitual.</li>
+  <li><strong>Web amb funcions a mida:</strong> reserves, comandes, recordatoris per WhatsApp, apps o panells de gestió.</li>
+</ul>
+<p>Desconfia de qui et done un preu tancat sense preguntar-te res: o et ven una plantilla genèrica, o hi haurà sorpreses després.</p>
 
 <h2>Plantilla barata vs. web a mida</h2>
-<p>Una plantilla de 50 € sembla una ganga fins que descobreixes que carrega lenta, s’assembla a mil webs més i no posiciona a Google. Una web a mida costa més al principi, però està pensada per al <strong>teu negoci</strong>: ràpida, optimitzada per a SEO des del primer dia i preparada per a créixer. A mitjà termini, ix més rendible.</p>
+<p>Una plantilla sembla una ganga fins que descobreixes que carrega lenta, s’assembla a mil webs més i no posiciona a Google. Una web a mida està pensada per al <strong>teu negoci</strong>: ràpida, optimitzada per a SEO des del primer dia i preparada per a créixer. A mitjà termini, ix més rendible.</p>
 
 <h2>Què hauria d’incloure sempre el pressupost?</h2>
 <ul>
@@ -337,7 +347,7 @@ const posts: Localized<BlogPost[]> = {
   <li>Formació bàsica perquè pugues gestionar la teua web.</li>
 </ul>
 
-<p>A MetaLogic treballem amb pressupost tancat i sense permanències: et diem el preu abans de començar i no hi ha sorpreses. Vols saber quant costaria el teu projecte? Et fem un <strong>diagnòstic i pressupost gratis</strong>, sense compromís.</p>
+<p>A MetaLogic et preparem un pressupost a mida en 24 hores, sense compromís i sense permanències: saps el preu abans de començar i no hi ha sorpreses. Vols saber quant costaria el teu projecte? Demana’ns un <strong>diagnòstic i pressupost gratis</strong>.</p>
 `,
     },
     {
@@ -501,7 +511,7 @@ const posts: Localized<BlogPost[]> = {
 <ul>
   <li><strong>Landing o web d’una pàgina:</strong> 1 a 2 setmanes.</li>
   <li><strong>Web corporativa per a pime:</strong> 2 a 4 setmanes.</li>
-  <li><strong>Botiga en línia o projecte a mida:</strong> a partir de 4-6 setmanes, segons funcionalitat.</li>
+  <li><strong>Projecte a mida (reserves, comandes o apps):</strong> a partir de 4-6 setmanes, segons funcionalitat.</li>
 </ul>
 
 <h2>De què depèn que vaja ràpid?</h2>
@@ -582,25 +592,30 @@ const posts: Localized<BlogPost[]> = {
       date: '2026-06-10',
       readingMin: 6,
       category: 'Pricing',
-      title: 'How much does a website cost in Xàtiva and Valencia in 2026',
+      title: 'How much does a website cost? What the price depends on',
       excerpt:
-        'Real, transparent prices for a professional website for freelancers and small businesses in the Valencia region, by project type. No fine print.',
+        'What makes a website cost more or less, what every quote should include and how to get a tailored one for your business in Xàtiva and Valencia.',
       body: `
-<p>It’s the first thing everyone asks, and it makes sense: <strong>how much does a website cost?</strong> The honest answer is «it depends», but that doesn’t help. So here are real 2026 ranges for freelancers and small businesses in Xàtiva, Valencia and the surrounding area.</p>
+<p>It’s the first thing everyone asks, and it makes sense: <strong>how much does a website cost?</strong> The honest answer is «it depends on the project». That isn’t dodging the question: no two businesses need exactly the same thing. That’s why at MetaLogic we don’t have fixed rates, only tailored quotes. Here’s what the price depends on, so you know what you’re paying for.</p>
 
-<h2>Price ranges in 2026</h2>
+<h2>What makes a website cost more or less</h2>
 <ul>
-  <li><strong>Landing or one-page site (€300–800):</strong> ideal to present a specific service or capture leads. A single, well-designed and optimized page.</li>
-  <li><strong>Small-business website (€800–2,000):</strong> several pages (home, services, work, contact), baseline SEO, forms and custom design. The most common choice.</li>
-  <li><strong>Online store / custom project (from €2,000):</strong> e-commerce, bookings, calculators, integrations or management panels. The price depends on the functionality.</li>
+  <li><strong>How many pages it has:</strong> a one-page site to present a service isn’t the same as a site with several sections, services and a blog.</li>
+  <li><strong>What functionality it needs:</strong> a contact form isn’t the same as a booking system, pickup orders or a management dashboard.</li>
+  <li><strong>How much design and content work is involved:</strong> copy, photos, translations or a new brand image.</li>
+  <li><strong>How much SEO you want:</strong> a solid foundation from the start or ongoing work to compete in your area.</li>
 </ul>
-<p>As a reference, the average for small businesses in the Valencia region sits between €1,200 and €2,500. Ongoing maintenance usually costs €30–80 a month and includes updates, backups and support.</p>
 
-<h2>Why is there such a price difference?</h2>
-<p>A website isn’t an off-the-shelf product. The price changes based on three things: <strong>how many pages</strong> it has, <strong>what functionality</strong> it needs (a form isn’t the same as a store) and <strong>how much design and content work</strong> is involved. Be wary of anyone who quotes a fixed price without asking you anything: either they’re selling a generic template, or there’ll be surprises later.</p>
+<h2>The most common types of project</h2>
+<ul>
+  <li><strong>One-page site:</strong> ideal to present a specific service or capture leads.</li>
+  <li><strong>Full website for your business:</strong> several pages (home, services, work, contact), baseline SEO, forms and custom design. The most common choice.</li>
+  <li><strong>Website with custom features:</strong> bookings, orders, WhatsApp reminders, apps or management dashboards.</li>
+</ul>
+<p>Be wary of anyone who quotes a fixed price without asking you anything: either they’re selling a generic template, or there’ll be surprises later.</p>
 
 <h2>Cheap template vs. custom website</h2>
-<p>A €50 template looks like a bargain until you find out it loads slowly, looks like a thousand other sites and doesn’t rank on Google. A custom website costs more upfront, but it’s built for <strong>your business</strong>: fast, SEO-optimized from day one and ready to grow. In the medium term, it pays off.</p>
+<p>A template looks like a bargain until you find out it loads slowly, looks like a thousand other sites and doesn’t rank on Google. A custom website is built for <strong>your business</strong>: fast, SEO-optimized from day one and ready to grow. In the medium term, it pays off.</p>
 
 <h2>What should every quote always include?</h2>
 <ul>
@@ -611,7 +626,7 @@ const posts: Localized<BlogPost[]> = {
   <li>Basic training so you can manage your own site.</li>
 </ul>
 
-<p>At MetaLogic we work with fixed quotes and no lock-in: we tell you the price before we start and there are no surprises. Want to know what your project would cost? We’ll give you a <strong>free diagnosis and quote</strong>, no strings attached.</p>
+<p>At MetaLogic we prepare a tailored quote within 24 hours, with no commitment and no lock-in: you know the price before we start and there are no surprises. Want to know what your project would cost? Ask us for a <strong>free diagnosis and quote</strong>.</p>
 `,
     },
     {
@@ -775,7 +790,7 @@ const posts: Localized<BlogPost[]> = {
 <ul>
   <li><strong>Landing or one-page site:</strong> 1 to 2 weeks.</li>
   <li><strong>Small-business website:</strong> 2 to 4 weeks.</li>
-  <li><strong>Online store or custom project:</strong> from 4-6 weeks, depending on functionality.</li>
+  <li><strong>Custom project (bookings, orders or apps):</strong> from 4-6 weeks, depending on functionality.</li>
 </ul>
 
 <h2>What makes it go fast?</h2>

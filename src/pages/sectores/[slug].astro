@@ -17,8 +17,8 @@ const sector = getSector(lang, slug as string)!;
 <PageLayout
   lang={lang}
   path={`sectores/${sector.slug}`}
-  title={`${sector.name} · MetaLogic`}
-  description={sector.intro}
+  title={sector.metaTitle}
+  description={sector.metaDescription}
 >
   <SectorPage lang={lang} sector={sector} />
   {sector.slug === 'torneos-y-eventos' && <ScoreboardDemo lang={lang} />}

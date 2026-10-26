@@ -15,8 +15,9 @@ const post = getBlogPost(lang, slug as string)!;
 <PageLayout
   lang={lang}
   path={`recursos/${post.slug}`}
-  title={`${post.title} · MetaLogic`}
+  title={post.title.length <= 48 ? `${post.title} · MetaLogic` : post.title}
   description={post.excerpt}
+  ogType="article"
 >
   <BlogArticle lang={lang} post={post} />
 </PageLayout>
