@@ -1,6 +1,12 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "metalogic.vercel.app" }],
+      "destination": "https://www.metalogic.es/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "metalogic.vercel.app" }],
       "destination": "https://www.metalogic.es/:path*",
