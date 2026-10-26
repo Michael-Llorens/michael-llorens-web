@@ -17,8 +17,8 @@ export const site = {
     en: 'Web development & SEO',
   },
 
-  // URL pública (dominio de Vercel). Cámbiala cuando tengas tu dominio propio.
-  url: 'https://metalogic.vercel.app',
+  // URL pública (dominio propio). Debe coincidir con SITE en astro.config.mjs.
+  url: 'https://www.metalogic.es',
 
   // Email de contacto
   email: 'metalogicweb@gmail.com',
@@ -40,9 +40,8 @@ export const site = {
   // vacío, no se muestra nada.
   bookingUrl: '',
 
-  // ⚠️ PLACEHOLDER — cambia o elimina los que no uses
+  // Perfiles sociales (se enlazan en el pie y en los datos para Google)
   socials: {
-    // ⚠️ PLACEHOLDER — pon aquí tu usuario real de Instagram
     instagram: 'https://www.instagram.com/metalogicweb',
   },
 };

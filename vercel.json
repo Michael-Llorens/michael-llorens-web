@@ -1,5 +1,11 @@
 {
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "metalogic.vercel.app" }],
+      "destination": "https://www.metalogic.es/:path*",
+      "permanent": true
+    },
     { "source": "/sectores/servicios-profesionales", "destination": "/sectores/oficios-reparaciones", "permanent": true },
     { "source": "/sectores/servicios-profesionales/", "destination": "/sectores/oficios-reparaciones", "permanent": true },
     { "source": "/va/sectores/servicios-profesionales", "destination": "/va/sectores/oficios-reparaciones", "permanent": true },
